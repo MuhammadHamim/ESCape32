@@ -1,0 +1,11 @@
+{
+  "version": 3,
+  "configurePresets": [
+    { "name": "riscv", "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build-riscv",
+      "toolchainFile": "${sourceDir}/cmake/ch32v2.cmake" },
+    { "name": "arm", "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": { "LIBOPENCM3_DIR": "$env{HOME}/work/libopencm3" } }
+  ]
+}

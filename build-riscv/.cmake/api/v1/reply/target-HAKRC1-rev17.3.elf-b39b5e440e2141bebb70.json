@@ -1,0 +1,394 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "HAKRC1-rev17.3.elf"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"add_target",
+			"add_link_options",
+			"target_link_options",
+			"target_link_libraries",
+			"add_compile_options",
+			"target_compile_options",
+			"target_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 75,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 36,
+				"parent" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 46,
+				"parent" : 1
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 47,
+				"parent" : 1
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 38,
+				"parent" : 1
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 44,
+				"parent" : 1
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 45,
+				"parent" : 1
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 43,
+				"parent" : 1
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-Os -g"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-ffreestanding"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-fsingle-precision-constant"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wpedantic"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wundef"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wshadow"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wredundant-decls"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wstrict-prototypes"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wmissing-prototypes"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-variadic-macros"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-unused-result"
+				},
+				{
+					"backtrace" : 6,
+					"fragment" : "-Wno-unused-parameter"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wno-unused-variable"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wno-unused-function"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-mcpu=cortex-m0"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-mthumb"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "COMP_MAP=213"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "DEAD_TIME=26"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "HAKRC1"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "LED_INV"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "LED_MAP=0xAFB5B3"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "LED_OD"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "SENS_MAP=0xA3"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "SMALL_DEVICE"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "STM32F0"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "STM32F051"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "TARGET_NAME=\"HAKRC1\""
+				},
+				{
+					"backtrace" : 9,
+					"define" : "VOLT_MUL=110"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 10,
+					"path" : "/home/hamim/work/ESCape32/src"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/hamim/work/ESCape32/mcu/STM32F051"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"id" : "HAKRC1-rev17.3.elf::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Os -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-nostartfiles",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "-Wl,--gc-sections",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-Wl,--defsym,FLASH_SIZE=32K",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-T/home/hamim/work/ESCape32/mcu/STM32F051/config.ld",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-T/home/hamim/work/ESCape32/mcu/common.ld",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-mcpu=cortex-m0",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-mthumb",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-lc_nano",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-lgcc",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-lnosys",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-lopencm3_stm32f0",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "HAKRC1-rev17.3.elf",
+	"nameOnDisk" : "HAKRC1-rev17.3.elf",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "mcu/STM32F051/config.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "mcu/STM32F051/preset.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/io.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/main.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/prog.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/telem.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "src/util.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

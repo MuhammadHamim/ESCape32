@@ -1,0 +1,328 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "boot/BOOT2_PA2-rev4.elf"
+		}
+	],
+	"backtrace" : 2,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"add_target",
+			"add_link_options",
+			"target_link_options",
+			"target_link_libraries",
+			"add_compile_options",
+			"target_compile_options",
+			"target_compile_definitions",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"boot/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 3,
+				"parent" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 36,
+				"parent" : 1
+			},
+			{
+				"file" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 3
+			},
+			{
+				"command" : 3,
+				"file" : 0,
+				"line" : 46,
+				"parent" : 1
+			},
+			{
+				"command" : 4,
+				"file" : 0,
+				"line" : 47,
+				"parent" : 1
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 3
+			},
+			{
+				"command" : 6,
+				"file" : 0,
+				"line" : 44,
+				"parent" : 1
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 45,
+				"parent" : 1
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 43,
+				"parent" : 1
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-Os -g"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-ffreestanding"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-ffunction-sections"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-fdata-sections"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-fsingle-precision-constant"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wall"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wextra"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wpedantic"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wundef"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wshadow"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wredundant-decls"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wstrict-prototypes"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wmissing-prototypes"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wno-variadic-macros"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wno-unused-result"
+				},
+				{
+					"backtrace" : 7,
+					"fragment" : "-Wno-unused-parameter"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-mcpu=cortex-m0plus"
+				},
+				{
+					"backtrace" : 8,
+					"fragment" : "-mthumb"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 9,
+					"define" : "BOOT2_PA2"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "IO_PA2"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "STM32G0"
+				},
+				{
+					"backtrace" : 9,
+					"define" : "TARGET_NAME=\"BOOT2_PA2\""
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 10,
+					"path" : "/home/hamim/work/ESCape32/boot/src"
+				},
+				{
+					"backtrace" : 10,
+					"path" : "/home/hamim/work/ESCape32/boot/mcu/STM32G0"
+				}
+			],
+			"language" : "C",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		}
+	],
+	"id" : "BOOT2_PA2-rev4.elf::@cce535d0a6f74895f533",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-Os -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-nostartfiles",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "-Wl,--gc-sections",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-Wl,--defsym,FLASH_SIZE=64K",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-T/home/hamim/work/ESCape32/boot/mcu/STM32G0/config.ld",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-T/home/hamim/work/ESCape32/boot/mcu/common.ld",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-mcpu=cortex-m0plus",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "-mthumb",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-lc_nano",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-lgcc",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-lnosys",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-lopencm3_stm32g0",
+				"role" : "libraries"
+			}
+		],
+		"language" : "C"
+	},
+	"name" : "BOOT2_PA2-rev4.elf",
+	"nameOnDisk" : "BOOT2_PA2-rev4.elf",
+	"paths" : 
+	{
+		"build" : "boot",
+		"source" : "boot"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "boot/mcu/STM32G0/config.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "boot/src/io.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "boot/src/main.c",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 2,
+			"compileGroupIndex" : 0,
+			"path" : "boot/src/util.c",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}
