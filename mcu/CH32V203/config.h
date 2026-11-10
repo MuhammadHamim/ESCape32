@@ -21,15 +21,15 @@
 #define iftim_isr TIM2_IRQHandler
 
 // --- IO Timer ---
-// Using TIM3 channel 1(PA6) for auxiliary IO tasks
+// Using TIM3 channel 3(PB0) for auxiliary IO tasks
 #define IOTIM TIM3
-#define IOTIM_IDR (GPIOA_IDR & (1 << 6)) // PA6
+#define IOTIM_IDR (GPIOB->INDR & (1u << 0)) // PB0
 
 #define iotim_isr tim3_io_isr
 
 
-#define IOTIM_DMA 6
-#define iotim_dma_isr DMA1_Channel6_IRQHandler
+#define IOTIM_DMA 2
+#define iotim_dma_isr DMA1_Channel2_IRQHandler
 
 // #ifndef IO_AUX
 // #elif IO_AUX == 0xB8

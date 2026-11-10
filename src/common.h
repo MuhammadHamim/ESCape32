@@ -19,6 +19,20 @@
 
 #include <stdlib.h>
 #include <string.h>
+
+#ifdef CH32V203
+#include "ch32v20x.h"
+#include "ch32v20x_rcc.h"
+#include "ch32v20x_gpio.h"
+#include "ch32v20x_tim.h"
+#include "ch32v20x_usart.h"
+#include "ch32v20x_dma.h"
+#include "ch32v20x_flash.h"
+#include "ch32v20x_iwdg.h"
+#include "ch32v20x_wwdg.h"
+
+#else
+
 #include <libopencmsis/core_cm3.h>
 #include <libopencm3/stm32/syscfg.h>
 #include <libopencm3/stm32/rcc.h>
@@ -34,6 +48,9 @@
 #include <libopencm3/stm32/flash.h>
 #include <libopencm3/stm32/iwdg.h>
 #include <libopencm3/stm32/wwdg.h>
+
+#endif
+
 #include "config.h"
 #include "defs.h"
 
@@ -53,7 +70,8 @@
 #define _GPIO(port, name) __GPIO(port, name)
 #define __GPIO(port, name) GPIO##port##_##name
 
-typedef struct {
+typedef struct
+{
 	const uint16_t id;
 	const char revision;
 	const char revpatch;
@@ -108,7 +126,8 @@ typedef struct {
 	char led;
 } Cfg;
 
-typedef struct {
+typedef struct
+{
 	int Kp, Ki, Kd, Li, i, x;
 } PID;
 
@@ -153,24 +172,28 @@ void resetcom(void);
 int playmusic(const char *str, int vol);
 void playsound(const char *buf, int vol);
 
-static inline int min(int a, int b) {return a < b ? a : b;}
-static inline int max(int a, int b) {return a > b ? a : b;}
-static inline int clamp(int x, int a, int b) {return min(max(x, a), b);}
+static inline int min(int a, int b) { return a < b ? a : b; }
+static inline int max(int a, int b) { return a > b ? a : b; }
+static inline int clamp(int x, int a, int b) { return min(max(x, a), b); }
 
 // Temperature sensors
 
-static inline int NTC10K3455LO2K(int x) {
+static inline int NTC10K3455LO2K(int x)
+{
 	return (x < 2338 ? (x - 1650) * 46 + 74841 : (x - 2640) * 83 + 132044) >> 8;
 }
 
-static inline int NTC10K3455UP2K(int x) {
+static inline int NTC10K3455UP2K(int x)
+{
 	return (x > 961 ? (x - 1650) * -46 + 74841 : (x - 660) * -83 + 132044) >> 8;
 }
 
-static inline int NTC10K3455LO10K(int x) {
+static inline int NTC10K3455LO10K(int x)
+{
 	return (x < 2762 ? (x - 1650) * 36 + 25600 : (x - 3036) * 151 + 107130) >> 8;
 }
 
-static inline int NTC10K3455UP10K(int x) {
+static inline int NTC10K3455UP10K(int x)
+{
 	return (x > 537 ? (x - 1650) * -36 + 25600 : (x - 264) * -151 + 107130) >> 8;
 }

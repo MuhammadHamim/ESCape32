@@ -33,6 +33,14 @@ function(add_target name mcu)
 	set(bin ${name}${rev1}${rev2}.bin)
 	set(hex ${name}${rev1}${rev2}.hex)
 	file(GLOB srcs src/*.c mcu/${mcu}/*.c)
+	# ch32 startup file
+	if(mcu STREQUAL "CH32V203")
+		list(APPEND srcs
+			mcu/CH32V203/WCH/Core/core_riscv.c
+			mcu/CH32V203/WCH/User/system_ch32v20x.c
+			mcu/CH32V203/WCH/Startup/startup_ch32v20x_D6.S
+		)
+	endif()
 	add_executable(${elf} ${srcs})
 	if("SMALL_DEVICE" IN_LIST ARGN)
 		target_compile_options(${elf} PRIVATE -Wno-unused-variable -Wno-unused-function)
@@ -41,14 +49,22 @@ function(add_target name mcu)
 		set(size 64K)
 	endif()
 	target_include_directories(${elf} PRIVATE src mcu/${mcu})
+	# ch32 include path
+	if(mcu STREQUAL "CH32V203")
+		target_include_directories(${elf} PRIVATE
+			mcu/CH32V203/WCH/Core
+			mcu/CH32V203/WCH/Peripheral/inc
+			mcu/CH32V203/WCH/User
+		)
+	endif()
 	target_compile_options(${elf} PRIVATE ${opts})
 	target_compile_definitions(${elf} PRIVATE ${mcu} ${name} ${defs} TARGET_NAME="${name}" ${ARGN})
 	target_link_options(${elf} PRIVATE -Wl,--defsym,FLASH_SIZE=${size} -T${CMAKE_CURRENT_SOURCE_DIR}/mcu/${mcu}/config.ld -T${CMAKE_CURRENT_SOURCE_DIR}/mcu/common.ld ${opts})
 	target_link_libraries(${elf} c_nano gcc nosys ${libs})
 	add_custom_command(
 		OUTPUT ${bin} ${hex}
-		COMMAND arm-none-eabi-objcopy -O binary ${elf} ${bin}
-		COMMAND arm-none-eabi-objcopy -O ihex ${elf} ${hex}
+		COMMAND ${CMAKE_OBJCOPY} -O binary ${elf} ${bin}
+		COMMAND ${CMAKE_OBJCOPY} -O ihex ${elf} ${hex}
 		DEPENDS ${elf}
 	)
 	add_custom_target(${name} ALL DEPENDS ${hex})
@@ -56,7 +72,9 @@ function(add_target name mcu)
 endfunction()
 
 add_subdirectory(boot)
-
+# CH32 TARGET
+add_target(CH32 CH32V203 DEAD_TIME=35 COMP_MAP=123 SENS_MAP=0xA6 VOLT_MUL=110)
+# CH32 TARGET
 add_target(AART1 AT32F421 DEAD_TIME=0 COMP_MAP=123 ARM=0 VOLUME=0 INPUT_MODE=1 ANALOG_CHAN=6 ANALOG_MIN=270 ANALOG_MAX=1440 DUTY_MIN=100 DUTY_SPUP=25 FULL_DUTY IO_RXTX)
 add_target(AIRBOT1 AT32F421 DEAD_TIME=66 COMP_MAP=321 SENS_MAP=0xA3A6 VOLT_MUL=74 CURR_MUL=30 LED_MAP=0xAFB3B4)
 add_target(AIRBOT2 STM32F051 DEAD_TIME=26 COMP_MAP=321 SENS_MAP=0xA3 VOLT_MUL=74 IO_PA2 SMALL_DEVICE DISABLE_HOTT)

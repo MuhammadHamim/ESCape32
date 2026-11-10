@@ -16,6 +16,9 @@ set(CMAKE_SYSTEM_PROCESSOR riscv)
 set(CMAKE_C_COMPILER   ${RISCV_GCC})
 set(CMAKE_ASM_COMPILER ${RISCV_GCC})
 
+get_filename_component(RISCV_BIN_DIR "${RISCV_GCC}" DIRECTORY)
+set(CMAKE_OBJCOPY "${RISCV_BIN_DIR}/riscv-none-elf-objcopy" CACHE FILEPATH "RISC-V objcopy")
+
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 set(CMAKE_C_FLAGS_INIT "-march=rv32imac_zicsr -mabi=ilp32")

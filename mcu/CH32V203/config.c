@@ -1,8 +1,11 @@
 
 
+#include "ch32v20x.h"
+#include "config.h"
+#include "defs.h"
+#include "common.h"
 // #include <libopencm3/stm32/dmamux.h>
 // #include <libopencm3/stm32/adc.h>
-// #include "common.h"
 
 void tim3_io_isr(void);
 #ifdef HALL_MAP
