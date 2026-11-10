@@ -1,0 +1,255 @@
+{
+	"inputs" : 
+	[
+		{
+			"path" : "CMakeLists.txt"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build-riscv/CMakeFiles/3.28.3/CMakeSystem.cmake"
+		},
+		{
+			"path" : "cmake/ch32v2.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake"
+		},
+		{
+			"isGenerated" : true,
+			"path" : "build-riscv/CMakeFiles/3.28.3/CMakeCCompiler.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Platform/Generic.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeCInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Compiler/GNU-C.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Compiler/GNU.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/Platform/Generic.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/GD32E230/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/GD32F350/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/GD32F350/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32L431/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G431/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/GD32E230/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32F051/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/STM32G071/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "mcu/AT32F421/config.cmake"
+		},
+		{
+			"path" : "boot/CMakeLists.txt"
+		},
+		{
+			"path" : "boot/mcu/STM32F0/config.cmake"
+		},
+		{
+			"path" : "boot/mcu/STM32F0/config.cmake"
+		},
+		{
+			"path" : "boot/mcu/STM32G0/config.cmake"
+		},
+		{
+			"path" : "boot/mcu/STM32G0/config.cmake"
+		},
+		{
+			"path" : "boot/mcu/STM32G0/config.cmake"
+		},
+		{
+			"path" : "boot/mcu/STM32F0/config.cmake"
+		},
+		{
+			"path" : "boot/mcu/STM32F0/config.cmake"
+		},
+		{
+			"path" : "boot/mcu/STM32G4/config.cmake"
+		}
+	],
+	"kind" : "cmakeFiles",
+	"paths" : 
+	{
+		"build" : "/home/hamim/work/ESCape32/build-riscv",
+		"source" : "/home/hamim/work/ESCape32"
+	},
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}
