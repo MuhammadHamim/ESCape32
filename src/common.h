@@ -22,7 +22,7 @@
 
 #ifdef CH32V203
 #include "ch32v20x.h"
-#include "ch32v203_adc.h"
+#include "ch32v20x_adc.h"
 #include "ch32v20x_rcc.h"
 #include "ch32v20x_gpio.h"
 #include "ch32v20x_opa.h"

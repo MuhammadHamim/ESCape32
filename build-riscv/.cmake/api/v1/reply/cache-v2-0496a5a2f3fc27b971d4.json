@@ -954,7 +954,7 @@
 					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "UNINITIALIZED",
+			"type" : "FILEPATH",
 			"value" : "/home/hamim/work/ESCape32/cmake/ch32v2.cmake"
 		},
 		{

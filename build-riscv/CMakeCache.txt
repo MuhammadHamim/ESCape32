@@ -178,7 +178,7 @@ CMAKE_STRIP:FILEPATH=/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-el
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
 //No help, variable specified on the command line.
-CMAKE_TOOLCHAIN_FILE:UNINITIALIZED=/home/hamim/work/ESCape32/cmake/ch32v2.cmake
+CMAKE_TOOLCHAIN_FILE:FILEPATH=/home/hamim/work/ESCape32/cmake/ch32v2.cmake
 
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
