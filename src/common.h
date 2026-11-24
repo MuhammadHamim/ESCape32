@@ -1,4 +1,4 @@
-/*
+/*common.h => written for stm32(haven't changed yet), just added conditional header for ch32v203
 ** Copyright (C) Arseny Vakhrushev <arseny.vakhrushev@me.com>
 **
 ** This firmware is free software: you can redistribute it and/or modify

@@ -1,3 +1,6 @@
+/home/hamim/work/ESCape32/build-riscv/CMakeFiles/CH32-rev17.3.elf.dir
+/home/hamim/work/ESCape32/build-riscv/CMakeFiles/CH32.dir
+/home/hamim/work/ESCape32/build-riscv/CMakeFiles/flash-CH32.dir
 /home/hamim/work/ESCape32/build-riscv/CMakeFiles/AART1-rev17.3.elf.dir
 /home/hamim/work/ESCape32/build-riscv/CMakeFiles/AART1.dir
 /home/hamim/work/ESCape32/build-riscv/CMakeFiles/flash-AART1.dir

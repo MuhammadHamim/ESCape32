@@ -36,6 +36,117 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/hamim/work/ESCape32/build-riscv/
 # =============================================================================
+# Object build statements for EXECUTABLE target CH32-rev17.3.elf
+
+
+#############################################
+# Order-only phony target for CH32-rev17.3.elf
+
+build cmake_object_order_depends_target_CH32-rev17.3.elf: phony || CMakeFiles/CH32-rev17.3.elf.dir
+
+build CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/mcu/CH32V203/config.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203
+
+build CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/preset.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/mcu/CH32V203/preset.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/preset.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203
+
+build CMakeFiles/CH32-rev17.3.elf.dir/src/io.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/src/io.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/src/io.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/src
+
+build CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/src/main.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/src
+
+build CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/src/prog.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/src
+
+build CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/src/telem.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/src
+
+build CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/src/util.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/src
+
+build CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core/core_riscv.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core
+
+build CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj: C_COMPILER__CH32-rev17.2e3.2eelf_unscanned_ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User/system_ch32v20x.c || cmake_object_order_depends_target_CH32-rev17.3.elf
+  DEFINES = -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\"CH32\" -DVOLT_MUL=110
+  DEP_FILE = CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj.d
+  FLAGS = -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32
+  INCLUDES = -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  OBJECT_FILE_DIR = CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target CH32-rev17.3.elf
+
+
+#############################################
+# Link the executable CH32-rev17.3.elf
+
+build CH32-rev17.3.elf: C_EXECUTABLE_LINKER__CH32-rev17.2e3.2eelf_ CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/preset.c.obj CMakeFiles/CH32-rev17.3.elf.dir/src/io.c.obj CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj
+  FLAGS = -Os -g
+  LINK_FLAGS = -nostartfiles -Wl,--gc-sections -Wl,--defsym,FLASH_SIZE=64K -T/home/hamim/work/ESCape32/mcu/CH32V203/config.ld -T/home/hamim/work/ESCape32/mcu/common.ld -march=rv32imac_zicsr -mabi=ilp32
+  LINK_LIBRARIES = -lc_nano  -lgcc  -lnosys
+  OBJECT_DIR = CMakeFiles/CH32-rev17.3.elf.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = CH32-rev17.3.elf
+  TARGET_PDB = CH32-rev17.3.elf.dbg
+
+
+#############################################
+# Utility command for CH32
+
+build CH32: phony CMakeFiles/CH32 CH32-rev17.3.bin CH32-rev17.3.hex CH32-rev17.3.elf
+
+
+#############################################
+# Utility command for flash-CH32
+
+build flash-CH32: phony CMakeFiles/flash-CH32 CH32-rev17.3.bin CH32-rev17.3.hex CH32-rev17.3.elf
+
+# =============================================================================
 # Object build statements for EXECUTABLE target AART1-rev17.3.elf
 
 
@@ -4430,6 +4541,28 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 
 #############################################
+# Phony custom command for CMakeFiles/CH32
+
+build CMakeFiles/CH32 | ${cmake_ninja_workdir}CMakeFiles/CH32: phony CH32-rev17.3.hex || CH32-rev17.3.elf
+
+
+#############################################
+# Custom command for CH32-rev17.3.bin
+
+build CH32-rev17.3.bin CH32-rev17.3.hex | ${cmake_ninja_workdir}CH32-rev17.3.bin ${cmake_ninja_workdir}CH32-rev17.3.hex: CUSTOM_COMMAND CH32-rev17.3.elf || CH32-rev17.3.elf
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary CH32-rev17.3.elf CH32-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex CH32-rev17.3.elf CH32-rev17.3.hex
+  DESC = Generating CH32-rev17.3.bin, CH32-rev17.3.hex
+  restat = 1
+
+
+#############################################
+# Custom command for CMakeFiles/flash-CH32
+
+build CMakeFiles/flash-CH32 | ${cmake_ninja_workdir}CMakeFiles/flash-CH32: CUSTOM_COMMAND CH32-rev17.3.hex || CH32-rev17.3.elf
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && st-flash --reset --connect-under-reset --format ihex write CH32-rev17.3.hex
+
+
+#############################################
 # Phony custom command for CMakeFiles/AART1
 
 build CMakeFiles/AART1 | ${cmake_ninja_workdir}CMakeFiles/AART1: phony AART1-rev17.3.hex || AART1-rev17.3.elf
@@ -4439,7 +4572,7 @@ build CMakeFiles/AART1 | ${cmake_ninja_workdir}CMakeFiles/AART1: phony AART1-rev
 # Custom command for AART1-rev17.3.bin
 
 build AART1-rev17.3.bin AART1-rev17.3.hex | ${cmake_ninja_workdir}AART1-rev17.3.bin ${cmake_ninja_workdir}AART1-rev17.3.hex: CUSTOM_COMMAND AART1-rev17.3.elf || AART1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary AART1-rev17.3.elf AART1-rev17.3.bin && arm-none-eabi-objcopy -O ihex AART1-rev17.3.elf AART1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary AART1-rev17.3.elf AART1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex AART1-rev17.3.elf AART1-rev17.3.hex
   DESC = Generating AART1-rev17.3.bin, AART1-rev17.3.hex
   restat = 1
 
@@ -4461,7 +4594,7 @@ build CMakeFiles/AIRBOT1 | ${cmake_ninja_workdir}CMakeFiles/AIRBOT1: phony AIRBO
 # Custom command for AIRBOT1-rev17.3.bin
 
 build AIRBOT1-rev17.3.bin AIRBOT1-rev17.3.hex | ${cmake_ninja_workdir}AIRBOT1-rev17.3.bin ${cmake_ninja_workdir}AIRBOT1-rev17.3.hex: CUSTOM_COMMAND AIRBOT1-rev17.3.elf || AIRBOT1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary AIRBOT1-rev17.3.elf AIRBOT1-rev17.3.bin && arm-none-eabi-objcopy -O ihex AIRBOT1-rev17.3.elf AIRBOT1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary AIRBOT1-rev17.3.elf AIRBOT1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex AIRBOT1-rev17.3.elf AIRBOT1-rev17.3.hex
   DESC = Generating AIRBOT1-rev17.3.bin, AIRBOT1-rev17.3.hex
   restat = 1
 
@@ -4483,7 +4616,7 @@ build CMakeFiles/AIRBOT2 | ${cmake_ninja_workdir}CMakeFiles/AIRBOT2: phony AIRBO
 # Custom command for AIRBOT2-rev17.3.bin
 
 build AIRBOT2-rev17.3.bin AIRBOT2-rev17.3.hex | ${cmake_ninja_workdir}AIRBOT2-rev17.3.bin ${cmake_ninja_workdir}AIRBOT2-rev17.3.hex: CUSTOM_COMMAND AIRBOT2-rev17.3.elf || AIRBOT2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary AIRBOT2-rev17.3.elf AIRBOT2-rev17.3.bin && arm-none-eabi-objcopy -O ihex AIRBOT2-rev17.3.elf AIRBOT2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary AIRBOT2-rev17.3.elf AIRBOT2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex AIRBOT2-rev17.3.elf AIRBOT2-rev17.3.hex
   DESC = Generating AIRBOT2-rev17.3.bin, AIRBOT2-rev17.3.hex
   restat = 1
 
@@ -4505,7 +4638,7 @@ build CMakeFiles/EMAX1 | ${cmake_ninja_workdir}CMakeFiles/EMAX1: phony EMAX1-rev
 # Custom command for EMAX1-rev17.3.bin
 
 build EMAX1-rev17.3.bin EMAX1-rev17.3.hex | ${cmake_ninja_workdir}EMAX1-rev17.3.bin ${cmake_ninja_workdir}EMAX1-rev17.3.hex: CUSTOM_COMMAND EMAX1-rev17.3.elf || EMAX1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary EMAX1-rev17.3.elf EMAX1-rev17.3.bin && arm-none-eabi-objcopy -O ihex EMAX1-rev17.3.elf EMAX1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary EMAX1-rev17.3.elf EMAX1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex EMAX1-rev17.3.elf EMAX1-rev17.3.hex
   DESC = Generating EMAX1-rev17.3.bin, EMAX1-rev17.3.hex
   restat = 1
 
@@ -4527,7 +4660,7 @@ build CMakeFiles/ESCAPE1 | ${cmake_ninja_workdir}CMakeFiles/ESCAPE1: phony ESCAP
 # Custom command for ESCAPE1-rev17.3.bin
 
 build ESCAPE1-rev17.3.bin ESCAPE1-rev17.3.hex | ${cmake_ninja_workdir}ESCAPE1-rev17.3.bin ${cmake_ninja_workdir}ESCAPE1-rev17.3.hex: CUSTOM_COMMAND ESCAPE1-rev17.3.elf || ESCAPE1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary ESCAPE1-rev17.3.elf ESCAPE1-rev17.3.bin && arm-none-eabi-objcopy -O ihex ESCAPE1-rev17.3.elf ESCAPE1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary ESCAPE1-rev17.3.elf ESCAPE1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex ESCAPE1-rev17.3.elf ESCAPE1-rev17.3.hex
   DESC = Generating ESCAPE1-rev17.3.bin, ESCAPE1-rev17.3.hex
   restat = 1
 
@@ -4549,7 +4682,7 @@ build CMakeFiles/ESCAPE2 | ${cmake_ninja_workdir}CMakeFiles/ESCAPE2: phony ESCAP
 # Custom command for ESCAPE2-rev17.3.bin
 
 build ESCAPE2-rev17.3.bin ESCAPE2-rev17.3.hex | ${cmake_ninja_workdir}ESCAPE2-rev17.3.bin ${cmake_ninja_workdir}ESCAPE2-rev17.3.hex: CUSTOM_COMMAND ESCAPE2-rev17.3.elf || ESCAPE2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary ESCAPE2-rev17.3.elf ESCAPE2-rev17.3.bin && arm-none-eabi-objcopy -O ihex ESCAPE2-rev17.3.elf ESCAPE2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary ESCAPE2-rev17.3.elf ESCAPE2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex ESCAPE2-rev17.3.elf ESCAPE2-rev17.3.hex
   DESC = Generating ESCAPE2-rev17.3.bin, ESCAPE2-rev17.3.hex
   restat = 1
 
@@ -4571,7 +4704,7 @@ build CMakeFiles/ESCAPE3 | ${cmake_ninja_workdir}CMakeFiles/ESCAPE3: phony ESCAP
 # Custom command for ESCAPE3-rev17.3.bin
 
 build ESCAPE3-rev17.3.bin ESCAPE3-rev17.3.hex | ${cmake_ninja_workdir}ESCAPE3-rev17.3.bin ${cmake_ninja_workdir}ESCAPE3-rev17.3.hex: CUSTOM_COMMAND ESCAPE3-rev17.3.elf || ESCAPE3-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary ESCAPE3-rev17.3.elf ESCAPE3-rev17.3.bin && arm-none-eabi-objcopy -O ihex ESCAPE3-rev17.3.elf ESCAPE3-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary ESCAPE3-rev17.3.elf ESCAPE3-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex ESCAPE3-rev17.3.elf ESCAPE3-rev17.3.hex
   DESC = Generating ESCAPE3-rev17.3.bin, ESCAPE3-rev17.3.hex
   restat = 1
 
@@ -4593,7 +4726,7 @@ build CMakeFiles/ESCAPE4 | ${cmake_ninja_workdir}CMakeFiles/ESCAPE4: phony ESCAP
 # Custom command for ESCAPE4-rev17.3.bin
 
 build ESCAPE4-rev17.3.bin ESCAPE4-rev17.3.hex | ${cmake_ninja_workdir}ESCAPE4-rev17.3.bin ${cmake_ninja_workdir}ESCAPE4-rev17.3.hex: CUSTOM_COMMAND ESCAPE4-rev17.3.elf || ESCAPE4-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary ESCAPE4-rev17.3.elf ESCAPE4-rev17.3.bin && arm-none-eabi-objcopy -O ihex ESCAPE4-rev17.3.elf ESCAPE4-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary ESCAPE4-rev17.3.elf ESCAPE4-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex ESCAPE4-rev17.3.elf ESCAPE4-rev17.3.hex
   DESC = Generating ESCAPE4-rev17.3.bin, ESCAPE4-rev17.3.hex
   restat = 1
 
@@ -4615,7 +4748,7 @@ build CMakeFiles/ESCAPE5 | ${cmake_ninja_workdir}CMakeFiles/ESCAPE5: phony ESCAP
 # Custom command for ESCAPE5-rev17.3.bin
 
 build ESCAPE5-rev17.3.bin ESCAPE5-rev17.3.hex | ${cmake_ninja_workdir}ESCAPE5-rev17.3.bin ${cmake_ninja_workdir}ESCAPE5-rev17.3.hex: CUSTOM_COMMAND ESCAPE5-rev17.3.elf || ESCAPE5-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary ESCAPE5-rev17.3.elf ESCAPE5-rev17.3.bin && arm-none-eabi-objcopy -O ihex ESCAPE5-rev17.3.elf ESCAPE5-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary ESCAPE5-rev17.3.elf ESCAPE5-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex ESCAPE5-rev17.3.elf ESCAPE5-rev17.3.hex
   DESC = Generating ESCAPE5-rev17.3.bin, ESCAPE5-rev17.3.hex
   restat = 1
 
@@ -4637,7 +4770,7 @@ build CMakeFiles/FLYCOLOR1 | ${cmake_ninja_workdir}CMakeFiles/FLYCOLOR1: phony F
 # Custom command for FLYCOLOR1-rev17.3.bin
 
 build FLYCOLOR1-rev17.3.bin FLYCOLOR1-rev17.3.hex | ${cmake_ninja_workdir}FLYCOLOR1-rev17.3.bin ${cmake_ninja_workdir}FLYCOLOR1-rev17.3.hex: CUSTOM_COMMAND FLYCOLOR1-rev17.3.elf || FLYCOLOR1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary FLYCOLOR1-rev17.3.elf FLYCOLOR1-rev17.3.bin && arm-none-eabi-objcopy -O ihex FLYCOLOR1-rev17.3.elf FLYCOLOR1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary FLYCOLOR1-rev17.3.elf FLYCOLOR1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex FLYCOLOR1-rev17.3.elf FLYCOLOR1-rev17.3.hex
   DESC = Generating FLYCOLOR1-rev17.3.bin, FLYCOLOR1-rev17.3.hex
   restat = 1
 
@@ -4659,7 +4792,7 @@ build CMakeFiles/FLYCOLOR2 | ${cmake_ninja_workdir}CMakeFiles/FLYCOLOR2: phony F
 # Custom command for FLYCOLOR2-rev17.3.bin
 
 build FLYCOLOR2-rev17.3.bin FLYCOLOR2-rev17.3.hex | ${cmake_ninja_workdir}FLYCOLOR2-rev17.3.bin ${cmake_ninja_workdir}FLYCOLOR2-rev17.3.hex: CUSTOM_COMMAND FLYCOLOR2-rev17.3.elf || FLYCOLOR2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary FLYCOLOR2-rev17.3.elf FLYCOLOR2-rev17.3.bin && arm-none-eabi-objcopy -O ihex FLYCOLOR2-rev17.3.elf FLYCOLOR2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary FLYCOLOR2-rev17.3.elf FLYCOLOR2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex FLYCOLOR2-rev17.3.elf FLYCOLOR2-rev17.3.hex
   DESC = Generating FLYCOLOR2-rev17.3.bin, FLYCOLOR2-rev17.3.hex
   restat = 1
 
@@ -4681,7 +4814,7 @@ build CMakeFiles/FLYCOLOR3 | ${cmake_ninja_workdir}CMakeFiles/FLYCOLOR3: phony F
 # Custom command for FLYCOLOR3-rev17.3.bin
 
 build FLYCOLOR3-rev17.3.bin FLYCOLOR3-rev17.3.hex | ${cmake_ninja_workdir}FLYCOLOR3-rev17.3.bin ${cmake_ninja_workdir}FLYCOLOR3-rev17.3.hex: CUSTOM_COMMAND FLYCOLOR3-rev17.3.elf || FLYCOLOR3-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary FLYCOLOR3-rev17.3.elf FLYCOLOR3-rev17.3.bin && arm-none-eabi-objcopy -O ihex FLYCOLOR3-rev17.3.elf FLYCOLOR3-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary FLYCOLOR3-rev17.3.elf FLYCOLOR3-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex FLYCOLOR3-rev17.3.elf FLYCOLOR3-rev17.3.hex
   DESC = Generating FLYCOLOR3-rev17.3.bin, FLYCOLOR3-rev17.3.hex
   restat = 1
 
@@ -4703,7 +4836,7 @@ build CMakeFiles/FLYINGRC1 | ${cmake_ninja_workdir}CMakeFiles/FLYINGRC1: phony F
 # Custom command for FLYINGRC1-rev17.3.bin
 
 build FLYINGRC1-rev17.3.bin FLYINGRC1-rev17.3.hex | ${cmake_ninja_workdir}FLYINGRC1-rev17.3.bin ${cmake_ninja_workdir}FLYINGRC1-rev17.3.hex: CUSTOM_COMMAND FLYINGRC1-rev17.3.elf || FLYINGRC1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary FLYINGRC1-rev17.3.elf FLYINGRC1-rev17.3.bin && arm-none-eabi-objcopy -O ihex FLYINGRC1-rev17.3.elf FLYINGRC1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary FLYINGRC1-rev17.3.elf FLYINGRC1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex FLYINGRC1-rev17.3.elf FLYINGRC1-rev17.3.hex
   DESC = Generating FLYINGRC1-rev17.3.bin, FLYINGRC1-rev17.3.hex
   restat = 1
 
@@ -4725,7 +4858,7 @@ build CMakeFiles/FREELYRC1 | ${cmake_ninja_workdir}CMakeFiles/FREELYRC1: phony F
 # Custom command for FREELYRC1-rev17.3.bin
 
 build FREELYRC1-rev17.3.bin FREELYRC1-rev17.3.hex | ${cmake_ninja_workdir}FREELYRC1-rev17.3.bin ${cmake_ninja_workdir}FREELYRC1-rev17.3.hex: CUSTOM_COMMAND FREELYRC1-rev17.3.elf || FREELYRC1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary FREELYRC1-rev17.3.elf FREELYRC1-rev17.3.bin && arm-none-eabi-objcopy -O ihex FREELYRC1-rev17.3.elf FREELYRC1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary FREELYRC1-rev17.3.elf FREELYRC1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex FREELYRC1-rev17.3.elf FREELYRC1-rev17.3.hex
   DESC = Generating FREELYRC1-rev17.3.bin, FREELYRC1-rev17.3.hex
   restat = 1
 
@@ -4747,7 +4880,7 @@ build CMakeFiles/GEPRC1 | ${cmake_ninja_workdir}CMakeFiles/GEPRC1: phony GEPRC1-
 # Custom command for GEPRC1-rev17.3.bin
 
 build GEPRC1-rev17.3.bin GEPRC1-rev17.3.hex | ${cmake_ninja_workdir}GEPRC1-rev17.3.bin ${cmake_ninja_workdir}GEPRC1-rev17.3.hex: CUSTOM_COMMAND GEPRC1-rev17.3.elf || GEPRC1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary GEPRC1-rev17.3.elf GEPRC1-rev17.3.bin && arm-none-eabi-objcopy -O ihex GEPRC1-rev17.3.elf GEPRC1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary GEPRC1-rev17.3.elf GEPRC1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex GEPRC1-rev17.3.elf GEPRC1-rev17.3.hex
   DESC = Generating GEPRC1-rev17.3.bin, GEPRC1-rev17.3.hex
   restat = 1
 
@@ -4769,7 +4902,7 @@ build CMakeFiles/HAKRC1 | ${cmake_ninja_workdir}CMakeFiles/HAKRC1: phony HAKRC1-
 # Custom command for HAKRC1-rev17.3.bin
 
 build HAKRC1-rev17.3.bin HAKRC1-rev17.3.hex | ${cmake_ninja_workdir}HAKRC1-rev17.3.bin ${cmake_ninja_workdir}HAKRC1-rev17.3.hex: CUSTOM_COMMAND HAKRC1-rev17.3.elf || HAKRC1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary HAKRC1-rev17.3.elf HAKRC1-rev17.3.bin && arm-none-eabi-objcopy -O ihex HAKRC1-rev17.3.elf HAKRC1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary HAKRC1-rev17.3.elf HAKRC1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex HAKRC1-rev17.3.elf HAKRC1-rev17.3.hex
   DESC = Generating HAKRC1-rev17.3.bin, HAKRC1-rev17.3.hex
   restat = 1
 
@@ -4791,7 +4924,7 @@ build CMakeFiles/HAKRC2 | ${cmake_ninja_workdir}CMakeFiles/HAKRC2: phony HAKRC2-
 # Custom command for HAKRC2-rev17.3.bin
 
 build HAKRC2-rev17.3.bin HAKRC2-rev17.3.hex | ${cmake_ninja_workdir}HAKRC2-rev17.3.bin ${cmake_ninja_workdir}HAKRC2-rev17.3.hex: CUSTOM_COMMAND HAKRC2-rev17.3.elf || HAKRC2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary HAKRC2-rev17.3.elf HAKRC2-rev17.3.bin && arm-none-eabi-objcopy -O ihex HAKRC2-rev17.3.elf HAKRC2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary HAKRC2-rev17.3.elf HAKRC2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex HAKRC2-rev17.3.elf HAKRC2-rev17.3.hex
   DESC = Generating HAKRC2-rev17.3.bin, HAKRC2-rev17.3.hex
   restat = 1
 
@@ -4813,7 +4946,7 @@ build CMakeFiles/HAKRC3 | ${cmake_ninja_workdir}CMakeFiles/HAKRC3: phony HAKRC3-
 # Custom command for HAKRC3-rev17.3.bin
 
 build HAKRC3-rev17.3.bin HAKRC3-rev17.3.hex | ${cmake_ninja_workdir}HAKRC3-rev17.3.bin ${cmake_ninja_workdir}HAKRC3-rev17.3.hex: CUSTOM_COMMAND HAKRC3-rev17.3.elf || HAKRC3-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary HAKRC3-rev17.3.elf HAKRC3-rev17.3.bin && arm-none-eabi-objcopy -O ihex HAKRC3-rev17.3.elf HAKRC3-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary HAKRC3-rev17.3.elf HAKRC3-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex HAKRC3-rev17.3.elf HAKRC3-rev17.3.hex
   DESC = Generating HAKRC3-rev17.3.bin, HAKRC3-rev17.3.hex
   restat = 1
 
@@ -4835,7 +4968,7 @@ build CMakeFiles/HGLRC1 | ${cmake_ninja_workdir}CMakeFiles/HGLRC1: phony HGLRC1-
 # Custom command for HGLRC1-rev17.3.bin
 
 build HGLRC1-rev17.3.bin HGLRC1-rev17.3.hex | ${cmake_ninja_workdir}HGLRC1-rev17.3.bin ${cmake_ninja_workdir}HGLRC1-rev17.3.hex: CUSTOM_COMMAND HGLRC1-rev17.3.elf || HGLRC1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary HGLRC1-rev17.3.elf HGLRC1-rev17.3.bin && arm-none-eabi-objcopy -O ihex HGLRC1-rev17.3.elf HGLRC1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary HGLRC1-rev17.3.elf HGLRC1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex HGLRC1-rev17.3.elf HGLRC1-rev17.3.hex
   DESC = Generating HGLRC1-rev17.3.bin, HGLRC1-rev17.3.hex
   restat = 1
 
@@ -4857,7 +4990,7 @@ build CMakeFiles/HHOBBIES1 | ${cmake_ninja_workdir}CMakeFiles/HHOBBIES1: phony H
 # Custom command for HHOBBIES1-rev17.3.bin
 
 build HHOBBIES1-rev17.3.bin HHOBBIES1-rev17.3.hex | ${cmake_ninja_workdir}HHOBBIES1-rev17.3.bin ${cmake_ninja_workdir}HHOBBIES1-rev17.3.hex: CUSTOM_COMMAND HHOBBIES1-rev17.3.elf || HHOBBIES1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary HHOBBIES1-rev17.3.elf HHOBBIES1-rev17.3.bin && arm-none-eabi-objcopy -O ihex HHOBBIES1-rev17.3.elf HHOBBIES1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary HHOBBIES1-rev17.3.elf HHOBBIES1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex HHOBBIES1-rev17.3.elf HHOBBIES1-rev17.3.hex
   DESC = Generating HHOBBIES1-rev17.3.bin, HHOBBIES1-rev17.3.hex
   restat = 1
 
@@ -4879,7 +5012,7 @@ build CMakeFiles/HOBBYWING1 | ${cmake_ninja_workdir}CMakeFiles/HOBBYWING1: phony
 # Custom command for HOBBYWING1-rev17.3.bin
 
 build HOBBYWING1-rev17.3.bin HOBBYWING1-rev17.3.hex | ${cmake_ninja_workdir}HOBBYWING1-rev17.3.bin ${cmake_ninja_workdir}HOBBYWING1-rev17.3.hex: CUSTOM_COMMAND HOBBYWING1-rev17.3.elf || HOBBYWING1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary HOBBYWING1-rev17.3.elf HOBBYWING1-rev17.3.bin && arm-none-eabi-objcopy -O ihex HOBBYWING1-rev17.3.elf HOBBYWING1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary HOBBYWING1-rev17.3.elf HOBBYWING1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex HOBBYWING1-rev17.3.elf HOBBYWING1-rev17.3.hex
   DESC = Generating HOBBYWING1-rev17.3.bin, HOBBYWING1-rev17.3.hex
   restat = 1
 
@@ -4901,7 +5034,7 @@ build CMakeFiles/HOBBYWING2 | ${cmake_ninja_workdir}CMakeFiles/HOBBYWING2: phony
 # Custom command for HOBBYWING2-rev17.3.bin
 
 build HOBBYWING2-rev17.3.bin HOBBYWING2-rev17.3.hex | ${cmake_ninja_workdir}HOBBYWING2-rev17.3.bin ${cmake_ninja_workdir}HOBBYWING2-rev17.3.hex: CUSTOM_COMMAND HOBBYWING2-rev17.3.elf || HOBBYWING2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary HOBBYWING2-rev17.3.elf HOBBYWING2-rev17.3.bin && arm-none-eabi-objcopy -O ihex HOBBYWING2-rev17.3.elf HOBBYWING2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary HOBBYWING2-rev17.3.elf HOBBYWING2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex HOBBYWING2-rev17.3.elf HOBBYWING2-rev17.3.hex
   DESC = Generating HOBBYWING2-rev17.3.bin, HOBBYWING2-rev17.3.hex
   restat = 1
 
@@ -4923,7 +5056,7 @@ build CMakeFiles/HOLYBRO1 | ${cmake_ninja_workdir}CMakeFiles/HOLYBRO1: phony HOL
 # Custom command for HOLYBRO1-rev17.3.bin
 
 build HOLYBRO1-rev17.3.bin HOLYBRO1-rev17.3.hex | ${cmake_ninja_workdir}HOLYBRO1-rev17.3.bin ${cmake_ninja_workdir}HOLYBRO1-rev17.3.hex: CUSTOM_COMMAND HOLYBRO1-rev17.3.elf || HOLYBRO1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary HOLYBRO1-rev17.3.elf HOLYBRO1-rev17.3.bin && arm-none-eabi-objcopy -O ihex HOLYBRO1-rev17.3.elf HOLYBRO1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary HOLYBRO1-rev17.3.elf HOLYBRO1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex HOLYBRO1-rev17.3.elf HOLYBRO1-rev17.3.hex
   DESC = Generating HOLYBRO1-rev17.3.bin, HOLYBRO1-rev17.3.hex
   restat = 1
 
@@ -4945,7 +5078,7 @@ build CMakeFiles/IFLIGHT1 | ${cmake_ninja_workdir}CMakeFiles/IFLIGHT1: phony IFL
 # Custom command for IFLIGHT1-rev17.3.bin
 
 build IFLIGHT1-rev17.3.bin IFLIGHT1-rev17.3.hex | ${cmake_ninja_workdir}IFLIGHT1-rev17.3.bin ${cmake_ninja_workdir}IFLIGHT1-rev17.3.hex: CUSTOM_COMMAND IFLIGHT1-rev17.3.elf || IFLIGHT1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary IFLIGHT1-rev17.3.elf IFLIGHT1-rev17.3.bin && arm-none-eabi-objcopy -O ihex IFLIGHT1-rev17.3.elf IFLIGHT1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary IFLIGHT1-rev17.3.elf IFLIGHT1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex IFLIGHT1-rev17.3.elf IFLIGHT1-rev17.3.hex
   DESC = Generating IFLIGHT1-rev17.3.bin, IFLIGHT1-rev17.3.hex
   restat = 1
 
@@ -4967,7 +5100,7 @@ build CMakeFiles/IFLIGHT2 | ${cmake_ninja_workdir}CMakeFiles/IFLIGHT2: phony IFL
 # Custom command for IFLIGHT2-rev17.3.bin
 
 build IFLIGHT2-rev17.3.bin IFLIGHT2-rev17.3.hex | ${cmake_ninja_workdir}IFLIGHT2-rev17.3.bin ${cmake_ninja_workdir}IFLIGHT2-rev17.3.hex: CUSTOM_COMMAND IFLIGHT2-rev17.3.elf || IFLIGHT2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary IFLIGHT2-rev17.3.elf IFLIGHT2-rev17.3.bin && arm-none-eabi-objcopy -O ihex IFLIGHT2-rev17.3.elf IFLIGHT2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary IFLIGHT2-rev17.3.elf IFLIGHT2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex IFLIGHT2-rev17.3.elf IFLIGHT2-rev17.3.hex
   DESC = Generating IFLIGHT2-rev17.3.bin, IFLIGHT2-rev17.3.hex
   restat = 1
 
@@ -4989,7 +5122,7 @@ build CMakeFiles/IFLIGHT3 | ${cmake_ninja_workdir}CMakeFiles/IFLIGHT3: phony IFL
 # Custom command for IFLIGHT3-rev17.3.bin
 
 build IFLIGHT3-rev17.3.bin IFLIGHT3-rev17.3.hex | ${cmake_ninja_workdir}IFLIGHT3-rev17.3.bin ${cmake_ninja_workdir}IFLIGHT3-rev17.3.hex: CUSTOM_COMMAND IFLIGHT3-rev17.3.elf || IFLIGHT3-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary IFLIGHT3-rev17.3.elf IFLIGHT3-rev17.3.bin && arm-none-eabi-objcopy -O ihex IFLIGHT3-rev17.3.elf IFLIGHT3-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary IFLIGHT3-rev17.3.elf IFLIGHT3-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex IFLIGHT3-rev17.3.elf IFLIGHT3-rev17.3.hex
   DESC = Generating IFLIGHT3-rev17.3.bin, IFLIGHT3-rev17.3.hex
   restat = 1
 
@@ -5011,7 +5144,7 @@ build CMakeFiles/IFLIGHT4 | ${cmake_ninja_workdir}CMakeFiles/IFLIGHT4: phony IFL
 # Custom command for IFLIGHT4-rev17.3.bin
 
 build IFLIGHT4-rev17.3.bin IFLIGHT4-rev17.3.hex | ${cmake_ninja_workdir}IFLIGHT4-rev17.3.bin ${cmake_ninja_workdir}IFLIGHT4-rev17.3.hex: CUSTOM_COMMAND IFLIGHT4-rev17.3.elf || IFLIGHT4-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary IFLIGHT4-rev17.3.elf IFLIGHT4-rev17.3.bin && arm-none-eabi-objcopy -O ihex IFLIGHT4-rev17.3.elf IFLIGHT4-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary IFLIGHT4-rev17.3.elf IFLIGHT4-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex IFLIGHT4-rev17.3.elf IFLIGHT4-rev17.3.hex
   DESC = Generating IFLIGHT4-rev17.3.bin, IFLIGHT4-rev17.3.hex
   restat = 1
 
@@ -5033,7 +5166,7 @@ build CMakeFiles/LUMENIER1 | ${cmake_ninja_workdir}CMakeFiles/LUMENIER1: phony L
 # Custom command for LUMENIER1-rev17.3.bin
 
 build LUMENIER1-rev17.3.bin LUMENIER1-rev17.3.hex | ${cmake_ninja_workdir}LUMENIER1-rev17.3.bin ${cmake_ninja_workdir}LUMENIER1-rev17.3.hex: CUSTOM_COMMAND LUMENIER1-rev17.3.elf || LUMENIER1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary LUMENIER1-rev17.3.elf LUMENIER1-rev17.3.bin && arm-none-eabi-objcopy -O ihex LUMENIER1-rev17.3.elf LUMENIER1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary LUMENIER1-rev17.3.elf LUMENIER1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex LUMENIER1-rev17.3.elf LUMENIER1-rev17.3.hex
   DESC = Generating LUMENIER1-rev17.3.bin, LUMENIER1-rev17.3.hex
   restat = 1
 
@@ -5055,7 +5188,7 @@ build CMakeFiles/LYI1 | ${cmake_ninja_workdir}CMakeFiles/LYI1: phony LYI1-rev17.
 # Custom command for LYI1-rev17.3.bin
 
 build LYI1-rev17.3.bin LYI1-rev17.3.hex | ${cmake_ninja_workdir}LYI1-rev17.3.bin ${cmake_ninja_workdir}LYI1-rev17.3.hex: CUSTOM_COMMAND LYI1-rev17.3.elf || LYI1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary LYI1-rev17.3.elf LYI1-rev17.3.bin && arm-none-eabi-objcopy -O ihex LYI1-rev17.3.elf LYI1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary LYI1-rev17.3.elf LYI1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex LYI1-rev17.3.elf LYI1-rev17.3.hex
   DESC = Generating LYI1-rev17.3.bin, LYI1-rev17.3.hex
   restat = 1
 
@@ -5077,7 +5210,7 @@ build CMakeFiles/NEUTRON1 | ${cmake_ninja_workdir}CMakeFiles/NEUTRON1: phony NEU
 # Custom command for NEUTRON1-rev17.3.bin
 
 build NEUTRON1-rev17.3.bin NEUTRON1-rev17.3.hex | ${cmake_ninja_workdir}NEUTRON1-rev17.3.bin ${cmake_ninja_workdir}NEUTRON1-rev17.3.hex: CUSTOM_COMMAND NEUTRON1-rev17.3.elf || NEUTRON1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary NEUTRON1-rev17.3.elf NEUTRON1-rev17.3.bin && arm-none-eabi-objcopy -O ihex NEUTRON1-rev17.3.elf NEUTRON1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary NEUTRON1-rev17.3.elf NEUTRON1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex NEUTRON1-rev17.3.elf NEUTRON1-rev17.3.hex
   DESC = Generating NEUTRON1-rev17.3.bin, NEUTRON1-rev17.3.hex
   restat = 1
 
@@ -5099,7 +5232,7 @@ build CMakeFiles/NEUTRON2 | ${cmake_ninja_workdir}CMakeFiles/NEUTRON2: phony NEU
 # Custom command for NEUTRON2-rev17.3.bin
 
 build NEUTRON2-rev17.3.bin NEUTRON2-rev17.3.hex | ${cmake_ninja_workdir}NEUTRON2-rev17.3.bin ${cmake_ninja_workdir}NEUTRON2-rev17.3.hex: CUSTOM_COMMAND NEUTRON2-rev17.3.elf || NEUTRON2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary NEUTRON2-rev17.3.elf NEUTRON2-rev17.3.bin && arm-none-eabi-objcopy -O ihex NEUTRON2-rev17.3.elf NEUTRON2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary NEUTRON2-rev17.3.elf NEUTRON2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex NEUTRON2-rev17.3.elf NEUTRON2-rev17.3.hex
   DESC = Generating NEUTRON2-rev17.3.bin, NEUTRON2-rev17.3.hex
   restat = 1
 
@@ -5121,7 +5254,7 @@ build CMakeFiles/NEUTRON3 | ${cmake_ninja_workdir}CMakeFiles/NEUTRON3: phony NEU
 # Custom command for NEUTRON3-rev17.3.bin
 
 build NEUTRON3-rev17.3.bin NEUTRON3-rev17.3.hex | ${cmake_ninja_workdir}NEUTRON3-rev17.3.bin ${cmake_ninja_workdir}NEUTRON3-rev17.3.hex: CUSTOM_COMMAND NEUTRON3-rev17.3.elf || NEUTRON3-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary NEUTRON3-rev17.3.elf NEUTRON3-rev17.3.bin && arm-none-eabi-objcopy -O ihex NEUTRON3-rev17.3.elf NEUTRON3-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary NEUTRON3-rev17.3.elf NEUTRON3-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex NEUTRON3-rev17.3.elf NEUTRON3-rev17.3.hex
   DESC = Generating NEUTRON3-rev17.3.bin, NEUTRON3-rev17.3.hex
   restat = 1
 
@@ -5143,7 +5276,7 @@ build CMakeFiles/ODDITYRC1 | ${cmake_ninja_workdir}CMakeFiles/ODDITYRC1: phony O
 # Custom command for ODDITYRC1-rev17.3.bin
 
 build ODDITYRC1-rev17.3.bin ODDITYRC1-rev17.3.hex | ${cmake_ninja_workdir}ODDITYRC1-rev17.3.bin ${cmake_ninja_workdir}ODDITYRC1-rev17.3.hex: CUSTOM_COMMAND ODDITYRC1-rev17.3.elf || ODDITYRC1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary ODDITYRC1-rev17.3.elf ODDITYRC1-rev17.3.bin && arm-none-eabi-objcopy -O ihex ODDITYRC1-rev17.3.elf ODDITYRC1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary ODDITYRC1-rev17.3.elf ODDITYRC1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex ODDITYRC1-rev17.3.elf ODDITYRC1-rev17.3.hex
   DESC = Generating ODDITYRC1-rev17.3.bin, ODDITYRC1-rev17.3.hex
   restat = 1
 
@@ -5165,7 +5298,7 @@ build CMakeFiles/PHOTONDRIVE1 | ${cmake_ninja_workdir}CMakeFiles/PHOTONDRIVE1: p
 # Custom command for PHOTONDRIVE1-rev17.3.bin
 
 build PHOTONDRIVE1-rev17.3.bin PHOTONDRIVE1-rev17.3.hex | ${cmake_ninja_workdir}PHOTONDRIVE1-rev17.3.bin ${cmake_ninja_workdir}PHOTONDRIVE1-rev17.3.hex: CUSTOM_COMMAND PHOTONDRIVE1-rev17.3.elf || PHOTONDRIVE1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary PHOTONDRIVE1-rev17.3.elf PHOTONDRIVE1-rev17.3.bin && arm-none-eabi-objcopy -O ihex PHOTONDRIVE1-rev17.3.elf PHOTONDRIVE1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary PHOTONDRIVE1-rev17.3.elf PHOTONDRIVE1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex PHOTONDRIVE1-rev17.3.elf PHOTONDRIVE1-rev17.3.hex
   DESC = Generating PHOTONDRIVE1-rev17.3.bin, PHOTONDRIVE1-rev17.3.hex
   restat = 1
 
@@ -5187,7 +5320,7 @@ build CMakeFiles/RHINO1 | ${cmake_ninja_workdir}CMakeFiles/RHINO1: phony RHINO1-
 # Custom command for RHINO1-rev17.3.bin
 
 build RHINO1-rev17.3.bin RHINO1-rev17.3.hex | ${cmake_ninja_workdir}RHINO1-rev17.3.bin ${cmake_ninja_workdir}RHINO1-rev17.3.hex: CUSTOM_COMMAND RHINO1-rev17.3.elf || RHINO1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary RHINO1-rev17.3.elf RHINO1-rev17.3.bin && arm-none-eabi-objcopy -O ihex RHINO1-rev17.3.elf RHINO1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary RHINO1-rev17.3.elf RHINO1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex RHINO1-rev17.3.elf RHINO1-rev17.3.hex
   DESC = Generating RHINO1-rev17.3.bin, RHINO1-rev17.3.hex
   restat = 1
 
@@ -5209,7 +5342,7 @@ build CMakeFiles/SEQURE1 | ${cmake_ninja_workdir}CMakeFiles/SEQURE1: phony SEQUR
 # Custom command for SEQURE1-rev17.3.bin
 
 build SEQURE1-rev17.3.bin SEQURE1-rev17.3.hex | ${cmake_ninja_workdir}SEQURE1-rev17.3.bin ${cmake_ninja_workdir}SEQURE1-rev17.3.hex: CUSTOM_COMMAND SEQURE1-rev17.3.elf || SEQURE1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary SEQURE1-rev17.3.elf SEQURE1-rev17.3.bin && arm-none-eabi-objcopy -O ihex SEQURE1-rev17.3.elf SEQURE1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary SEQURE1-rev17.3.elf SEQURE1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex SEQURE1-rev17.3.elf SEQURE1-rev17.3.hex
   DESC = Generating SEQURE1-rev17.3.bin, SEQURE1-rev17.3.hex
   restat = 1
 
@@ -5231,7 +5364,7 @@ build CMakeFiles/SEQURE2 | ${cmake_ninja_workdir}CMakeFiles/SEQURE2: phony SEQUR
 # Custom command for SEQURE2-rev17.3.bin
 
 build SEQURE2-rev17.3.bin SEQURE2-rev17.3.hex | ${cmake_ninja_workdir}SEQURE2-rev17.3.bin ${cmake_ninja_workdir}SEQURE2-rev17.3.hex: CUSTOM_COMMAND SEQURE2-rev17.3.elf || SEQURE2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary SEQURE2-rev17.3.elf SEQURE2-rev17.3.bin && arm-none-eabi-objcopy -O ihex SEQURE2-rev17.3.elf SEQURE2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary SEQURE2-rev17.3.elf SEQURE2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex SEQURE2-rev17.3.elf SEQURE2-rev17.3.hex
   DESC = Generating SEQURE2-rev17.3.bin, SEQURE2-rev17.3.hex
   restat = 1
 
@@ -5253,7 +5386,7 @@ build CMakeFiles/SEQURE3 | ${cmake_ninja_workdir}CMakeFiles/SEQURE3: phony SEQUR
 # Custom command for SEQURE3-rev17.3.bin
 
 build SEQURE3-rev17.3.bin SEQURE3-rev17.3.hex | ${cmake_ninja_workdir}SEQURE3-rev17.3.bin ${cmake_ninja_workdir}SEQURE3-rev17.3.hex: CUSTOM_COMMAND SEQURE3-rev17.3.elf || SEQURE3-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary SEQURE3-rev17.3.elf SEQURE3-rev17.3.bin && arm-none-eabi-objcopy -O ihex SEQURE3-rev17.3.elf SEQURE3-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary SEQURE3-rev17.3.elf SEQURE3-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex SEQURE3-rev17.3.elf SEQURE3-rev17.3.hex
   DESC = Generating SEQURE3-rev17.3.bin, SEQURE3-rev17.3.hex
   restat = 1
 
@@ -5275,7 +5408,7 @@ build CMakeFiles/SKYSTARS1 | ${cmake_ninja_workdir}CMakeFiles/SKYSTARS1: phony S
 # Custom command for SKYSTARS1-rev17.3.bin
 
 build SKYSTARS1-rev17.3.bin SKYSTARS1-rev17.3.hex | ${cmake_ninja_workdir}SKYSTARS1-rev17.3.bin ${cmake_ninja_workdir}SKYSTARS1-rev17.3.hex: CUSTOM_COMMAND SKYSTARS1-rev17.3.elf || SKYSTARS1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary SKYSTARS1-rev17.3.elf SKYSTARS1-rev17.3.bin && arm-none-eabi-objcopy -O ihex SKYSTARS1-rev17.3.elf SKYSTARS1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary SKYSTARS1-rev17.3.elf SKYSTARS1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex SKYSTARS1-rev17.3.elf SKYSTARS1-rev17.3.hex
   DESC = Generating SKYSTARS1-rev17.3.bin, SKYSTARS1-rev17.3.hex
   restat = 1
 
@@ -5297,7 +5430,7 @@ build CMakeFiles/TMOTOR1 | ${cmake_ninja_workdir}CMakeFiles/TMOTOR1: phony TMOTO
 # Custom command for TMOTOR1-rev17.3.bin
 
 build TMOTOR1-rev17.3.bin TMOTOR1-rev17.3.hex | ${cmake_ninja_workdir}TMOTOR1-rev17.3.bin ${cmake_ninja_workdir}TMOTOR1-rev17.3.hex: CUSTOM_COMMAND TMOTOR1-rev17.3.elf || TMOTOR1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary TMOTOR1-rev17.3.elf TMOTOR1-rev17.3.bin && arm-none-eabi-objcopy -O ihex TMOTOR1-rev17.3.elf TMOTOR1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary TMOTOR1-rev17.3.elf TMOTOR1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex TMOTOR1-rev17.3.elf TMOTOR1-rev17.3.hex
   DESC = Generating TMOTOR1-rev17.3.bin, TMOTOR1-rev17.3.hex
   restat = 1
 
@@ -5319,7 +5452,7 @@ build CMakeFiles/TMOTOR2 | ${cmake_ninja_workdir}CMakeFiles/TMOTOR2: phony TMOTO
 # Custom command for TMOTOR2-rev17.3.bin
 
 build TMOTOR2-rev17.3.bin TMOTOR2-rev17.3.hex | ${cmake_ninja_workdir}TMOTOR2-rev17.3.bin ${cmake_ninja_workdir}TMOTOR2-rev17.3.hex: CUSTOM_COMMAND TMOTOR2-rev17.3.elf || TMOTOR2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary TMOTOR2-rev17.3.elf TMOTOR2-rev17.3.bin && arm-none-eabi-objcopy -O ihex TMOTOR2-rev17.3.elf TMOTOR2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary TMOTOR2-rev17.3.elf TMOTOR2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex TMOTOR2-rev17.3.elf TMOTOR2-rev17.3.hex
   DESC = Generating TMOTOR2-rev17.3.bin, TMOTOR2-rev17.3.hex
   restat = 1
 
@@ -5341,7 +5474,7 @@ build CMakeFiles/TMOTOR3 | ${cmake_ninja_workdir}CMakeFiles/TMOTOR3: phony TMOTO
 # Custom command for TMOTOR3-rev17.3.bin
 
 build TMOTOR3-rev17.3.bin TMOTOR3-rev17.3.hex | ${cmake_ninja_workdir}TMOTOR3-rev17.3.bin ${cmake_ninja_workdir}TMOTOR3-rev17.3.hex: CUSTOM_COMMAND TMOTOR3-rev17.3.elf || TMOTOR3-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary TMOTOR3-rev17.3.elf TMOTOR3-rev17.3.bin && arm-none-eabi-objcopy -O ihex TMOTOR3-rev17.3.elf TMOTOR3-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary TMOTOR3-rev17.3.elf TMOTOR3-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex TMOTOR3-rev17.3.elf TMOTOR3-rev17.3.hex
   DESC = Generating TMOTOR3-rev17.3.bin, TMOTOR3-rev17.3.hex
   restat = 1
 
@@ -5363,7 +5496,7 @@ build CMakeFiles/TMOTOR4 | ${cmake_ninja_workdir}CMakeFiles/TMOTOR4: phony TMOTO
 # Custom command for TMOTOR4-rev17.3.bin
 
 build TMOTOR4-rev17.3.bin TMOTOR4-rev17.3.hex | ${cmake_ninja_workdir}TMOTOR4-rev17.3.bin ${cmake_ninja_workdir}TMOTOR4-rev17.3.hex: CUSTOM_COMMAND TMOTOR4-rev17.3.elf || TMOTOR4-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary TMOTOR4-rev17.3.elf TMOTOR4-rev17.3.bin && arm-none-eabi-objcopy -O ihex TMOTOR4-rev17.3.elf TMOTOR4-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary TMOTOR4-rev17.3.elf TMOTOR4-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex TMOTOR4-rev17.3.elf TMOTOR4-rev17.3.hex
   DESC = Generating TMOTOR4-rev17.3.bin, TMOTOR4-rev17.3.hex
   restat = 1
 
@@ -5385,7 +5518,7 @@ build CMakeFiles/VWING1 | ${cmake_ninja_workdir}CMakeFiles/VWING1: phony VWING1-
 # Custom command for VWING1-rev17.3.bin
 
 build VWING1-rev17.3.bin VWING1-rev17.3.hex | ${cmake_ninja_workdir}VWING1-rev17.3.bin ${cmake_ninja_workdir}VWING1-rev17.3.hex: CUSTOM_COMMAND VWING1-rev17.3.elf || VWING1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary VWING1-rev17.3.elf VWING1-rev17.3.bin && arm-none-eabi-objcopy -O ihex VWING1-rev17.3.elf VWING1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary VWING1-rev17.3.elf VWING1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex VWING1-rev17.3.elf VWING1-rev17.3.hex
   DESC = Generating VWING1-rev17.3.bin, VWING1-rev17.3.hex
   restat = 1
 
@@ -5407,7 +5540,7 @@ build CMakeFiles/WBP1 | ${cmake_ninja_workdir}CMakeFiles/WBP1: phony WBP1-rev17.
 # Custom command for WBP1-rev17.3.bin
 
 build WBP1-rev17.3.bin WBP1-rev17.3.hex | ${cmake_ninja_workdir}WBP1-rev17.3.bin ${cmake_ninja_workdir}WBP1-rev17.3.hex: CUSTOM_COMMAND WBP1-rev17.3.elf || WBP1-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary WBP1-rev17.3.elf WBP1-rev17.3.bin && arm-none-eabi-objcopy -O ihex WBP1-rev17.3.elf WBP1-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary WBP1-rev17.3.elf WBP1-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex WBP1-rev17.3.elf WBP1-rev17.3.hex
   DESC = Generating WBP1-rev17.3.bin, WBP1-rev17.3.hex
   restat = 1
 
@@ -5429,7 +5562,7 @@ build CMakeFiles/WBP2 | ${cmake_ninja_workdir}CMakeFiles/WBP2: phony WBP2-rev17.
 # Custom command for WBP2-rev17.3.bin
 
 build WBP2-rev17.3.bin WBP2-rev17.3.hex | ${cmake_ninja_workdir}WBP2-rev17.3.bin ${cmake_ninja_workdir}WBP2-rev17.3.hex: CUSTOM_COMMAND WBP2-rev17.3.elf || WBP2-rev17.3.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && arm-none-eabi-objcopy -O binary WBP2-rev17.3.elf WBP2-rev17.3.bin && arm-none-eabi-objcopy -O ihex WBP2-rev17.3.elf WBP2-rev17.3.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary WBP2-rev17.3.elf WBP2-rev17.3.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex WBP2-rev17.3.elf WBP2-rev17.3.hex
   DESC = Generating WBP2-rev17.3.bin, WBP2-rev17.3.hex
   restat = 1
 
@@ -6047,7 +6180,7 @@ build boot/CMakeFiles/BOOT1_PA2 | ${cmake_ninja_workdir}boot/CMakeFiles/BOOT1_PA
 # Custom command for boot/BOOT1_PA2-rev4.bin
 
 build boot/BOOT1_PA2-rev4.bin boot/BOOT1_PA2-rev4.hex | ${cmake_ninja_workdir}boot/BOOT1_PA2-rev4.bin ${cmake_ninja_workdir}boot/BOOT1_PA2-rev4.hex: CUSTOM_COMMAND boot/BOOT1_PA2-rev4.elf || boot/BOOT1_PA2-rev4.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && arm-none-eabi-objcopy -O binary BOOT1_PA2-rev4.elf BOOT1_PA2-rev4.bin && arm-none-eabi-objcopy -O ihex BOOT1_PA2-rev4.elf BOOT1_PA2-rev4.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary BOOT1_PA2-rev4.elf BOOT1_PA2-rev4.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex BOOT1_PA2-rev4.elf BOOT1_PA2-rev4.hex
   DESC = Generating BOOT1_PA2-rev4.bin, BOOT1_PA2-rev4.hex
   restat = 1
 
@@ -6069,7 +6202,7 @@ build boot/CMakeFiles/BOOT1_PB4 | ${cmake_ninja_workdir}boot/CMakeFiles/BOOT1_PB
 # Custom command for boot/BOOT1_PB4-rev4.bin
 
 build boot/BOOT1_PB4-rev4.bin boot/BOOT1_PB4-rev4.hex | ${cmake_ninja_workdir}boot/BOOT1_PB4-rev4.bin ${cmake_ninja_workdir}boot/BOOT1_PB4-rev4.hex: CUSTOM_COMMAND boot/BOOT1_PB4-rev4.elf || boot/BOOT1_PB4-rev4.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && arm-none-eabi-objcopy -O binary BOOT1_PB4-rev4.elf BOOT1_PB4-rev4.bin && arm-none-eabi-objcopy -O ihex BOOT1_PB4-rev4.elf BOOT1_PB4-rev4.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary BOOT1_PB4-rev4.elf BOOT1_PB4-rev4.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex BOOT1_PB4-rev4.elf BOOT1_PB4-rev4.hex
   DESC = Generating BOOT1_PB4-rev4.bin, BOOT1_PB4-rev4.hex
   restat = 1
 
@@ -6091,7 +6224,7 @@ build boot/CMakeFiles/BOOT2_PA2 | ${cmake_ninja_workdir}boot/CMakeFiles/BOOT2_PA
 # Custom command for boot/BOOT2_PA2-rev4.bin
 
 build boot/BOOT2_PA2-rev4.bin boot/BOOT2_PA2-rev4.hex | ${cmake_ninja_workdir}boot/BOOT2_PA2-rev4.bin ${cmake_ninja_workdir}boot/BOOT2_PA2-rev4.hex: CUSTOM_COMMAND boot/BOOT2_PA2-rev4.elf || boot/BOOT2_PA2-rev4.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && arm-none-eabi-objcopy -O binary BOOT2_PA2-rev4.elf BOOT2_PA2-rev4.bin && arm-none-eabi-objcopy -O ihex BOOT2_PA2-rev4.elf BOOT2_PA2-rev4.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary BOOT2_PA2-rev4.elf BOOT2_PA2-rev4.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex BOOT2_PA2-rev4.elf BOOT2_PA2-rev4.hex
   DESC = Generating BOOT2_PA2-rev4.bin, BOOT2_PA2-rev4.hex
   restat = 1
 
@@ -6113,7 +6246,7 @@ build boot/CMakeFiles/BOOT2_PA6 | ${cmake_ninja_workdir}boot/CMakeFiles/BOOT2_PA
 # Custom command for boot/BOOT2_PA6-rev4.bin
 
 build boot/BOOT2_PA6-rev4.bin boot/BOOT2_PA6-rev4.hex | ${cmake_ninja_workdir}boot/BOOT2_PA6-rev4.bin ${cmake_ninja_workdir}boot/BOOT2_PA6-rev4.hex: CUSTOM_COMMAND boot/BOOT2_PA6-rev4.elf || boot/BOOT2_PA6-rev4.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && arm-none-eabi-objcopy -O binary BOOT2_PA6-rev4.elf BOOT2_PA6-rev4.bin && arm-none-eabi-objcopy -O ihex BOOT2_PA6-rev4.elf BOOT2_PA6-rev4.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary BOOT2_PA6-rev4.elf BOOT2_PA6-rev4.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex BOOT2_PA6-rev4.elf BOOT2_PA6-rev4.hex
   DESC = Generating BOOT2_PA6-rev4.bin, BOOT2_PA6-rev4.hex
   restat = 1
 
@@ -6135,7 +6268,7 @@ build boot/CMakeFiles/BOOT2_PB4 | ${cmake_ninja_workdir}boot/CMakeFiles/BOOT2_PB
 # Custom command for boot/BOOT2_PB4-rev4.bin
 
 build boot/BOOT2_PB4-rev4.bin boot/BOOT2_PB4-rev4.hex | ${cmake_ninja_workdir}boot/BOOT2_PB4-rev4.bin ${cmake_ninja_workdir}boot/BOOT2_PB4-rev4.hex: CUSTOM_COMMAND boot/BOOT2_PB4-rev4.elf || boot/BOOT2_PB4-rev4.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && arm-none-eabi-objcopy -O binary BOOT2_PB4-rev4.elf BOOT2_PB4-rev4.bin && arm-none-eabi-objcopy -O ihex BOOT2_PB4-rev4.elf BOOT2_PB4-rev4.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary BOOT2_PB4-rev4.elf BOOT2_PB4-rev4.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex BOOT2_PB4-rev4.elf BOOT2_PB4-rev4.hex
   DESC = Generating BOOT2_PB4-rev4.bin, BOOT2_PB4-rev4.hex
   restat = 1
 
@@ -6157,7 +6290,7 @@ build boot/CMakeFiles/BOOT3_PA2 | ${cmake_ninja_workdir}boot/CMakeFiles/BOOT3_PA
 # Custom command for boot/BOOT3_PA2-rev4.bin
 
 build boot/BOOT3_PA2-rev4.bin boot/BOOT3_PA2-rev4.hex | ${cmake_ninja_workdir}boot/BOOT3_PA2-rev4.bin ${cmake_ninja_workdir}boot/BOOT3_PA2-rev4.hex: CUSTOM_COMMAND boot/BOOT3_PA2-rev4.elf || boot/BOOT3_PA2-rev4.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && arm-none-eabi-objcopy -O binary BOOT3_PA2-rev4.elf BOOT3_PA2-rev4.bin && arm-none-eabi-objcopy -O ihex BOOT3_PA2-rev4.elf BOOT3_PA2-rev4.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary BOOT3_PA2-rev4.elf BOOT3_PA2-rev4.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex BOOT3_PA2-rev4.elf BOOT3_PA2-rev4.hex
   DESC = Generating BOOT3_PA2-rev4.bin, BOOT3_PA2-rev4.hex
   restat = 1
 
@@ -6179,7 +6312,7 @@ build boot/CMakeFiles/BOOT3_PA2_FE | ${cmake_ninja_workdir}boot/CMakeFiles/BOOT3
 # Custom command for boot/BOOT3_PA2_FE-rev4.bin
 
 build boot/BOOT3_PA2_FE-rev4.bin boot/BOOT3_PA2_FE-rev4.hex | ${cmake_ninja_workdir}boot/BOOT3_PA2_FE-rev4.bin ${cmake_ninja_workdir}boot/BOOT3_PA2_FE-rev4.hex: CUSTOM_COMMAND boot/BOOT3_PA2_FE-rev4.elf || boot/BOOT3_PA2_FE-rev4.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && arm-none-eabi-objcopy -O binary BOOT3_PA2_FE-rev4.elf BOOT3_PA2_FE-rev4.bin && arm-none-eabi-objcopy -O ihex BOOT3_PA2_FE-rev4.elf BOOT3_PA2_FE-rev4.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary BOOT3_PA2_FE-rev4.elf BOOT3_PA2_FE-rev4.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex BOOT3_PA2_FE-rev4.elf BOOT3_PA2_FE-rev4.hex
   DESC = Generating BOOT3_PA2_FE-rev4.bin, BOOT3_PA2_FE-rev4.hex
   restat = 1
 
@@ -6201,7 +6334,7 @@ build boot/CMakeFiles/BOOT4_PA2 | ${cmake_ninja_workdir}boot/CMakeFiles/BOOT4_PA
 # Custom command for boot/BOOT4_PA2-rev4.bin
 
 build boot/BOOT4_PA2-rev4.bin boot/BOOT4_PA2-rev4.hex | ${cmake_ninja_workdir}boot/BOOT4_PA2-rev4.bin ${cmake_ninja_workdir}boot/BOOT4_PA2-rev4.hex: CUSTOM_COMMAND boot/BOOT4_PA2-rev4.elf || boot/BOOT4_PA2-rev4.elf
-  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && arm-none-eabi-objcopy -O binary BOOT4_PA2-rev4.elf BOOT4_PA2-rev4.bin && arm-none-eabi-objcopy -O ihex BOOT4_PA2-rev4.elf BOOT4_PA2-rev4.hex
+  COMMAND = cd /home/hamim/work/ESCape32/build-riscv/boot && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O binary BOOT4_PA2-rev4.elf BOOT4_PA2-rev4.bin && /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objcopy -O ihex BOOT4_PA2-rev4.elf BOOT4_PA2-rev4.hex
   DESC = Generating BOOT4_PA2-rev4.bin, BOOT4_PA2-rev4.hex
   restat = 1
 
@@ -6271,7 +6404,7 @@ build flash-BOOT4_PA2: phony boot/flash-BOOT4_PA2
 #############################################
 # Folder: /home/hamim/work/ESCape32/build-riscv
 
-build all: phony AART1-rev17.3.elf AART1 AIRBOT1-rev17.3.elf AIRBOT1 AIRBOT2-rev17.3.elf AIRBOT2 EMAX1-rev17.3.elf EMAX1 ESCAPE1-rev17.3.elf ESCAPE1 ESCAPE2-rev17.3.elf ESCAPE2 ESCAPE3-rev17.3.elf ESCAPE3 ESCAPE4-rev17.3.elf ESCAPE4 ESCAPE5-rev17.3.elf ESCAPE5 FLYCOLOR1-rev17.3.elf FLYCOLOR1 FLYCOLOR2-rev17.3.elf FLYCOLOR2 FLYCOLOR3-rev17.3.elf FLYCOLOR3 FLYINGRC1-rev17.3.elf FLYINGRC1 FREELYRC1-rev17.3.elf FREELYRC1 GEPRC1-rev17.3.elf GEPRC1 HAKRC1-rev17.3.elf HAKRC1 HAKRC2-rev17.3.elf HAKRC2 HAKRC3-rev17.3.elf HAKRC3 HGLRC1-rev17.3.elf HGLRC1 HHOBBIES1-rev17.3.elf HHOBBIES1 HOBBYWING1-rev17.3.elf HOBBYWING1 HOBBYWING2-rev17.3.elf HOBBYWING2 HOLYBRO1-rev17.3.elf HOLYBRO1 IFLIGHT1-rev17.3.elf IFLIGHT1 IFLIGHT2-rev17.3.elf IFLIGHT2 IFLIGHT3-rev17.3.elf IFLIGHT3 IFLIGHT4-rev17.3.elf IFLIGHT4 LUMENIER1-rev17.3.elf LUMENIER1 LYI1-rev17.3.elf LYI1 NEUTRON1-rev17.3.elf NEUTRON1 NEUTRON2-rev17.3.elf NEUTRON2 NEUTRON3-rev17.3.elf NEUTRON3 ODDITYRC1-rev17.3.elf ODDITYRC1 PHOTONDRIVE1-rev17.3.elf PHOTONDRIVE1 RHINO1-rev17.3.elf RHINO1 SEQURE1-rev17.3.elf SEQURE1 SEQURE2-rev17.3.elf SEQURE2 SEQURE3-rev17.3.elf SEQURE3 SKYSTARS1-rev17.3.elf SKYSTARS1 TMOTOR1-rev17.3.elf TMOTOR1 TMOTOR2-rev17.3.elf TMOTOR2 TMOTOR3-rev17.3.elf TMOTOR3 TMOTOR4-rev17.3.elf TMOTOR4 VWING1-rev17.3.elf VWING1 WBP1-rev17.3.elf WBP1 WBP2-rev17.3.elf WBP2 boot/all
+build all: phony CH32-rev17.3.elf CH32 AART1-rev17.3.elf AART1 AIRBOT1-rev17.3.elf AIRBOT1 AIRBOT2-rev17.3.elf AIRBOT2 EMAX1-rev17.3.elf EMAX1 ESCAPE1-rev17.3.elf ESCAPE1 ESCAPE2-rev17.3.elf ESCAPE2 ESCAPE3-rev17.3.elf ESCAPE3 ESCAPE4-rev17.3.elf ESCAPE4 ESCAPE5-rev17.3.elf ESCAPE5 FLYCOLOR1-rev17.3.elf FLYCOLOR1 FLYCOLOR2-rev17.3.elf FLYCOLOR2 FLYCOLOR3-rev17.3.elf FLYCOLOR3 FLYINGRC1-rev17.3.elf FLYINGRC1 FREELYRC1-rev17.3.elf FREELYRC1 GEPRC1-rev17.3.elf GEPRC1 HAKRC1-rev17.3.elf HAKRC1 HAKRC2-rev17.3.elf HAKRC2 HAKRC3-rev17.3.elf HAKRC3 HGLRC1-rev17.3.elf HGLRC1 HHOBBIES1-rev17.3.elf HHOBBIES1 HOBBYWING1-rev17.3.elf HOBBYWING1 HOBBYWING2-rev17.3.elf HOBBYWING2 HOLYBRO1-rev17.3.elf HOLYBRO1 IFLIGHT1-rev17.3.elf IFLIGHT1 IFLIGHT2-rev17.3.elf IFLIGHT2 IFLIGHT3-rev17.3.elf IFLIGHT3 IFLIGHT4-rev17.3.elf IFLIGHT4 LUMENIER1-rev17.3.elf LUMENIER1 LYI1-rev17.3.elf LYI1 NEUTRON1-rev17.3.elf NEUTRON1 NEUTRON2-rev17.3.elf NEUTRON2 NEUTRON3-rev17.3.elf NEUTRON3 ODDITYRC1-rev17.3.elf ODDITYRC1 PHOTONDRIVE1-rev17.3.elf PHOTONDRIVE1 RHINO1-rev17.3.elf RHINO1 SEQURE1-rev17.3.elf SEQURE1 SEQURE2-rev17.3.elf SEQURE2 SEQURE3-rev17.3.elf SEQURE3 SKYSTARS1-rev17.3.elf SKYSTARS1 TMOTOR1-rev17.3.elf TMOTOR1 TMOTOR2-rev17.3.elf TMOTOR2 TMOTOR3-rev17.3.elf TMOTOR3 TMOTOR4-rev17.3.elf TMOTOR4 VWING1-rev17.3.elf VWING1 WBP1-rev17.3.elf WBP1 WBP2-rev17.3.elf WBP2 boot/all
 
 # =============================================================================
 
@@ -6287,14 +6420,14 @@ build boot/all: phony boot/BOOT1_PA2-rev4.elf boot/BOOT1_PA2 boot/BOOT1_PB4-rev4
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /home/hamim/work/ESCape32/CMakeLists.txt /home/hamim/work/ESCape32/boot/CMakeLists.txt /home/hamim/work/ESCape32/boot/mcu/STM32F0/config.cmake /home/hamim/work/ESCape32/boot/mcu/STM32G0/config.cmake /home/hamim/work/ESCape32/boot/mcu/STM32G4/config.cmake /home/hamim/work/ESCape32/cmake/ch32v2.cmake /home/hamim/work/ESCape32/mcu/AT32F421/config.cmake /home/hamim/work/ESCape32/mcu/GD32E230/config.cmake /home/hamim/work/ESCape32/mcu/GD32F350/config.cmake /home/hamim/work/ESCape32/mcu/STM32F051/config.cmake /home/hamim/work/ESCape32/mcu/STM32G071/config.cmake /home/hamim/work/ESCape32/mcu/STM32G431/config.cmake /home/hamim/work/ESCape32/mcu/STM32L431/config.cmake /usr/share/cmake-3.28/Modules/CMakeCInformation.cmake /usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU.cmake /usr/share/cmake-3.28/Modules/Platform/Generic.cmake CMakeCache.txt CMakeFiles/3.28.3/CMakeCCompiler.cmake CMakeFiles/3.28.3/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /home/hamim/work/ESCape32/CMakeLists.txt /home/hamim/work/ESCape32/boot/CMakeLists.txt /home/hamim/work/ESCape32/boot/mcu/STM32F0/config.cmake /home/hamim/work/ESCape32/boot/mcu/STM32G0/config.cmake /home/hamim/work/ESCape32/boot/mcu/STM32G4/config.cmake /home/hamim/work/ESCape32/cmake/ch32v2.cmake /home/hamim/work/ESCape32/mcu/AT32F421/config.cmake /home/hamim/work/ESCape32/mcu/CH32V203/config.cmake /home/hamim/work/ESCape32/mcu/GD32E230/config.cmake /home/hamim/work/ESCape32/mcu/GD32F350/config.cmake /home/hamim/work/ESCape32/mcu/STM32F051/config.cmake /home/hamim/work/ESCape32/mcu/STM32G071/config.cmake /home/hamim/work/ESCape32/mcu/STM32G431/config.cmake /home/hamim/work/ESCape32/mcu/STM32L431/config.cmake /usr/share/cmake-3.28/Modules/CMakeCInformation.cmake /usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU.cmake /usr/share/cmake-3.28/Modules/Platform/Generic.cmake CMakeCache.txt CMakeFiles/3.28.3/CMakeCCompiler.cmake CMakeFiles/3.28.3/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/hamim/work/ESCape32/CMakeLists.txt /home/hamim/work/ESCape32/boot/CMakeLists.txt /home/hamim/work/ESCape32/boot/mcu/STM32F0/config.cmake /home/hamim/work/ESCape32/boot/mcu/STM32G0/config.cmake /home/hamim/work/ESCape32/boot/mcu/STM32G4/config.cmake /home/hamim/work/ESCape32/cmake/ch32v2.cmake /home/hamim/work/ESCape32/mcu/AT32F421/config.cmake /home/hamim/work/ESCape32/mcu/GD32E230/config.cmake /home/hamim/work/ESCape32/mcu/GD32F350/config.cmake /home/hamim/work/ESCape32/mcu/STM32F051/config.cmake /home/hamim/work/ESCape32/mcu/STM32G071/config.cmake /home/hamim/work/ESCape32/mcu/STM32G431/config.cmake /home/hamim/work/ESCape32/mcu/STM32L431/config.cmake /usr/share/cmake-3.28/Modules/CMakeCInformation.cmake /usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU.cmake /usr/share/cmake-3.28/Modules/Platform/Generic.cmake CMakeCache.txt CMakeFiles/3.28.3/CMakeCCompiler.cmake CMakeFiles/3.28.3/CMakeSystem.cmake: phony
+build /home/hamim/work/ESCape32/CMakeLists.txt /home/hamim/work/ESCape32/boot/CMakeLists.txt /home/hamim/work/ESCape32/boot/mcu/STM32F0/config.cmake /home/hamim/work/ESCape32/boot/mcu/STM32G0/config.cmake /home/hamim/work/ESCape32/boot/mcu/STM32G4/config.cmake /home/hamim/work/ESCape32/cmake/ch32v2.cmake /home/hamim/work/ESCape32/mcu/AT32F421/config.cmake /home/hamim/work/ESCape32/mcu/CH32V203/config.cmake /home/hamim/work/ESCape32/mcu/GD32E230/config.cmake /home/hamim/work/ESCape32/mcu/GD32F350/config.cmake /home/hamim/work/ESCape32/mcu/STM32F051/config.cmake /home/hamim/work/ESCape32/mcu/STM32G071/config.cmake /home/hamim/work/ESCape32/mcu/STM32G431/config.cmake /home/hamim/work/ESCape32/mcu/STM32L431/config.cmake /usr/share/cmake-3.28/Modules/CMakeCInformation.cmake /usr/share/cmake-3.28/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake-3.28/Modules/CMakeGenericSystem.cmake /usr/share/cmake-3.28/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake-3.28/Modules/CMakeLanguageInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake-3.28/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake-3.28/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU-C.cmake /usr/share/cmake-3.28/Modules/Compiler/GNU.cmake /usr/share/cmake-3.28/Modules/Platform/Generic.cmake CMakeCache.txt CMakeFiles/3.28.3/CMakeCCompiler.cmake CMakeFiles/3.28.3/CMakeSystem.cmake: phony
 
 
 #############################################

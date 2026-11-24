@@ -1,4 +1,4 @@
-/*
+/* io.c => written for stm32(haven't changed yet)
 ** Copyright (C) Arseny Vakhrushev <arseny.vakhrushev@me.com>
 **
 ** This firmware is free software: you can redistribute it and/or modify

@@ -1,3 +1,6 @@
+/home/hamim/work/ESCape32/build/CMakeFiles/CH32-rev17.3.elf.dir
+/home/hamim/work/ESCape32/build/CMakeFiles/CH32.dir
+/home/hamim/work/ESCape32/build/CMakeFiles/flash-CH32.dir
 /home/hamim/work/ESCape32/build/CMakeFiles/AART1-rev17.3.elf.dir
 /home/hamim/work/ESCape32/build/CMakeFiles/AART1.dir
 /home/hamim/work/ESCape32/build/CMakeFiles/flash-AART1.dir

@@ -1,0 +1,6 @@
+# ninja log v5
+8	36	1794298919377408650	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/preset.c.obj	ff4ffea6d4eb6f81
+21	207	1794298679027931046	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj	5c255dcc5b9769c4
+9	132	1794298421351933645	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj	359afd7709924a10
+15	2299	1794298681123988921	CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj	c122fbd1bd5d1f6
+16	214	1794893547053087460	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj	192b06802d6468bd

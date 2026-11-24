@@ -1,417 +1,437 @@
+// =============================================================================
+// ESCape32 hardware layer for WCH CH32V203F8U6 (RISC-V core "QingKe V4B")
+//
+// WHAT THIS FILE IS FOR
+//   ESCape32's main code (commutation, throttle decoding, telemetry...) is
+//   chip-independent. Everything that touches chip-specific registers is
+//   collected in a few "target" files like this one. The main code simply calls
+//   the functions defined here:
+//       init()      set up clocks/pins/ADC/DMA/interrupts at power-on
+//       hsictl()    fine-tune the internal 8 MHz oscillator (used to calibrate it)
+//       compctl()   choose which comparator watches which motor phase
+//       io_serial() / io_analog()   re-purpose the throttle pin
+//       adctrig()   start one ADC measurement run
+//   plus interrupt handlers (the *_IRQHandler functions at the bottom).
+//   Keep these NAMES identical to the G0 version, only the INSIDES change.
+//
+// STATUS
+//   Done : GPIO, TIM1 pins, USART pins, ADC + DMA, HSI trim, interrupts
+//   TODO : compctl() - comparator -> timer capture (see the function)
+//   NOT ported: HSE start-up, WS2812 LED (needs TIM16, absent on CH32V203),
+//               TIM15 throttle input (absent on CH32V203)
+//
+// CRASH COURSE: HOW A CH32 IS DIFFERENT FROM THE STM32G0 (read once!)
+//   1. REGISTER NAMES. libopencm3 (used by ESCape32) names a register like
+//      TIM1_CCMR1. WCH's header names the same thing TIM1->CHCTLR1. WCH gives
+//      each peripheral a struct: TIM1->xxx, GPIOA->xxx, RCC->xxx, ADC1->xxx.
+//      When you need a name, search ch32v20x.h (EVT/EXAM/SRC/Peripheral/inc).
+//   2. GPIO. The G0 has MODER / AFRL / PUPDR (mode, alternate function, pull)
+//      per pin. The CH32 has ONE 4-bit setting per pin in CFGLR (pins 0-7) and
+//      CFGHR (pins 8-15). It can't pick "alternate function number 2" on a pin.
+//      Instead each peripheral signal has a DEFAULT pin, and a few can be moved
+//      with REMAP bits in AFIO->PCFR1.
+//   3. DMA. The G0 has a DMAMUX: you may connect any peripheral request to any
+//      DMA channel. The CH32 has NO DMAMUX: each request is WIRED to one channel
+//      (ADC1 -> ch1, TIM3_CH1 -> ch6, USART1_TX -> ch4 ...). The channel numbers
+//      in config.h come from that table.
+//   4. ADC. G0: pick channels with a bit-mask (CHSELR). CH32: write the channel
+//      number of each conversion slot into a list (RSQR1..3), like STM32F1.
+//   5. INTERRUPTS. G0 (ARM): NVIC + vector names like TIM3_IRQHandler. CH32
+//      (RISC-V): controller is called PFIC, but WCH kept the NVIC_xxx function
+//      names. Vector names come from the startup file (startup_ch32v20x_D6.S).
+//      A handler whose name is NOT defined anywhere falls into a weak default
+//      handler = infinite loop. So only enable interrupts you have a handler for!
+//   6. No SYSCFG, no DMAMUX, no TIM6/15/16/17, no comparator registers in the
+//      public SDK, no VTOR register (the vector table is set up by startup code).
+// =============================================================================
 
+#include "ch32v20x.h" // WCH register definitions: RCC, GPIOx, TIMx, ADC1, DMA1, AFIO...
+#include "config.h"	  // ESCape32 per-board settings (timer names, DMA channels, CLK)
+#include "defs.h"	  // ESCape32 common definitions (SENS_CNT, IO_ANALOG, ...)
+#include "common.h"	  // ESCape32 helpers: clamp(), adcdata() ...
 
-#include "ch32v20x.h"
-#include "config.h"
-#include "defs.h"
-#include "common.h"
-// #include <libopencm3/stm32/dmamux.h>
-// #include <libopencm3/stm32/adc.h>
-
+// These two functions are written in OTHER files (io.c = throttle input,
+// hall.c = hall sensors). We only DECLARE them here (a "prototype") so the
+// compiler knows they exist when TIM3_IRQHandler() calls them at the bottom.
+//
+// WHY ARE THEY CALLED FROM HERE? One timer = one interrupt vector = ONE handler
+// function. TIM3 is used by BOTH the throttle (channel 1) and the hall sensor
+// (when enabled), so one TIM3_IRQHandler() must call both pieces of code. That is
+// the only reason these two lines exist.
+// Could we use another timer? YES, TIM4 is free (see the notes at the end of this file).
 void tim3_io_isr(void);
 #ifdef HALL_MAP
-void tim3_hall_isr(void);
+void tim3_hall_isr(void); // only built if the board uses hall sensors
 #endif
 
-#if SENS_MAP == 0xA0 // A0 (volt)
-#define SENS_CHAN 0x0
-#elif SENS_MAP == 0xA5 // A5 (volt)
-#define SENS_CHAN 0x5
-#elif SENS_MAP == 0xA6 // A6 (volt)
-#define SENS_CHAN 0x6
-#elif SENS_MAP == 0xA1A5 // A1 (volt), A5 (curr)
-#define SENS_CHAN 0x15
-#elif SENS_MAP == 0xA5A4 // A5 (volt), A4 (curr)
-#define SENS_CHAN 0x54
-#elif SENS_MAP == 0xA6A4 // A6 (volt), A4 (curr)
-#define SENS_CHAN 0x64
-#elif SENS_MAP == 0xA6A5A4 // A6 (temp), A5 (volt), A4 (curr)
-#define SENS_CHAN 0x654
+// -----------------------------------------------------------------------------
+// BOARD SETTINGS (normally in config.h / defs.h; defaults here so it compiles)
+// -----------------------------------------------------------------------------
+// Which ADC channel is which measurement. ESCape32 reads (in this order):
+//   current, voltage, "u" (extra, e.g. temperature/other) -> SENS_CNT of them (1..3).
+// ADC channel number = ADC_INx of the pin: PA0..PA7 = IN0..IN7, PB0 = IN8,
+// PB1 = IN9, PC0..PC5 = IN10..IN15. CHECK YOUR 20-PIN PACKAGE FOR WHICH EXIST.
+#ifndef SENS_CH_LIST
+#define SENS_CH_LIST 4, 5, 6 // example: PA4 = current, PA5 = voltage, PA6 = "u"
 #endif
-
+// ADC channel used when the throttle is an ANALOG voltage (PWM-free "pot" input).
+// Our throttle pin is PA6 = ADC_IN6.
 #ifndef ANALOG_CHAN
-#ifdef IO_PA6
-#define ANALOG_CHAN 0x6 // ADC_IN6 (A6)
-#else
-#define ANALOG_CHAN 0x2 // ADC_IN2 (A2)
-#endif
+#define ANALOG_CHAN 6
 #endif
 
-#ifdef TEMP_CHAN
-#define TEMP_SHIFT 12
-#else
-#define TEMP_SHIFT 0
-#define TEMP_CHAN 0xc // ADC_IN12 (temp)
-#define TEMP_FUNC(x) (((x) / 3000 - ST_TSENSE_CAL1_30C) * 400 / (ST_TSENSE_CAL2_130C - ST_TSENSE_CAL1_30C) + 120)
+// The chip has 2 internal "virtual" ADC channels:
+#define ADC_CH_TEMP 16	// internal temperature sensor
+#define ADC_CH_VREF 17	// internal fixed reference voltage (~1.2 V), used to measure VDD
+#define VREFINT_MV 1200 // nominal value of that reference in millivolts (CHECK datasheet)
+
+// TEMPERATURE CONVERSION
+// The G0 stored 2 factory calibration points (30C and 130C). CH32 stores ONE
+// point at flash address 0x1FFFF720 (value found in WCH's ch32v20x_adc.c):
+//   low 16 bits  = sensor voltage in mV at the reference temperature
+//   high 16 bits = that reference temperature in degrees C
+// VERIFY this address for the F8U6 in the reference manual.
+#define TS_CAL (*(volatile uint32_t *)0x1FFFF720)
+// Sensor voltage falls ~4.3 mV per degree C. So:  T = Tref - (mV - Vref_mV) * 10 / 43
+// (+21 = half of 43 = rounding). ESCape32 wants QUARTER degrees, hence "* 4".
+#define TEMP_FUNC(mv) \
+	((((int)(TS_CAL >> 16) & 0xffff) - (((mv) - (int)(TS_CAL & 0xffff)) * 10 + 21) / 43) * 4)
+
+// GPIO PIN MODE CODES. One pin = 4 bits = CNF[1:0] (upper 2) + MODE[1:0] (lower 2).
+//   MODE=00 -> input;  MODE=11 -> output, 50 MHz.
+//   Input  CNF: 00 analog, 01 floating, 10 pull-up or pull-down
+//   Output CNF: 00 push-pull, 01 open-drain, 10 ALTERNATE-function push-pull, 11 alt. open-drain
+// "Alternate function" = the pin is driven by a peripheral (timer, USART) not by software.
+#define PIN_ANALOG 0x0	 // CNF=00 MODE=00: analog input (also the lowest-power state)
+#define PIN_FLOAT_IN 0x4 // CNF=01 MODE=00: digital input, no pull resistor
+#define PIN_PULL_IN 0x8	 // CNF=10 MODE=00: digital input with pull-up OR pull-down
+#define PIN_OUT_PP 0x3	 // CNF=00 MODE=11: normal output, push-pull (unused here)
+#define PIN_AF_PP 0xb	 // CNF=10 MODE=11: peripheral-driven output, push-pull
+
+// File-local (static) variables.
+static uint8_t len, ain; // len = number of ADC conversions per run; ain = 1 if analog throttle is included
+static uint16_t buf[6];	 // DMA drops the ADC results here (max 3 sensors + analog + temp + vref = 6)
+
+// DMA1->INTFR / INTFCR use 4 bits per channel: bit0 global, bit1 TRANSFER-COMPLETE,
+// bit2 half, bit3 error. This macro gives the "transfer complete" bit of channel n (1..7).
+#define DMA_TCIF(n) (2u << (((n) - 1) * 4))
+
+// INTERRUPT HANDLER ATTRIBUTE. On RISC-V a handler can't just be a normal C
+// function: the CPU must save/restore registers and return with "mret".
+// "interrupt" tells GCC to generate that. WCH's own compiler (MounRiver) also
+// offers "WCH-Interrupt-fast": the HARDWARE saves registers (HPE feature, switched on
+// by the "csrw 0x804" line in the startup file) which is faster.
+// If you use mainline GCC, build with -DIRQ='__attribute__((interrupt))'.
+#ifndef IRQ
+#define IRQ __attribute__((interrupt("WCH-Interrupt-fast")))
 #endif
 
-#define COMP1_CSR MMIO32(COMP_BASE + 0x0)
-#define COMP2_CSR MMIO32(COMP_BASE + 0x4)
+// -----------------------------------------------------------------------------
+// HELPERS
+// -----------------------------------------------------------------------------
 
-static uint8_t len, ain;
-static uint16_t buf[6];
-#ifdef LED_WS2812
-static uint16_t led[5];
-#endif
+// Set the 4-bit mode of ONE pin. g = GPIOA/GPIOB/GPIOC, n = pin number 0..15.
+static void pin(GPIO_TypeDef *g, int n, uint32_t mode)
+{
+	// pins 0-7 live in CFGLR, pins 8-15 in CFGHR (volatile = real hardware register)
+	volatile uint32_t *r = n < 8 ? &g->CFGLR : &g->CFGHR;
+	int s = (n & 7) * 4;					// bit position of this pin's 4-bit field
+	*r = (*r & ~(0xfu << s)) | (mode << s); // clear the 4 bits, then write the new mode
+}
 
+// Digital input WITH PULL-UP (the throttle line idles high).
+static void pullup(GPIO_TypeDef *g, int n)
+{
+	pin(g, n, PIN_PULL_IN); // "input with pull" ...
+	g->BSHR = 1u << n;		// ... and writing 1 to that pin's output bit selects PULL-UP
+							// (BSHR = bit-set register; BCR would clear it = pull-down)
+}
+
+// Put channel number "ch" into conversion slot "idx" of the ADC's regular sequence.
+// Slots 0-5 are in RSQR3, 6-11 in RSQR2, 12-15 in RSQR1, 5 bits per slot.
+// (The G0 did this with the CHSELR bit-mask / nibble list.)
+static void sq(int idx, int ch)
+{
+	volatile uint32_t *r;
+	int s;
+	if (idx < 6)
+		r = &ADC1->RSQR3, s = idx * 5;
+	else if (idx < 12)
+		r = &ADC1->RSQR2, s = (idx - 6) * 5;
+	else
+		r = &ADC1->RSQR1, s = (idx - 12) * 5;
+	*r = (*r & ~(0x1fu << s)) | ((uint32_t)ch << s);
+}
+
+// -----------------------------------------------------------------------------
+// init(): called once at start-up. SystemInit() (in system_ch32v20x.c, with
+// SYSCLK_FREQ_96MHz_HSI defined) has ALREADY set the 96 MHz clock before this runs,
+// so unlike the G0 version there is no clock code here.
+// Bus clocks from that file: HCLK = PCLK2 = 96 MHz, PCLK1 = 48 MHz. Timers on
+// the PCLK1 bus (TIM2/3/4) are fed 2 x PCLK1 = 96 MHz when PCLK1 is divided,
+// so every timer should count at 96 MHz = "CLK" in config.h. VERIFY once with a scope.
+// -----------------------------------------------------------------------------
 void init(void)
 {
-	RCC_AHBRSTR = -1;
-	RCC_APBRSTR1 = -1;
-	RCC_APBRSTR2 = -1;
-	RCC_AHBRSTR = 0;
-	RCC_APBRSTR1 = 0;
-	RCC_APBRSTR2 = 0;
-	RCC_IOPENR = 0x27; // GPIOAEN=1, GPIOBEN=1, GPIOCEN=1, GPIOFEN=1
-	RCC_AHBENR = RCC_AHBENR_DMAEN | RCC_AHBENR_FLASHEN;
-	RCC_APBENR1 = RCC_APBENR1_TIM2EN | RCC_APBENR1_TIM6EN | RCC_APBENR1_WWDGEN;
-	RCC_APBENR2 = RCC_APBENR2_SYSCFGEN | RCC_APBENR2_TIM1EN | RCC_APBENR2_USART1EN | RCC_APBENR2_ADCEN;
-	SYSCFG_CFGR1 = SYSCFG_CFGR1_UCPD1_STROBE; // Disable internal pull-downs on A8/B15
-#ifndef USE_32PIN
-	SYSCFG_CFGR1 |= SYSCFG_CFGR1_PA11_RMP | SYSCFG_CFGR1_PA12_RMP; // Remap A11->A9,A12->A10
-#endif
-	SCB_VTOR = (uint32_t)_rom; // Set vector table address
+	// ADC clock = PCLK2 / divider. 96 / 8 = 12 MHz (the ADC must stay <= ~14 MHz).
+	RCC->CFGR0 = (RCC->CFGR0 & ~RCC_ADCPRE) | RCC_ADCPRE_DIV8;
 
-#ifdef USE_HSE
-	if (!cfg.throt_cal)
-	{
-		TIM6_PSC = CLK_MHZ - 1; // 1us resolution
-		TIM6_ARR = 9999;
-		TIM6_EGR = TIM_EGR_UG;
-		TIM6_SR = ~TIM_SR_UIF;
-		TIM6_CR1 = TIM_CR1_CEN | TIM_CR1_OPM;
-		RCC_CR |= RCC_CR_HSEON;
-		while (!(RCC_CR & RCC_CR_HSERDY))
-		{
-			if (!(TIM6_CR1 & TIM_CR1_CEN))
-			{ // Timeout 10ms
-				RCC_CR &= ~RCC_CR_HSEON;
-				goto skip;
-			}
-		}
-		RCC_CFGR = RCC_CFGR_SW_HSE;
-		while ((RCC_CFGR & RCC_CFGR_SWS_MASK << RCC_CFGR_SWS_SHIFT) != RCC_CFGR_SWS_HSE << RCC_CFGR_SWS_SHIFT)
-			;
-		RCC_CR &= ~RCC_CR_PLLON;
-		while (RCC_CR & RCC_CR_PLLRDY)
-			;
-		RCC_PLLCFGR = RCC_PLLCFGR_PLLSRC_HSE | (128 / USE_HSE) << RCC_PLLCFGR_PLLN_SHIFT | RCC_PLLCFGR_PLLREN | 1 << RCC_PLLCFGR_PLLR_SHIFT;
-		RCC_CR |= RCC_CR_PLLON;
-		while (!(RCC_CR & RCC_CR_PLLRDY))
-			;
-		RCC_CFGR = RCC_CFGR_SW_PLLRCLK;
-	}
-skip:
-#endif
+	// CLOCK ENABLE: a peripheral does nothing (and its registers ignore writes)
+	// until its clock is switched on. G0: RCC_IOPENR / AHBENR / APBENR1 / APBENR2.
+	// CH32: AHBPCENR (DMA), APB2PCENR (fast bus), APB1PCENR (slower bus).
+	RCC->AHBPCENR |= RCC_DMA1EN;
+	// APB2 bus: AFIO (pin remap), GPIO ports A/B/C, ADC1, TIM1, USART1
+	RCC->APB2PCENR |= RCC_AFIOEN | RCC_IOPAEN | RCC_IOPBEN | RCC_IOPCEN | RCC_ADC1EN | RCC_TIM1EN | RCC_USART1EN;
+	// APB1 bus: TIM2 (our IFTIM), TIM3 (throttle input), TIM4 (unused), window watchdog (ESCape32 uses it as a watchdog)
+	RCC->APB1PCENR |= RCC_TIM2EN | RCC_TIM3EN | RCC_WWDGEN;
+	// (The G0 code also reset every peripheral first. After a power-up reset this is already
+	// the state, so it is left out.)
 
-	// Default GPIO state - analog input
-	GPIOA_AFRL = 0x20000000;	// A7 (TIM1_CH1N)
-	GPIOA_AFRH = 0x00000222;	// A8 (TIM1_CH1), A9 (TIM1_CH2), A10 (TIM1_CH3)
-	GPIOB_AFRL = 0x00000002;	// B0 (TIM1_CH2N)
-	GPIOB_PUPDR = 0x00001000;	// B6 (pull-up)
-	GPIOA_MODER = 0xebeabfff;	// A7 (TIM1_CH1N), A8 (TIM1_CH1), A9 (TIM1_CH2), A10 (TIM1_CH3)
-	GPIOB_MODER = 0xffffeffe;	// B0 (TIM1_CH2N), B6 (USART1_TX)
-#ifdef IO_PA6					// N version
-	GPIOB_AFRH |= 0x20000000;	// B15 (TIM1_CH3N)
-	GPIOB_MODER &= ~0x40000000; // B15 (TIM1_CH3N)
-#else
-	GPIOB_AFRL |= 0x20;	 // B1 (TIM1_CH3N)
-	GPIOB_MODER &= ~0x4; // B1 (TIM1_CH3N)
-#endif
+	// --- MOTOR OUTPUT PINS (TIM1 makes the 3 half-bridge PWM signals) -------------
+	// Default TIM1 mapping (no remap): CH1 PA8, CH2 PA9, CH3 PA10 = HIGH-side signals,
+	// CH1N_1 PA7, CH2N_1 PB0, CH3N_1 PB1 = LOW-side signals(Remapping functions)
+
+	// Check B13..B15 exist on a 20-pin package!
+	// USART1's default pins are PA9/PA10, which TIM1 now uses, so move USART1 to PB6/PB7:
+	AFIO->PCFR1 |= AFIO_PCFR1_USART1_REMAP;
+	pin(GPIOA, 8, PIN_AF_PP);	 // TIM1_CH1(PA8->14)  (driven by the timer, not by software)
+	pin(GPIOA, 9, PIN_AF_PP);	 // TIM1_CH2(PA9->15)
+	pin(GPIOA, 10, PIN_AF_PP);	 // TIM1_CH3(PA10->18)
+	pin(GPIOA, 7, PIN_AF_PP);	 // TIM1_CH1N_1(PA7->7)
+	pin(GPIOB, 0, PIN_AF_PP);	 // TIM1_CH2N_1(PB0->8)
+	pin(GPIOB, 1, PIN_AF_PP);	 // TIM1_CH3N_1(PB1->9)
+	pin(GPIOB, 6, PIN_AF_PP);	 // USART1_TX (remapped). ESCape32 uses it half-duplex / single wire
+	pin(GPIOB, 7, PIN_FLOAT_IN); // USART1_RX (remapped)
+	GPIOB->BSHR = 1u << 6;		 // pull-up bit (only relevant when the pin is in an input mode)
+
+	// --- TIM3: throttle input (+ hall sensor if the board has one) -----------------
+	// No remap: TIM3_CH1 = PA6, TIM3_CH2 = PA7, TIM3_CH3 = PB0, TIM3_CH4 = PB1.
+	RCC->APB1PCENR |= RCC_TIM3EN;
 #ifdef HALL_MAP
-	RCC_APBENR1 |= RCC_APBENR1_TIM3EN;
-	GPIOC_AFRL |= 0x1000000; // C6 (TIM3_CH1)
-	GPIOC_MODER &= ~0x1000;	 // C6 (TIM3_CH1)
+	pullup(GPIOA, 6); // hall sensor on TIM3_CH1
 #endif
 #ifndef ANALOG
-#ifdef IO_PA2
-	RCC_APBENR2 |= RCC_APBENR2_TIM15EN;
-	GPIOA_AFRL |= 0x500;  // A2 (TIM15_CH1)
-	GPIOA_PUPDR |= 0x10;  // A2 (pull-up)
-	GPIOA_MODER &= ~0x10; // A2 (TIM15_CH1)
-	nvic_set_priority(NVIC_TIM15_IRQ, 0x40);
-#else
-	RCC_APBENR1 |= RCC_APBENR1_TIM3EN;
-#ifdef IO_PA6
-	GPIOA_AFRL |= 0x1000000; // A6 (TIM3_CH1)
-	GPIOA_PUPDR |= 0x1000;	 // A6 (pull-up)
-	GPIOA_MODER &= ~0x1000;	 // A6 (TIM3_CH1)
-#else
-	GPIOB_AFRL |= 0x10000; // B4 (TIM3_CH1)
-	GPIOB_PUPDR |= 0x100;  // B4 (pull-up)
-	GPIOB_MODER &= ~0x100; // B4 (TIM3_CH1)
-#endif
-	nvic_set_priority(NVIC_TIM34_IRQ, 0x40);
-#endif
-#ifndef IO_AUX
-#elif IO_AUX == 0xB8
-	RCC_APBENR2 |= RCC_APBENR2_TIM16EN;
-	GPIOB_AFRH |= 0x2;		 // B8 (TIM16_CH1)
-	GPIOB_PUPDR |= 0x10000;	 // B8 (pull-up)
-	GPIOB_MODER &= ~0x10000; // B8 (TIM16_CH1)
-	nvic_set_priority(NVIC_TIM16_FDCAN_IT0_IRQ, 0x40);
-#elif IO_AUX == 0xB9
-	RCC_APBENR2 |= RCC_APBENR2_TIM17EN;
-	GPIOB_AFRH |= 0x20;		 // B9 (TIM17_CH1)
-	GPIOB_PUPDR |= 0x40000;	 // B9 (pull-up)
-	GPIOB_MODER &= ~0x40000; // B9 (TIM17_CH1)
-	nvic_set_priority(NVIC_TIM17_FDCAN_IT1_IRQ, 0x40);
-#else
-	RCC_APBENR1 |= RCC_APBENR1_TIM3EN;
-	GPIOC_AFRL |= 0x1000000; // C6 (TIM3_CH1)
-	GPIOC_PUPDR |= 0x1000;	 // C6 (pull-up)
-	GPIOC_MODER &= ~0x1000;	 // C6 (TIM3_CH1)
-	nvic_set_priority(NVIC_TIM34_IRQ, 0x40);
-#endif
-#endif
-	nvic_set_priority(NVIC_USART1_IRQ, 0x80);
-	nvic_set_priority(NVIC_USART2_LPUART2_IRQ, 0x40);
-	nvic_set_priority(NVIC_DMA1_CHANNEL1_IRQ, 0x40);		  // TIM3 or TIM15 or USART2_RX
-	nvic_set_priority(NVIC_DMA1_CHANNEL2_3_IRQ, 0x80);		  // USART1_TX
-	nvic_set_priority(NVIC_DMA1_CHANNEL4_7_DMAMUX_IRQ, 0x80); // ADC, WS2812
-
-	nvic_enable_irq(NVIC_TIM1_BRK_UP_TRG_COM_IRQ);
-	nvic_enable_irq(NVIC_TIM2_IRQ);
-	nvic_enable_irq(NVIC_TIM34_IRQ);
-	nvic_enable_irq(NVIC_TIM15_IRQ);
-	nvic_enable_irq(NVIC_TIM16_FDCAN_IT0_IRQ);
-	nvic_enable_irq(NVIC_TIM17_FDCAN_IT1_IRQ);
-	nvic_enable_irq(NVIC_USART1_IRQ);
-	nvic_enable_irq(NVIC_USART2_LPUART2_IRQ);
-	nvic_enable_irq(NVIC_DMA1_CHANNEL1_IRQ);
-	nvic_enable_irq(NVIC_DMA1_CHANNEL2_3_IRQ);
-	nvic_enable_irq(NVIC_DMA1_CHANNEL4_7_DMAMUX_IRQ);
-
-#ifdef IO_PA2
-	DMAMUX1_CxCR(1) = DMAMUX_CxCR_DMAREQ_ID_TIM15_CH1;
-#else
-	DMAMUX1_CxCR(1) = DMAMUX_CxCR_DMAREQ_ID_TIM3_CH1;
-#endif
-	DMAMUX1_CxCR(2) = DMAMUX_CxCR_DMAREQ_ID_USART1_RX;
-	DMAMUX1_CxCR(3) = DMAMUX_CxCR_DMAREQ_ID_USART1_TX;
-	DMAMUX1_CxCR(4) = DMAMUX_CxCR_DMAREQ_ID_ADC;
-
-	TIM1_SMCR = TIM_SMCR_TS_ITR1;		   // TRGI=TIM2
-	TIM2_CR2 = TIM_CR2_MMS_COMPARE_OC3REF; // TRGO=OC3REF
-	TIM2_CCMR1 = TIM_CCMR1_CC2S_IN_TI2;
-	TIM2_CCMR2 = TIM_CCMR2_OC3PE | TIM_CCMR2_OC3M_PWM2; // Inverted PWM on OC3
-	TIM2_CCER = TIM_CCER_CC2E;							// IC2 on rising edge on TI2 (COMP2_OUT)
-#if defined IO_PA2 || defined IO_PA6
-	TIM2_CCMR1 |= TIM_CCMR1_CC1S_IN_TI1;
-	TIM2_CCER |= TIM_CCER_CC1E; // IC1 on rising edge on TI1 (COMP1_OUT)
+	pullup(GPIOA, 6); // PWM throttle on TIM3_CH1, idle high
 #endif
 
-	ADC_CFGR2(ADC1) = ADC_CFGR2_LFTRIG | ADC_CFGR2_CKMODE_PCLK_DIV4 << ADC_CFGR2_CKMODE_SHIFT;
-	ADC_CCR(ADC1) = ADC_CCR_VREFEN | ADC_CCR_TSEN;
-	ADC_CR(ADC1) = ADC_CR_ADVREGEN;
-	TIM6_PSC = 0;
-	TIM6_ARR = CLK_KHZ / 50 - 1;
-	TIM6_EGR = TIM_EGR_UG;
-	TIM6_SR = ~TIM_SR_UIF;
-	TIM6_CR1 = TIM_CR1_CEN | TIM_CR1_OPM;
-	while (TIM6_CR1 & TIM_CR1_CEN)
-		; // Wait for 20us (RM 15.3.2)
-	ADC_CR(ADC1) = ADC_CR_ADVREGEN | ADC_CR_ADCAL;
-	while (ADC_CR(ADC1) & ADC_CR_ADCAL)
+#ifdef CMP_OUT_PINS
+	// Only if the comparator outputs can reach the timer ONLY through pins:
+	// wire them to TIM2_CH1 (PA0) and TIM2_CH2 (PA1) = the capture inputs of IFTIM.
+	pin(GPIOA, 0, PIN_FLOAT_IN);
+	pin(GPIOA, 1, PIN_FLOAT_IN);
+#endif
+
+	// --- INTERRUPT PRIORITIES (smaller number = more urgent; WCH uses the top bits) ---
+	NVIC_SetPriority(TIM3_IRQn, 0x40);			// throttle / hall edges: urgent
+	NVIC_SetPriority(USART1_IRQn, 0x80);		// telemetry: can wait
+	NVIC_SetPriority(DMA1_Channel6_IRQn, 0x40); // throttle capture finished
+	NVIC_SetPriority(DMA1_Channel4_IRQn, 0x80); // USART1 transmit finished
+	NVIC_SetPriority(DMA1_Channel1_IRQn, 0x80); // ADC results ready
+
+	// --- ENABLE THE INTERRUPTS WE HAVE HANDLERS FOR ---
+	// IMPORTANT: enabling an interrupt that has no handler = CPU hangs in the weak
+	// default handler when it fires. Match this list to your handlers (see config.h).
+	NVIC_EnableIRQ(TIM1_TRG_COM_IRQn); // TIM1 commutation event = tim1_com_isr (config.h)
+	NVIC_EnableIRQ(TIM2_IRQn);		   // IFTIM zero-cross captures = iftim_isr
+	NVIC_EnableIRQ(TIM3_IRQn);		   // throttle + hall (handler at the bottom of this file)
+	NVIC_EnableIRQ(USART1_IRQn);
+	NVIC_EnableIRQ(DMA1_Channel1_IRQn); // ADC (handler at the bottom of this file)
+	NVIC_EnableIRQ(DMA1_Channel6_IRQn); // throttle capture = iotim_dma_isr
+	NVIC_EnableIRQ(DMA1_Channel4_IRQn); // USART1 TX        = usart1_tx_dma_isr
+	// DMA REQUEST ROUTING. The G0 used DMAMUX1_CxCR(...) here. On CH32 there is NOTHING to
+	// write: the request is hard-wired to the channel (verify in the RM DMA table):
+	//   ch1 ADC1 | ch4 USART1_TX | ch5 USART1_RX | ch6 TIM3_CH1
+
+	// --- IFTIM = TIM2: the "commutation timer" -----------------------------------
+	// It measures the time between zero-crossings (comparator edges) and also fires the
+	// next commutation. TIM1 (the PWM timer) is made a SLAVE of TIM2:
+	TIM1->SMCFGR = TIM_TS_0;										  // TIM1 trigger input = ITR1 (= TIM2's TRGO). VERIFY
+																	  // "internal trigger" table in the RM.
+	TIM2->CTLR2 = TIM_MMS_2 | TIM_MMS_1;							  // TIM2 master mode = 110: send "OC3REF" as TRGO
+	TIM2->CHCTLR1 = TIM_CC1S_0 | TIM_CC2S_0;						  // TIM2 channels 1 and 2 = INPUT capture (TI1, TI2).
+																	  // The input FILTER bits are set later by ESCape32
+																	  // using IFTIM_ICM1/2/3 from config.h.
+	TIM2->CHCTLR2 = TIM_OC3PE | TIM_OC3M_2 | TIM_OC3M_1 | TIM_OC3M_0; // channel 3 = output compare,
+																	  // PWM mode 2, preload on (this is the "timer for
+																	  // the next commutation", IFTIM_OCR = CH3CVR)
+	TIM2->CCER = TIM_CC1E | TIM_CC2E;								  // enable capture on channel 1 and 2 (rising edge)
+
+	// --- ADC1: read current/voltage/temperature in the background -------------------
+	ADC1->CTLR1 = ADC_SCAN;					// SCAN mode: one start converts the WHOLE list
+	ADC1->CTLR2 = ADC_ADON					// ADC power on
+				  | ADC_TSVREFE				// enable internal temp sensor + Vref channels
+				  | ADC_EXTSEL				// trigger source = 111 = SOFTWARE start
+				  | ADC_EXTTRIG				// allow that trigger source (needed for SWSTART)
+				  | ADC_DMA;				// after each conversion send result to DMA
+	for (volatile int i = 0; i < 2000; i++) // wait for the ADC to wake up (a few microseconds)
 		;
-	ADC_CR(ADC1) = ADC_CR_ADEN | ADC_CR_ADVREGEN;
-	while (!(ADC_ISR(ADC1) & ADC_ISR_ADRDY))
+	ADC1->CTLR2 |= ADC_RSTCAL;		 // reset calibration ...
+	while (ADC1->CTLR2 & ADC_RSTCAL) // ... hardware clears the bit when finished
 		;
-	ADC_CFGR1(ADC1) = ADC_CFGR1_DMAEN | ADC_CFGR1_EXTEN_RISING_EDGE | ADC_CFGR1_CHSELRMOD;
-	ADC_SMPR1(ADC1) = ADC_SMPR_SMPx_160DOT5CYC; // Sampling time ~10us @ PCLK/4=16Mhz
-	ADC_CHSELR(ADC1) = SENS_CHAN;
-	len = SENS_CNT;
+	ADC1->CTLR2 |= ADC_CAL; // run calibration (removes ADC offset error)
+	while (ADC1->CTLR2 & ADC_CAL)
+		;
+
+	// SAMPLE TIME per channel (3 bits, same value for every channel):
+	//   0=1.5  1=7.5  2=13.5  3=28.5  4=41.5  5=55.5  6=71.5  7=239.5 ADC-clock cycles.
+	// 71.5 + 12.5 (conversion) = 84 cycles @ 12 MHz = 7 us per channel. Longer = more
+	// accurate for high-impedance dividers; shorter = faster. Tune later.
+	{
+		uint32_t s1 = 0, s2 = 0;
+		for (int c = 0; c < 10; c++)
+			s2 |= 6u << (c * 3); // channels 0..9  in SAMPTR2
+		for (int c = 0; c < 8; c++)
+			s1 |= 6u << (c * 3); // channels 10..17 in SAMPTR1
+		ADC1->SAMPTR2 = s2;
+		ADC1->SAMPTR1 = s1;
+	}
+
+	// Build the conversion list: [sensors...] [analog throttle?] [temperature] [vref]
+	static const uint8_t sens[] = {SENS_CH_LIST};
+	len = 0;
+	for (int i = 0; i < SENS_CNT; i++)
+		sq(len++, sens[i]);
 	if (IO_ANALOG)
 	{
-		ADC_CHSELR(ADC1) |= ANALOG_CHAN << (len++ << 2);
-		ain = 1;
+		sq(len++, ANALOG_CHAN);
+		ain = 1; // remember the analog value is in the list (see the ADC handler)
 	}
-	ADC_CHSELR(ADC1) |= (TEMP_CHAN | 0xfd0) << (len << 2); // ADC_IN13 (vref)
-	len += 2;
-	while (!(ADC_ISR(ADC1) & ADC_ISR_CCRDY))
-		;
-	DMA1_CPAR(4) = (uint32_t)&ADC_DR(ADC1);
-	DMA1_CMAR(4) = (uint32_t)buf;
+	sq(len++, ADC_CH_TEMP);
+	sq(len++, ADC_CH_VREF);
+	// tell the ADC how long the list is: field L (bits 23:20) = length - 1
+	ADC1->RSQR1 = (ADC1->RSQR1 & ~ADC_L) | ((uint32_t)(len - 1) << 20);
+
+	// DMA channel 1 is fixed to the ADC: it copies ADC1->RDATAR into buf[] one by one.
+	DMA1_Channel1->PADDR = (uint32_t)&ADC1->RDATAR; // PADDR = "peripheral address" (source)
+	DMA1_Channel1->MADDR = (uint32_t)buf;			// MADDR = "memory address" (destination)
 }
 
-#ifdef LED_WS2812
-void initled(void)
-{
-	RCC_APBENR2 |= RCC_APBENR2_TIM16EN;
-	GPIOB_AFRH |= 0x2;		 // B8 (TIM16_CH1)
-	GPIOB_MODER &= ~0x10000; // B8 (TIM16_CH1)
-	TIM16_BDTR = TIM_BDTR_MOE;
-	TIM16_CCMR1 = TIM_CCMR1_OC1PE | TIM_CCMR1_OC1M_PWM1;
-	TIM16_CCER = TIM_CCER_CC1E;
-	TIM16_CR2 = TIM_CR2_CCDS; // CC1 DMA request on UEV
-	TIM16_ARR = CLK_CNT(800000) - 1;
-	TIM16_RCR = 7;
-	DMAMUX1_CxCR(6) = DMAMUX_CxCR_DMAREQ_ID_TIM16_CH1;
-	DMA1_CPAR(6) = (uint32_t)&TIM16_CCR1;
-	DMA1_CMAR(6) = (uint32_t)led;
-}
-
-void ledctl(int x)
-{
-	if (DMA1_CCR(6) & DMA_CCR_EN)
-		return;
-	led[0] = x & 2 ? CLK_CNT(1250000) : CLK_CNT(2500000); // Green
-	led[1] = x & 1 ? CLK_CNT(1250000) : CLK_CNT(2500000); // Red
-	led[2] = x & 4 ? CLK_CNT(1250000) : CLK_CNT(2500000); // Blue
-	led[3] = 0;
-	led[4] = 0;
-	DMA1_CNDTR(6) = 5;
-	DMA1_CCR(6) = DMA_CCR_EN | DMA_CCR_TCIE | DMA_CCR_DIR | DMA_CCR_MINC | DMA_CCR_PSIZE_16BIT | DMA_CCR_MSIZE_16BIT;
-	TIM16_DIER = TIM_DIER_CC1DE;
-	TIM16_EGR = TIM_EGR_UG;
-	TIM16_CR1 = TIM_CR1_CEN;
-}
-#endif
-
+// -----------------------------------------------------------------------------
+// hsictl(): nudge the internal 8 MHz oscillator (HSI) up/down by x steps.
+// ESCape32 uses this to calibrate the clock against the throttle signal timing.
+// G0: 7-bit trim in RCC_ICSCR. CH32: 5-bit trim (HSITRIM) in RCC->CTLR bits 7:3,
+// so the range is 0..31 instead of 0..127 and each step is a bigger frequency change.
+// -----------------------------------------------------------------------------
 void hsictl(int x)
 {
-	int cr = RCC_ICSCR;
-	int tv = (cr & 0x7f00) >> 8; // 7 bits
-	RCC_ICSCR = (cr & ~0x7f00) | clamp(tv + x, 0, 0x7f) << 8;
+	uint32_t cr = RCC->CTLR;
+	int tv = (cr & RCC_HSITRIM) >> 3; // current trim value
+	RCC->CTLR = (cr & ~RCC_HSITRIM) | (uint32_t)clamp(tv + x, 0, 0x1f) << 3; // write new, limited
 }
 
+// -----------------------------------------------------------------------------
+// compctl(x): select which motor phase the comparator watches (x & 3: which input,
+// x & 4: invert polarity). On the G0 the comparator output was connected INSIDE the
+// chip to TIM2 (via TIM2_TISEL) so the timer could capture the zero-crossing time.
+// !!! NOT PORTED YET !!! The public CH32V20x SDK only has OPA->CR (op-amp enable +
+// input/output select). Read the OPA/CMP chapter of the reference manual and find out:
+//   1) which pins are the comparator inputs (connect them to the phase voltages),
+//   2) whether the comparator output can go INTO a timer channel, or only out to a pin
+//      (then wire it to PA0/PA1 = TIM2_CH1/CH2 and build with -DCMP_OUT_PINS),
+//   3) which bit inverts the polarity.
+// Your senior's AM32 port in mcu/v203/drivers already solved this on the same chip.
+// -----------------------------------------------------------------------------
 void compctl(int x)
 {
-	int id = 0;
-	int cr = 0;
-	switch (x & 3)
-	{
-#ifdef IO_PA2
-	case COMP_IN1:
-		id = 1;
-		cr = 0x108281; // A0>A1
-		break;
-	case COMP_IN2:
-		id = 2;
-		cr = 0x108271; // B7>A3
-		break;
-	case COMP_IN3:
-		id = 2;
-		cr = 0x108071; // B7>B4
-		break;
-#else
-	case COMP_IN1:
-		id = 2;
-		cr = 0x100281; // A3>A2
-		break;
-	case COMP_IN2:
-#ifdef IO_PA6 // N version
-		id = 1;
-		cr = 0x100281; // A1>A0
-#else
-		id = 2;
-		cr = 0x100261; // A3>B3
-#endif
-		break;
-	case COMP_IN3:
-		id = 2;
-		cr = 0x100271; // A3>B7
-		break;
-#endif
-	}
-	if (x & 4)
-		cr ^= 0x8000; // Change polarity
-	switch (id)
-	{
-	case 0:
-		COMP1_CSR = 0;
-		COMP2_CSR = 0;
-		TIM2_TISEL = 0;
-		break;
-#if defined IO_PA2 || defined IO_PA6
-	case 1:
-		COMP1_CSR = cr;
-		TIM2_TISEL = 0x1; // TI1=COMP1_OUT
-		break;
-#endif
-	case 2:
-		COMP2_CSR = cr;
-		TIM2_TISEL = 0x100; // TI2=COMP2_OUT
-		break;
-	}
+	(void)x;
 }
 
+// -----------------------------------------------------------------------------
+// io_serial(): the throttle wire switches from "PWM/DShot timer capture" to
+// "serial protocol" (when ESCape32 detects serial data).
+// -----------------------------------------------------------------------------
 void io_serial(void)
 {
-	RCC_APBRSTR2 = RCC_APBRSTR2_TIM15RST;
-	RCC_APBRSTR2 = 0;
-	nvic_clear_pending_irq(NVIC_TIM15_IRQ);
-	RCC_APBENR1 |= RCC_APBENR1_USART2EN;
-	GPIOA_AFRL = (GPIOA_AFRL & ~0xf00) | 0x100; // A2 (USART2_TX)
+	// Stop TIM3 channel 1 (throttle) but keep TIM3 running: hall may use it.
+	TIM3->DMAINTENR &= ~(TIM_CC1DE | TIM_CC1IE); // no DMA request / no interrupt from CH1
+	TIM3->CCER &= ~TIM_CC1E;					 // channel 1 capture off
+	DMA1_Channel6->CFGR = 0;					 // stop the throttle DMA channel
+	NVIC_ClearPendingIRQ(TIM3_IRQn);			 // forget an interrupt that was already waiting
+	RCC->APB1PCENR |= RCC_USART2EN;				 // clock for USART2
+	pin(GPIOA, 2, PIN_AF_PP);					 // USART2_TX on PA2 (default mapping)
 #ifdef IO_RXTX
-	GPIOA_AFRH |= 0x10000000; // A15 (USART2_RX)
+	pin(GPIOA, 3, PIN_FLOAT_IN); // USART2_RX on PA3 (only if the board has separate RX)
 #endif
-	DMAMUX1_CxCR(1) = DMAMUX_CxCR_DMAREQ_ID_USART2_RX;
-	DMAMUX1_CxCR(5) = DMAMUX_CxCR_DMAREQ_ID_USART2_TX;
 }
 
-#ifdef IO_PA6
+// -----------------------------------------------------------------------------
+// io_analog(): the throttle wire becomes an analog voltage input read by the ADC.
+// -----------------------------------------------------------------------------
 void io_analog(void)
 {
-	RCC_APBRSTR1 = RCC_APBRSTR1_TIM3RST;
-	RCC_APBRSTR1 = 0;
-	nvic_clear_pending_irq(NVIC_TIM34_IRQ);
-	GPIOA_PUPDR &= ~0x3000; // A6 (no pull-up/pull-down)
-	GPIOA_MODER |= 0x3000;	// A6 (analog)
+	TIM3->DMAINTENR &= ~(TIM_CC1DE | TIM_CC1IE); // stop timer capture on the throttle channel
+	TIM3->CCER &= ~TIM_CC1E;
+	DMA1_Channel6->CFGR = 0;
+	NVIC_ClearPendingIRQ(TIM3_IRQn);
+	pin(GPIOA, 6, PIN_ANALOG); // PA6 -> analog mode = ADC_IN6 (ANALOG_CHAN)
 }
-#else
-void io_analog(void)
-{
-	RCC_APBRSTR2 = RCC_APBRSTR2_TIM15RST;
-	RCC_APBRSTR2 = 0;
-	nvic_clear_pending_irq(NVIC_TIM15_IRQ);
-	GPIOA_PUPDR &= ~0x30; // A2 (no pull-up/pull-down)
-	GPIOA_MODER |= 0x30;  // A2 (analog)
-}
-#endif
 
+// -----------------------------------------------------------------------------
+// adctrig(): start ONE run of the ADC list. Called regularly from ESCape32's main loop.
+// -----------------------------------------------------------------------------
 void adctrig(void)
 {
-	if (DMA1_CCR(4) & DMA_CCR_EN)
+	if (DMA1_Channel1->CFGR & DMA_CFGR1_EN) // previous run still going? then skip
 		return;
-	DMA1_CNDTR(4) = len;
-	DMA1_CCR(4) = DMA_CCR_EN | DMA_CCR_TCIE | DMA_CCR_MINC | DMA_CCR_PSIZE_16BIT | DMA_CCR_MSIZE_16BIT;
-	ADC_CR(ADC1) = ADC_CR_ADSTART | ADC_CR_ADVREGEN;
+	DMA1_Channel1->CNTR = len;				   // number of 16-bit values the DMA must move
+	DMA1_Channel1->CFGR = DMA_CFGR1_EN		   // channel on
+						  | DMA_CFGR1_TCIE	   // interrupt when all values are copied
+						  | DMA_CFGR1_MINC	   // destination address +1 value after each copy (fills buf[])
+						  | DMA_CFGR1_PSIZE_0  // peripheral side = 16 bit
+						  | DMA_CFGR1_MSIZE_0; // memory side = 16 bit (DIR bit = 0: peripheral -> memory)
+	ADC1->CTLR2 |= ADC_SWSTART;				   // start converting the whole list now
 }
 
-void dma1_channel4_7_dmamux_isr(void)
+// -----------------------------------------------------------------------------
+// INTERRUPT HANDLERS. Names must equal the names in startup_ch32v20x_D6.S.
+// -----------------------------------------------------------------------------
+
+// ADC finished the whole list and DMA copied it into buf[] -> process the numbers.
+// (G0: dma1_channel4_7_dmamux_isr; CH32 gives every DMA channel its own vector.)
+IRQ void DMA1_Channel1_IRQHandler(void)
 {
-#ifdef LED_WS2812
-	if (DMA1_ISR & DMA_ISR_TCIF(6))
-	{
-		DMA1_IFCR = DMA_IFCR_CTCIF(6);
-		DMA1_CCR(6) = 0;
-		TIM16_DIER = 0;
-		TIM16_CR1 = 0;
-		return;
-	}
-#endif
-	DMA1_IFCR = DMA_IFCR_CTCIF(4);
-	DMA1_CCR(4) = 0;
+	DMA1->INTFCR = DMA_TCIF(1); // clear the "transfer complete" flag (else it fires forever)
+	DMA1_Channel1->CFGR = 0;	// switch the channel off until adctrig() arms it again
 	int i = 0, u = 0, v = 0, c = 0, a = 0;
+	// buf[] holds the values in the same order as the list built in init():
 #if SENS_CNT >= 2
-	c = buf[i++];
+	c = buf[i++]; // current
 #endif
 #if SENS_CNT >= 1
-	v = buf[i++];
+	v = buf[i++]; // voltage
 #endif
 #if SENS_CNT >= 3
-	u = buf[i++];
+	u = buf[i++]; // extra sensor
 #endif
 	if (ain)
-		a = buf[i++];
-	int r = ST_VREFINT_CAL * 3000 / buf[i + 1];
-	adcdata(TEMP_FUNC(buf[i] * r >> TEMP_SHIFT), u * r >> 12, v * r >> 12, c * r >> 12, a * r >> 12);
+		a = buf[i++]; // analog throttle
+	// buf[i] = temperature sensor raw value, buf[i+1] = internal 1.2 V reference raw value.
+	// If VDD is 3.3 V the reference reads 1200/3300*4096 ~= 1489; if VDD sags it reads higher.
+	// So r = VDD in millivolts. raw * r >> 12 = millivolts for ANY raw ADC value (">> 12" = "/ 4096").
+	int r = VREFINT_MV * 4096 / buf[i + 1];
+	adcdata(TEMP_FUNC(buf[i] * r >> 12), u * r >> 12, v * r >> 12, c * r >> 12, a * r >> 12);
 }
 
-void TIM3_IRQHandler(void)
+// TIM3 interrupt: throttle capture and/or hall sensor. One vector -> call both users.
+IRQ void TIM3_IRQHandler(void)
 {
-	tim3_io_isr();
+	tim3_io_isr(); // defined in the throttle code (config.h: iotim_isr)
 #ifdef HALL_MAP
-	tim3_hall_isr();
+	tim3_hall_isr(); // defined in the hall code (config.h: tim3_isr)
 #endif
 }
+
+// =============================================================================
+// NOTE: giving hall its own timer (TIM4)?  Yes, it is possible and cleaner.
+//   + No shared handler: TIM4_IRQHandler would belong to hall alone, and
+//     TIM3_IRQHandler would call only tim3_io_isr().
+//   - hall.c uses TIM3 registers today, so you must rewrite them for TIM4
+//     (enable RCC APB1 TIM4, NVIC TIM4_IRQn, change the pin).
+//   - TIM4 default pins are CH1 PB6, CH2 PB7, CH3 PB8, CH4 PB9. PB6/PB7 are the
+//     remapped USART1 pins here, so hall would use PB8 or PB9.
+//   - TIM4 DMA requests: CH1 -> DMA ch1 (the ADC's), CH2 -> ch4 (USART1_TX),
+//     CH3 -> ch5 (USART1_RX). Plain interrupts are fine; just don't use DMA for them.
+//   - Check the datasheet that the F8U6 package really has TIM4 and those pins.
+// Advice: keep TIM3 shared for the FIRST working port (fewer changes to upstream
+// ESCape32), move hall to TIM4 later if you want.
+// =============================================================================

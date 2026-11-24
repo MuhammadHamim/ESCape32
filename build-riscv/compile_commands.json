@@ -1,6 +1,60 @@
 [
 {
   "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj -c /home/hamim/work/ESCape32/mcu/CH32V203/config.c",
+  "file": "/home/hamim/work/ESCape32/mcu/CH32V203/config.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/preset.c.obj -c /home/hamim/work/ESCape32/mcu/CH32V203/preset.c",
+  "file": "/home/hamim/work/ESCape32/mcu/CH32V203/preset.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/preset.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/src/io.c.obj -c /home/hamim/work/ESCape32/src/io.c",
+  "file": "/home/hamim/work/ESCape32/src/io.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/src/io.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj -c /home/hamim/work/ESCape32/src/main.c",
+  "file": "/home/hamim/work/ESCape32/src/main.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj -c /home/hamim/work/ESCape32/src/prog.c",
+  "file": "/home/hamim/work/ESCape32/src/prog.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj -c /home/hamim/work/ESCape32/src/telem.c",
+  "file": "/home/hamim/work/ESCape32/src/telem.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj -c /home/hamim/work/ESCape32/src/util.c",
+  "file": "/home/hamim/work/ESCape32/src/util.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj -c /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core/core_riscv.c",
+  "file": "/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core/core_riscv.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
+  "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DCH32 -DCH32V203 -DCOMP_MAP=123 -DDEAD_TIME=35 -DSENS_MAP=0xA6 -DTARGET_NAME=\\\"CH32\\\" -DVOLT_MUL=110 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -I/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr -mabi=ilp32 -o CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj -c /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User/system_ch32v20x.c",
+  "file": "/home/hamim/work/ESCape32/mcu/CH32V203/WCH/User/system_ch32v20x.c",
+  "output": "CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj"
+},
+{
+  "directory": "/home/hamim/work/ESCape32/build-riscv",
   "command": "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-gcc -DAART1 -DANALOG_CHAN=6 -DANALOG_MAX=1440 -DANALOG_MIN=270 -DARM=0 -DAT32F4 -DAT32F421 -DCOMP_MAP=123 -DDEAD_TIME=0 -DDUTY_MIN=100 -DDUTY_SPUP=25 -DFULL_DUTY -DINPUT_MODE=1 -DIO_RXTX -DSTM32F0 -DTARGET_NAME=\\\"AART1\\\" -DVOLUME=0 -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/AT32F421 -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -mcpu=cortex-m4 -mthumb -o CMakeFiles/AART1-rev17.3.elf.dir/mcu/AT32F421/config.c.obj -c /home/hamim/work/ESCape32/mcu/AT32F421/config.c",
   "file": "/home/hamim/work/ESCape32/mcu/AT32F421/config.c",
   "output": "CMakeFiles/AART1-rev17.3.elf.dir/mcu/AT32F421/config.c.obj"
