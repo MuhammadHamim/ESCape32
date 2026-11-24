@@ -18,11 +18,11 @@
 #define iftim_isr TIM2_IRQHandler
 
 // --- IO (throttle) timer: TIM3 CH1 on PA6 -------------------------------
-// TIM3_CH3/PB0 conflicts with TIM1_CH2N/PB0, so throttle capture uses PA6.
-// TIM3_CH1 generates the throttle DMA request on DMA1 channel 6.
 #define IOTIM TIM3
+// TIM3_CH3/PB0 conflicts with TIM1_CH2N/PB0, so throttle capture uses CH1 PA6.
 #define IOTIM_IDR (GPIOA->INDR & (1u << 6)) // PA6
 #define iotim_isr tim3_io_isr
+// TIM3_CH1 generates the throttle DMA request on DMA1 channel 6.
 #define IOTIM_DMA 6 // TIM3_CH1 -> DMA1 channel 6
 #define iotim_dma_isr DMA1_Channel6_IRQHandler
 
