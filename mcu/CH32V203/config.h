@@ -7,7 +7,7 @@
 // Remap TIM2_RM = 10b (Partial Remap 2): CH1=PA0, CH2=PA1, while CH3_2/CH4_2 move to PB10/PB11,
 // disconnecting CC3/CC4 from PA2/PA3 so PA2/PA3 remain completely free for USART2.
 #define IFTIM TIM2
-#define IFTIM_XRES 2
+#define IFTIM_XRES 0 // CHANGED (was 2): TIM2 is 16-bit, main.c writes (1 << (IFTIM_XRES + 16)) - 1 to ARR, so XRES must be 0 (0.5us tick, 32ms max)
 #define IFTIM_ICFL 64
 #define IFTIM_ICMR (TIM2->CHCTLR1)
 // IC filter codes (CHCTLR1 IC1F = bits 7:4, IC2F = bits 15:12): 0x9 = DTF/8 N=8, 0x7 = DTF/4 N=8, 0x5 = DTF/2 N=8
@@ -17,7 +17,6 @@
 #define IFTIM_ICIE (TIM_CC1IE | TIM_CC2IE)
 #define IFTIM_ICR (sr & TIM_CC1IF ? TIM2->CH1CVR : TIM2->CH2CVR)
 #define IFTIM_OCR (TIM2->CH3CVR)
-#define iftim_isr TIM2_IRQHandler
 
 // --- IO (throttle) timer: TIM3 CH1_2 on PB4 (TIM3_RM = 10b partial remap) ---
 #define IOTIM TIM3
@@ -26,24 +25,49 @@
 #define iotim_isr tim3_io_isr
 // TIM3_CH1 generates the throttle DMA request on DMA1 channel 6.
 #define IOTIM_DMA 6 // TIM3_CH1_2 (PB4) -> DMA1 channel 6
-#define iotim_dma_isr DMA1_Channel6_IRQHandler
 
 // --- USART1 DMA (Primary Serial / Telemetry: USART1_RM = 1) ---
 #define USART1_TX_DMA 4 // PB6 (remapped) -> DMA1 CH4
-#define USART1_RX_DMA 5 // PB7 (remapped) -> DMA1 CH5
-#define usart1_isr USART1_IRQHandler
-#define usart1_tx_dma_isr DMA1_Channel4_IRQHandler
+#define USART1_RX_DMA 5 // DMA1 CH5. NOTE telem.c always uses half-duplex (HDSEL): only TX (PB6) is wired/used, PB7 is not touched
 
 // --- USART2 (Secondary Serial: Default Mapping on PA2/PA3) ---
 // NOTE: USART2_RX DMA shares DMA1 CH6 with TIM3_CH1 (IOTIM). Use IRQ-driven RX on USART2 while IOTIM DMA is active.
 #define USART2_TX_DMA 7 // PA2 -> DMA1 CH7
-#define usart2_isr USART2_IRQHandler
-#define usart2_tx_dma_isr DMA1_Channel7_IRQHandler
+
+// --- NEW: dead time (TIM1 BDTR.DTG ticks of CLK; defs.h converts to TIM_DTG) ---
+// 48 ticks @ 96 MHz = 0.5 us. TODO: set from your gate-driver / MOSFET datasheet. Must be < 128 here.
+#define DEAD_TIME 48
+
+// --- NEW: comparator wiring (defs.h turns this into COMP_IN1..3, used by compctl() in config.c) ---
+// 123 means: commutation phase code 1 -> board input 1 (phase A), 2 -> input 2 (B), 3 -> input 3 (C).
+// If the motor refuses to run, the usual cause is a wrong phase order: try 231, 312, 132, 321, 213.
+#define COMP_MAP 123
+
+// --- NEW: ADC sensors (defs.h derives SENS_CNT from the SIZE of SENS_MAP: 1 byte per sensor) ---
+// Order in the DMA buffer is: current (if 2+ sensors), voltage, extra/NTC (if 3 sensors).
+// SENS_MAP only has to have the right number of bytes. SENS_CHAN packs the ADC channel numbers, 5 bits each,
+// first listed sensor in the lowest bits.
+//   1 sensor : voltage            2 sensors: current + voltage       3 sensors: + NTC
+// TODO: PA5 = ADC_IN5 is the only sensing pin named in this file; replace with your real pins.
+#define SENS_MAP 0x05 // 1 sensor: voltage on ADC_IN5 (PA5)
+#define SENS_CHAN 5
+// Two-sensor example (current on IN6?? NOT a free pin on your board, shown for the syntax only):
+//   #define SENS_MAP 0x0605
+//   #define SENS_CHAN (6 | (5 << 5)) // current = IN6, voltage = IN5
+// Scaling, derived from main.c adcdata():
+//   volt[V/100] = v_mV * VOLT_MUL / 100      ->  VOLT_MUL = 10 * (R_top + R_bottom) / R_bottom
+//   curr[A/100] = c_mV * CURR_MUL / 10       ->  CURR_MUL = 1000 / sensitivity[mV per A]
+#define VOLT_MUL 110 // TODO: 110 assumes a 10k/1k divider (ratio 11). Set from YOUR divider.
+// #define CURR_MUL 100 // TODO if you add a current sensor: 100 assumes 10 mV/A
 
 // --- Handler aliases ---
-#define tim1_com_isr TIM1_TRG_COM_IRQHandler
+// REMOVED: iftim_isr, iotim_dma_isr, usart1_isr, usart1_tx_dma_isr, usart2_isr, usart2_tx_dma_isr, tim1_com_isr.
+// Vector handlers for those now live in config.c as IRQ-attributed wrappers (RISC-V needs the 'interrupt' attribute).
+// Only these two renames stay: TIM3 is shared by throttle and hall, so config.c's TIM3_IRQHandler calls both.
 // for Hall sensor
+#ifdef HALL_MAP
 #define tim3_isr tim3_hall_isr
+#endif
 
 /**
  * CH32V203C8U6 (QFN48X7, 7x7mm, 64KB Flash, 20KB SRAM, startup_ch32v20x_D6.S) Pinout & Resource Map:

@@ -22,15 +22,16 @@
 
 #ifdef CH32V203
 #include "ch32v20x.h"
+#include "ch32v203_adc.h"
 #include "ch32v20x_rcc.h"
 #include "ch32v20x_gpio.h"
+#include "ch32v20x_opa.h"
 #include "ch32v20x_tim.h"
 #include "ch32v20x_usart.h"
 #include "ch32v20x_dma.h"
 #include "ch32v20x_flash.h"
 #include "ch32v20x_iwdg.h"
 #include "ch32v20x_wwdg.h"
-
 #else
 
 #include <libopencmsis/core_cm3.h>
