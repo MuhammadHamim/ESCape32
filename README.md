@@ -56,6 +56,16 @@ Use `CMAKE_INSTALL_PREFIX` to specify an alternative system root:
 ```
 cmake -B build -D CMAKE_INSTALL_PREFIX=~/local
 ```
+# RISC-V CH32 Build command
+```
+cmake --build build-riscv --target CH32 -- -k 0
+```
+The -k 0 makes ninja keep going after a failure, so we see every file's errors at once. Each time, we'll fix the first error in a file, because later ones are often side effects.
+
+Configure reads `CMakeLists.txt` and generates the build files (`build-riscv/build.ninja`). The command is `cmake --preset riscv`. In VS Code it's "CMake: Delete Cache and Reconfigure".
+Build compiles using those generated files: `cmake --build build-riscv --target CH32`.
+
+
 
 To build all targets, run:
 

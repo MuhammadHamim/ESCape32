@@ -32,6 +32,7 @@
 #include "ch32v20x_flash.h"
 #include "ch32v20x_iwdg.h"
 #include "ch32v20x_wwdg.h"
+#include "compat.h"
 #else
 
 #include <libopencmsis/core_cm3.h>
@@ -154,6 +155,23 @@ void compctl(int x);
 void io_serial(void);
 void io_analog(void);
 void adctrig(void);
+void iopin(int out);
+void starttick(void); 
+#ifdef HALL_MAP
+void tim3_hall_isr(void);
+#endif
+void tim1_com_isr(void);
+void iftim_isr(void);
+void iotim_isr(void); // = tim3_io_isr via config.h
+void iotim_dma_isr(void);
+void usart1_isr(void);
+void usart1_tx_dma_isr(void);
+void sys_tick_handler(void);
+void pend_sv_handler(void);
+void hard_fault_handler(void);
+#ifdef IO_PA2
+void usart2_isr(void);
+#endif
 void adcdata(int t, int u, int v, int c, int a);
 void delay(uint32_t x, void (*f)(void));
 int execcmd(char *str);

@@ -1,10 +1,16 @@
 cmake_minimum_required(VERSION 3.15)
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+# line 3
+if(NOT CMAKE_TOOLCHAIN_FILE)
+	set(CMAKE_C_COMPILER arm-none-eabi-gcc)
+endif()
 set(CMAKE_C_COMPILER_WORKS 1)
 set(CMAKE_C_FLAGS "-Os -g")
 set(CMAKE_C_FLAGS_DEBUG "-Og")
 project(ESCape32 C)
+
+
 if(UNIX AND NOT CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT) # Use 'CMAKE_INSTALL_PREFIX' as alternative system root
 	set(CMAKE_PREFIX_PATH ${CMAKE_INSTALL_PREFIX})
 	include(GNUInstallDirs)
@@ -21,6 +27,12 @@ add_compile_options(-ffreestanding -ffunction-sections -fdata-sections -fsingle-
 add_link_options(-nostartfiles -Wl,--gc-sections)
 
 function(add_target name mcu)
+	if(CMAKE_SYSTEM_PROCESSOR STREQUAL "riscv" AND NOT mcu STREQUAL "CH32V203")
+		return()
+	endif()
+	if(NOT CMAKE_SYSTEM_PROCESSOR STREQUAL "riscv" AND mcu STREQUAL "CH32V203")
+		return()
+	endif()
 	include(mcu/${mcu}/config.cmake)
 	file(READ src/main.c main_c)
 	string(REGEX MATCH "REVISION [0-9]+" rev1 ${main_c})
@@ -51,15 +63,26 @@ function(add_target name mcu)
 	target_include_directories(${elf} PRIVATE src mcu/${mcu})
 	# ch32 include path
 	if(mcu STREQUAL "CH32V203")
-		target_include_directories(${elf} PRIVATE
+		target_include_directories(${elf} SYSTEM PRIVATE
 			mcu/CH32V203/WCH/Core
 			mcu/CH32V203/WCH/Peripheral/inc
 			mcu/CH32V203/WCH/User
 		)
+		#vendor .c file
+		set_source_files_properties(
+			mcu/CH32V203/WCH/Core/core_riscv.c
+			mcu/CH32V203/WCH/User/system_ch32v20x.c
+			PROPERTIES COMPILE_OPTIONS "-w"
+		)
 	endif()
 	target_compile_options(${elf} PRIVATE ${opts})
 	target_compile_definitions(${elf} PRIVATE ${mcu} ${name} ${defs} TARGET_NAME="${name}" ${ARGN})
-	target_link_options(${elf} PRIVATE -Wl,--defsym,FLASH_SIZE=${size} -T${CMAKE_CURRENT_SOURCE_DIR}/mcu/${mcu}/config.ld -T${CMAKE_CURRENT_SOURCE_DIR}/mcu/common.ld ${opts})
+	# CH32V203 (RISC-V) cannot use mcu/common.ld (it includes libopencm3's ARM-only cortex-m-generic.ld)
+	set(common_ld ${CMAKE_CURRENT_SOURCE_DIR}/mcu/common.ld)
+	if(mcu STREQUAL "CH32V203")
+		set(common_ld ${CMAKE_CURRENT_SOURCE_DIR}/mcu/CH32V203/common.ld)
+	endif()
+	target_link_options(${elf} PRIVATE -Wl,--defsym,FLASH_SIZE=${size} -T${CMAKE_CURRENT_SOURCE_DIR}/mcu/${mcu}/config.ld -T${common_ld} ${opts})
 	target_link_libraries(${elf} c_nano gcc nosys ${libs})
 	add_custom_command(
 		OUTPUT ${bin} ${hex}
@@ -71,9 +94,12 @@ function(add_target name mcu)
 	add_custom_target(flash-${name} COMMAND st-flash --reset --connect-under-reset --format ihex write ${hex} DEPENDS ${hex})
 endfunction()
 
-add_subdirectory(boot)
+# add_subdirectory(boot) -> only for ARM until you have a RISC-V bootloader
+if(NOT CMAKE_SYSTEM_PROCESSOR STREQUAL "riscv")
+	add_subdirectory(boot)
+endif()
 # CH32 TARGET
-add_target(CH32 CH32V203 DEAD_TIME=35 COMP_MAP=123 SENS_MAP=0xA6 VOLT_MUL=110)
+add_target(CH32 CH32V203)
 # CH32 TARGET
 add_target(AART1 AT32F421 DEAD_TIME=0 COMP_MAP=123 ARM=0 VOLUME=0 INPUT_MODE=1 ANALOG_CHAN=6 ANALOG_MIN=270 ANALOG_MAX=1440 DUTY_MIN=100 DUTY_SPUP=25 FULL_DUTY IO_RXTX)
 add_target(AIRBOT1 AT32F421 DEAD_TIME=66 COMP_MAP=321 SENS_MAP=0xA3A6 VOLT_MUL=74 CURR_MUL=30 LED_MAP=0xAFB3B4)

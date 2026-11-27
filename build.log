@@ -1,0 +1,363 @@
+[1/5] Building C object CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj
+FAILED: CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj 
+/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc -DCH32 -DCH32V203 -DTARGET_NAME=\"CH32\" -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr_zifencei -mabi=ilp32 -MD -MT CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj -MF CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj.d -o CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj -c /home/hamim/work/ESCape32/src/util.c
+/home/hamim/work/ESCape32/src/util.c: In function 'hsictl':
+/home/hamim/work/ESCape32/src/util.c:313:18: error: 'RCC_CR' undeclared (first use in this function); did you mean 'RCC_SW'?
+  313 |         int cr = RCC_CR;
+      |                  ^~~~~~
+      |                  RCC_SW
+/home/hamim/work/ESCape32/src/util.c:313:18: note: each undeclared identifier is reported only once for each function it appears in
+/home/hamim/work/ESCape32/src/util.c: In function 'savecfg':
+/home/hamim/work/ESCape32/src/util.c:535:9: error: 'FLASH_KEYR' undeclared (first use in this function)
+  535 |         FLASH_KEYR = FLASH_KEYR_KEY1;
+      |         ^~~~~~~~~~
+/home/hamim/work/ESCape32/src/util.c:535:22: error: 'FLASH_KEYR_KEY1' undeclared (first use in this function); did you mean 'FLASH_KEYR_FKEYR'?
+  535 |         FLASH_KEYR = FLASH_KEYR_KEY1;
+      |                      ^~~~~~~~~~~~~~~
+      |                      FLASH_KEYR_FKEYR
+/home/hamim/work/ESCape32/src/util.c:536:22: error: 'FLASH_KEYR_KEY2' undeclared (first use in this function); did you mean 'FLASH_KEYR_FKEYR'?
+  536 |         FLASH_KEYR = FLASH_KEYR_KEY2;
+      |                      ^~~~~~~~~~~~~~~
+      |                      FLASH_KEYR_FKEYR
+/home/hamim/work/ESCape32/src/util.c:537:9: error: 'FLASH_SR' undeclared (first use in this function); did you mean 'FLASH_BUSY'?
+  537 |         FLASH_SR = -1; // Clear errors
+      |         ^~~~~~~~
+      |         FLASH_BUSY
+/home/hamim/work/ESCape32/src/util.c:538:9: error: 'FLASH_CR' undeclared (first use in this function); did you mean 'FLASH_IRQn'?
+  538 |         FLASH_CR = FLASH_CR_PER;
+      |         ^~~~~~~~
+      |         FLASH_IRQn
+/home/hamim/work/ESCape32/src/util.c:538:20: error: 'FLASH_CR_PER' undeclared (first use in this function); did you mean 'FLASH_CTLR_PER'?
+  538 |         FLASH_CR = FLASH_CR_PER;
+      |                    ^~~~~~~~~~~~
+      |                    FLASH_CTLR_PER
+/home/hamim/work/ESCape32/src/util.c:121:23: error: 'FLASH_CR_START' undeclared (first use in this function); did you mean 'FLASH_CR_STRT'?
+  121 | #define FLASH_CR_STRT FLASH_CR_START
+      |                       ^~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/util.c:543:35: note: in expansion of macro 'FLASH_CR_STRT'
+  543 |         FLASH_CR = FLASH_CR_PER | FLASH_CR_STRT | ((uint32_t)(_cfg - _boot) >> 11) << FLASH_CR_PNB_SHIFT; // Erase page
+      |                                   ^~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/util.c:543:87: error: 'FLASH_CR_PNB_SHIFT' undeclared (first use in this function)
+  543 |         FLASH_CR = FLASH_CR_PER | FLASH_CR_STRT | ((uint32_t)(_cfg - _boot) >> 11) << FLASH_CR_PNB_SHIFT; // Erase page
+      |                                                                                       ^~~~~~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/util.c:545:27: error: 'FLASH_SR_BSY' undeclared (first use in this function); did you mean 'FLASH_R_BASE'?
+  545 |         while (FLASH_SR & FLASH_SR_BSY);
+      |                           ^~~~~~~~~~~~
+      |                           FLASH_R_BASE
+/home/hamim/work/ESCape32/src/util.c:546:20: error: 'FLASH_CR_PG' undeclared (first use in this function); did you mean 'FLASH_CTLR_PG'?
+  546 |         FLASH_CR = FLASH_CR_PG;
+      |                    ^~~~~~~~~~~
+      |                    FLASH_CTLR_PG
+/home/hamim/work/ESCape32/src/util.c:563:20: error: 'FLASH_CR_LOCK' undeclared (first use in this function); did you mean 'FLASH_CTLR_LOCK'?
+  563 |         FLASH_CR = FLASH_CR_LOCK;
+      |                    ^~~~~~~~~~~~~
+      |                    FLASH_CTLR_LOCK
+/home/hamim/work/ESCape32/src/util.c:568:25: error: 'FLASH_SR_PROGERR' undeclared (first use in this function); did you mean 'FLASH_STATR_PGERR'?
+  568 |         if (FLASH_SR & (FLASH_SR_PROGERR | FLASH_SR_WRPERR)) return 0;
+      |                         ^~~~~~~~~~~~~~~~
+      |                         FLASH_STATR_PGERR
+/home/hamim/work/ESCape32/src/util.c:568:44: error: 'FLASH_SR_WRPERR' undeclared (first use in this function); did you mean 'FLASH_STATR_PGERR'?
+  568 |         if (FLASH_SR & (FLASH_SR_PROGERR | FLASH_SR_WRPERR)) return 0;
+      |                                            ^~~~~~~~~~~~~~~
+      |                                            FLASH_STATR_PGERR
+[2/5] Building C object CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj
+FAILED: CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj 
+/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc -DCH32 -DCH32V203 -DTARGET_NAME=\"CH32\" -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr_zifencei -mabi=ilp32 -MD -MT CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj -MF CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj.d -o CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj -c /home/hamim/work/ESCape32/src/main.c
+/home/hamim/work/ESCape32/src/main.c: In function 'sys_tick_handler':
+/home/hamim/work/ESCape32/src/main.c:552:9: error: 'SCB_ICSR' undeclared (first use in this function)
+  552 |         SCB_ICSR = SCB_ICSR_PENDSVSET; // Continue with low priority
+      |         ^~~~~~~~
+/home/hamim/work/ESCape32/src/main.c:552:9: note: each undeclared identifier is reported only once for each function it appears in
+/home/hamim/work/ESCape32/src/main.c:552:20: error: 'SCB_ICSR_PENDSVSET' undeclared (first use in this function)
+  552 |         SCB_ICSR = SCB_ICSR_PENDSVSET; // Continue with low priority
+      |                    ^~~~~~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/main.c:553:9: error: 'SCB_SCR' undeclared (first use in this function)
+  553 |         SCB_SCR = 0;                               // Resume main loop
+      |         ^~~~~~~
+/home/hamim/work/ESCape32/src/main.c: In function 'main':
+/home/hamim/work/ESCape32/src/main.c:722:9: warning: implicit declaration of function 'nvic_set_priority'; did you mean 'NVIC_SetPriority'? [-Wimplicit-function-declaration]
+  722 |         nvic_set_priority(NVIC_PENDSV_IRQ, 0x80);
+      |         ^~~~~~~~~~~~~~~~~
+      |         NVIC_SetPriority
+/home/hamim/work/ESCape32/src/main.c:722:27: error: 'NVIC_PENDSV_IRQ' undeclared (first use in this function)
+  722 |         nvic_set_priority(NVIC_PENDSV_IRQ, 0x80);
+      |                           ^~~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/main.c:723:9: error: 'STK_RVR' undeclared (first use in this function)
+  723 |         STK_RVR = CLK_KHZ / 16 - 1; // 16kHz
+      |         ^~~~~~~
+/home/hamim/work/ESCape32/src/main.c:724:9: error: 'STK_CVR' undeclared (first use in this function)
+  724 |         STK_CVR = 0;
+      |         ^~~~~~~
+/home/hamim/work/ESCape32/src/main.c:725:9: error: 'STK_CSR' undeclared (first use in this function)
+  725 |         STK_CSR = STK_CSR_ENABLE | STK_CSR_TICKINT | STK_CSR_CLKSOURCE_AHB;
+      |         ^~~~~~~
+/home/hamim/work/ESCape32/src/main.c:725:19: error: 'STK_CSR_ENABLE' undeclared (first use in this function)
+  725 |         STK_CSR = STK_CSR_ENABLE | STK_CSR_TICKINT | STK_CSR_CLKSOURCE_AHB;
+      |                   ^~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/main.c:725:36: error: 'STK_CSR_TICKINT' undeclared (first use in this function)
+  725 |         STK_CSR = STK_CSR_ENABLE | STK_CSR_TICKINT | STK_CSR_CLKSOURCE_AHB;
+      |                                    ^~~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/main.c:725:54: error: 'STK_CSR_CLKSOURCE_AHB' undeclared (first use in this function)
+  725 |         STK_CSR = STK_CSR_ENABLE | STK_CSR_TICKINT | STK_CSR_CLKSOURCE_AHB;
+      |                                                      ^~~~~~~~~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/main.c:734:19: error: 'RCC_CSR' undeclared (first use in this function); did you mean 'RCC_CSSF'?
+  734 |         int csr = RCC_CSR;
+      |                   ^~~~~~~
+      |                   RCC_CSSF
+/home/hamim/work/ESCape32/src/main.c:735:19: error: 'RCC_CSR_RMVF' undeclared (first use in this function); did you mean 'RCC_RMVF'?
+  735 |         RCC_CSR = RCC_CSR_RMVF; // Clear reset flags
+      |                   ^~~~~~~~~~~~
+      |                   RCC_RMVF
+/home/hamim/work/ESCape32/src/main.c:736:22: error: 'RCC_CSR_IWDGRSTF' undeclared (first use in this function); did you mean 'RCC_IWDGRSTF'?
+  736 |         if (!(csr & (RCC_CSR_IWDGRSTF | RCC_CSR_WWDGRSTF)))
+      |                      ^~~~~~~~~~~~~~~~
+      |                      RCC_IWDGRSTF
+/home/hamim/work/ESCape32/src/main.c:736:41: error: 'RCC_CSR_WWDGRSTF' undeclared (first use in this function); did you mean 'RCC_WWDGRSTF'?
+  736 |         if (!(csr & (RCC_CSR_IWDGRSTF | RCC_CSR_WWDGRSTF)))
+      |                                         ^~~~~~~~~~~~~~~~
+      |                                         RCC_WWDGRSTF
+/home/hamim/work/ESCape32/src/main.c:999:17: error: 'SCB_SCR' undeclared (first use in this function)
+  999 |                 SCB_SCR = SCB_SCR_SLEEPONEXIT; // Suspend main loop
+      |                 ^~~~~~~
+/home/hamim/work/ESCape32/src/main.c:999:27: error: 'SCB_SCR_SLEEPONEXIT' undeclared (first use in this function)
+  999 |                 SCB_SCR = SCB_SCR_SLEEPONEXIT; // Suspend main loop
+      |                           ^~~~~~~~~~~~~~~~~~~
+[3/5] Building C object CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj
+FAILED: CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj 
+/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc -DCH32 -DCH32V203 -DTARGET_NAME=\"CH32\" -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr_zifencei -mabi=ilp32 -MD -MT CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj -MF CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj.d -o CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj -c /home/hamim/work/ESCape32/src/telem.c
+/home/hamim/work/ESCape32/src/telem.c: In function 'inittelem':
+/home/hamim/work/ESCape32/src/telem.c:40:9: error: 'USART1_RTOR' undeclared (first use in this function)
+   40 |         USART1_RTOR = 10;
+      |         ^~~~~~~~~~~
+/home/hamim/work/ESCape32/src/telem.c:40:9: note: each undeclared identifier is reported only once for each function it appears in
+/home/hamim/work/ESCape32/src/telem.c:41:9: error: 'USART1_CR2' undeclared (first use in this function); did you mean 'USART_Cmd'?
+   41 |         USART1_CR2 = USART_CR2_RTOEN;
+      |         ^~~~~~~~~~
+      |         USART_Cmd
+/home/hamim/work/ESCape32/src/telem.c:41:22: error: 'USART_CR2_RTOEN' undeclared (first use in this function); did you mean 'USART_CTLR2_STOP'?
+   41 |         USART1_CR2 = USART_CR2_RTOEN;
+      |                      ^~~~~~~~~~~~~~~
+      |                      USART_CTLR2_STOP
+/home/hamim/work/ESCape32/src/telem.c:46:25: error: 'USART1_BRR' undeclared (first use in this function); did you mean 'USART1_IRQn'?
+   46 |                         USART1_BRR = CLK_CNT(115200);
+      |                         ^~~~~~~~~~
+      |                         USART1_IRQn
+/home/hamim/work/ESCape32/src/telem.c:57:39: error: 'USART_CR2_RXINV' undeclared (first use in this function); did you mean 'USART_IT_RXNE'?
+   57 |                         USART1_CR2 |= USART_CR2_RXINV | USART_CR2_TXINV;
+      |                                       ^~~~~~~~~~~~~~~
+      |                                       USART_IT_RXNE
+/home/hamim/work/ESCape32/src/telem.c:57:57: error: 'USART_CR2_TXINV' undeclared (first use in this function)
+   57 |                         USART1_CR2 |= USART_CR2_RXINV | USART_CR2_TXINV;
+      |                                                         ^~~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/telem.c:58:25: error: 'GPIOB_PUPDR' undeclared (first use in this function)
+   58 |                         GPIOB_PUPDR = (GPIOB_PUPDR & ~0x3000) | 0x2000; // B6 (pull-down)
+      |                         ^~~~~~~~~~~
+/home/hamim/work/ESCape32/src/telem.c:78:17: error: 'USART1_CR3' undeclared (first use in this function); did you mean 'USART_Cmd'?
+   78 |                 USART1_CR3 = USART_CR3_HDSEL | USART_CR3_DMAT | USART_CR3_DMAR;
+      |                 ^~~~~~~~~~
+      |                 USART_Cmd
+/home/hamim/work/ESCape32/src/telem.c:78:30: error: 'USART_CR3_HDSEL' undeclared (first use in this function); did you mean 'USART_CTLR3_HDSEL'?
+   78 |                 USART1_CR3 = USART_CR3_HDSEL | USART_CR3_DMAT | USART_CR3_DMAR;
+      |                              ^~~~~~~~~~~~~~~
+      |                              USART_CTLR3_HDSEL
+/home/hamim/work/ESCape32/src/telem.c:78:48: error: 'USART_CR3_DMAT' undeclared (first use in this function); did you mean 'USART_CTLR3_DMAT'?
+   78 |                 USART1_CR3 = USART_CR3_HDSEL | USART_CR3_DMAT | USART_CR3_DMAR;
+      |                                                ^~~~~~~~~~~~~~
+      |                                                USART_CTLR3_DMAT
+/home/hamim/work/ESCape32/src/telem.c:78:65: error: 'USART_CR3_DMAR' undeclared (first use in this function); did you mean 'USART_CTLR3_DMAR'?
+   78 |                 USART1_CR3 = USART_CR3_HDSEL | USART_CR3_DMAT | USART_CR3_DMAR;
+      |                                                                 ^~~~~~~~~~~~~~
+      |                                                                 USART_CTLR3_DMAR
+/home/hamim/work/ESCape32/src/telem.c:79:17: error: 'USART1_CR1' undeclared (first use in this function); did you mean 'USART_Cmd'?
+   79 |                 USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_RE | USART_CR1_IDLEIE;
+      |                 ^~~~~~~~~~
+      |                 USART_Cmd
+/home/hamim/work/ESCape32/src/telem.c:79:30: error: 'USART_CR1_UE' undeclared (first use in this function); did you mean 'USART_CTLR1_UE'?
+   79 |                 USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_RE | USART_CR1_IDLEIE;
+      |                              ^~~~~~~~~~~~
+      |                              USART_CTLR1_UE
+/home/hamim/work/ESCape32/src/telem.c:79:45: error: 'USART_CR1_TE' undeclared (first use in this function); did you mean 'USART_CTLR1_TE'?
+   79 |                 USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_RE | USART_CR1_IDLEIE;
+      |                                             ^~~~~~~~~~~~
+      |                                             USART_CTLR1_TE
+/home/hamim/work/ESCape32/src/telem.c:79:60: error: 'USART_CR1_RE' undeclared (first use in this function); did you mean 'USART_CTLR1_RE'?
+   79 |                 USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_RE | USART_CR1_IDLEIE;
+      |                                                            ^~~~~~~~~~~~
+      |                                                            USART_CTLR1_RE
+/home/hamim/work/ESCape32/src/telem.c:79:75: error: 'USART_CR1_IDLEIE' undeclared (first use in this function); did you mean 'USART_CTLR1_IDLEIE'?
+   79 |                 USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_RE | USART_CR1_IDLEIE;
+      |                                                                           ^~~~~~~~~~~~~~~~
+      |                                                                           USART_CTLR1_IDLEIE
+/home/hamim/work/ESCape32/src/telem.c:84:9: warning: implicit declaration of function 'DMA_CPAR'; did you mean 'DMA1_CPAR'? [-Wimplicit-function-declaration]
+   84 |         DMA_CPAR(USART1_DMA_BASE, USART1_RX_DMA) = (uint32_t)&USART1_RDR;
+      |         ^~~~~~~~
+      |         DMA1_CPAR
+/home/hamim/work/ESCape32/src/telem.c:84:63: error: 'USART1_RDR' undeclared (first use in this function); did you mean 'USART1_IRQn'?
+   84 |         DMA_CPAR(USART1_DMA_BASE, USART1_RX_DMA) = (uint32_t)&USART1_RDR;
+      |                                                               ^~~~~~~~~~
+      |                                                               USART1_IRQn
+/home/hamim/work/ESCape32/src/telem.c:85:9: warning: implicit declaration of function 'DMA_CMAR'; did you mean 'DMA1_CMAR'? [-Wimplicit-function-declaration]
+   85 |         DMA_CMAR(USART1_DMA_BASE, USART1_RX_DMA) = (uint32_t)iobuf;
+      |         ^~~~~~~~
+      |         DMA1_CMAR
+/home/hamim/work/ESCape32/src/telem.c:85:50: error: lvalue required as left operand of assignment
+   85 |         DMA_CMAR(USART1_DMA_BASE, USART1_RX_DMA) = (uint32_t)iobuf;
+      |                                                  ^
+/home/hamim/work/ESCape32/src/telem.c:86:63: error: 'USART1_TDR' undeclared (first use in this function)
+   86 |         DMA_CPAR(USART1_DMA_BASE, USART1_TX_DMA) = (uint32_t)&USART1_TDR;
+      |                                                               ^~~~~~~~~~
+/home/hamim/work/ESCape32/src/telem.c:87:50: error: lvalue required as left operand of assignment
+   87 |         DMA_CMAR(USART1_DMA_BASE, USART1_TX_DMA) = (uint32_t)iobuf;
+      |                                                  ^
+/home/hamim/work/ESCape32/src/telem.c:88:9: warning: implicit declaration of function 'DMA_CNDTR'; did you mean 'DMA1_CNDTR'? [-Wimplicit-function-declaration]
+   88 |         DMA_CNDTR(USART1_DMA_BASE, USART1_RX_DMA) = sizeof iobuf;
+      |         ^~~~~~~~~
+      |         DMA1_CNDTR
+/home/hamim/work/ESCape32/src/telem.c:88:51: error: lvalue required as left operand of assignment
+   88 |         DMA_CNDTR(USART1_DMA_BASE, USART1_RX_DMA) = sizeof iobuf;
+      |                                                   ^
+/home/hamim/work/ESCape32/src/telem.c: In function 'usart1_isr':
+/home/hamim/work/ESCape32/src/telem.c:92:13: error: 'USART1_CR1' undeclared (first use in this function); did you mean 'USART_Cmd'?
+   92 |         if (USART1_CR1 & USART_CR1_TCIE) {
+      |             ^~~~~~~~~~
+      |             USART_Cmd
+/home/hamim/work/ESCape32/src/telem.c:92:26: error: 'USART_CR1_TCIE' undeclared (first use in this function); did you mean 'USART_CTLR1_TCIE'?
+   92 |         if (USART1_CR1 & USART_CR1_TCIE) {
+      |                          ^~~~~~~~~~~~~~
+      |                          USART_CTLR1_TCIE
+/home/hamim/work/ESCape32/src/telem.c:93:17: warning: implicit declaration of function 'DMA_CCR'; did you mean 'DMA1_CCR'? [-Wimplicit-function-declaration]
+   93 |                 DMA_CCR(USART1_DMA_BASE, USART1_TX_DMA) = 0;
+      |                 ^~~~~~~
+      |                 DMA1_CCR
+/home/hamim/work/ESCape32/src/telem.c:93:57: error: lvalue required as left operand of assignment
+   93 |                 DMA_CCR(USART1_DMA_BASE, USART1_TX_DMA) = 0;
+      |                                                         ^
+/home/hamim/work/ESCape32/src/telem.c:99:9: error: 'USART1_RQR' undeclared (first use in this function); did you mean 'USART1_IRQn'?
+   99 |         USART1_RQR = USART_RQR_RXFRQ; // Clear RXNE
+      |         ^~~~~~~~~~
+      |         USART1_IRQn
+/home/hamim/work/ESCape32/src/telem.c:99:22: error: 'USART_RQR_RXFRQ' undeclared (first use in this function)
+   99 |         USART1_RQR = USART_RQR_RXFRQ; // Clear RXNE
+      |                      ^~~~~~~~~~~~~~~
+/home/hamim/work/ESCape32/src/telem.c:100:9: error: 'USART1_ICR' undeclared (first use in this function); did you mean 'USART1_IRQn'?
+  100 |         USART1_ICR = USART_ICR_IDLECF | USART_ICR_ORECF | USART_ICR_RTOCF;
+      |         ^~~~~~~~~~
+      |         USART1_IRQn
+/home/hamim/work/ESCape32/src/telem.c:100:22: error: 'USART_ICR_IDLECF' undeclared (first use in this function); did you mean 'USART_IT_IDLE'?
+  100 |         USART1_ICR = USART_ICR_IDLECF | USART_ICR_ORECF | USART_ICR_RTOCF;
+      |                      ^~~~~~~~~~~~~~~~
+      |                      USART_IT_IDLE
+/home/hamim/work/ESCape32/src/telem.c:100:41: error: 'USART_ICR_ORECF' undeclared (first use in this function); did you mean 'USART_IT_ORE'?
+  100 |         USART1_ICR = USART_ICR_IDLECF | USART_ICR_ORECF | USART_ICR_RTOCF;
+      |                                         ^~~~~~~~~~~~~~~
+      |                                         USART_IT_ORE
+/home/hamim/work/ESCape32/src/telem.c:100:59: error: 'USART_ICR_RTOCF' undeclared (first use in this function); did you mean 'USART_IT_TC'?
+  100 |         USART1_ICR = USART_ICR_IDLECF | USART_ICR_ORECF | USART_ICR_RTOCF;
+      |                                                           ^~~~~~~~~~~~~~~
+      |                                                           USART_IT_TC
+/home/hamim/work/ESCape32/src/telem.c:102:49: error: lvalue required as left operand of assignment
+  102 |         DMA_CCR(USART1_DMA_BASE, USART1_RX_DMA) = 0;
+      |                                                 ^
+/home/hamim/work/ESCape32/src/telem.c:109:30: error: 'USART_ICR_TCCF' undeclared (first use in this function); did you mean 'USART_IT_TC'?
+  109 |                 USART1_ICR = USART_ICR_TCCF;
+      |                              ^~~~~~~~~~~~~~
+      |                              USART_IT_TC
+/home/hamim/work/ESCape32/src/telem.c:111:30: error: 'USART_CR1_UE' undeclared (first use in this function); did you mean 'USART_CTLR1_UE'?
+  111 |                 USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_TCIE;
+      |                              ^~~~~~~~~~~~
+      |                              USART_CTLR1_UE
+/home/hamim/work/ESCape32/src/telem.c:111:45: error: 'USART_CR1_TE' undeclared (first use in this function); did you mean 'USART_CTLR1_TE'?
+  111 |                 USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_TCIE;
+      |                                             ^~~~~~~~~~~~
+      |                                             USART_CTLR1_TE
+/home/hamim/work/ESCape32/src/telem.c:112:59: error: lvalue required as left operand of assignment
+  112 |                 DMA_CNDTR(USART1_DMA_BASE, USART1_TX_DMA) = len;
+      |                                                           ^
+/home/hamim/work/ESCape32/src/telem.c:113:57: error: lvalue required as left operand of assignment
+  113 |                 DMA_CCR(USART1_DMA_BASE, USART1_TX_DMA) = DMA_CCR_EN | DMA_CCR_DIR | DMA_CCR_MINC | DMA_CCR_PSIZE_8BIT | DMA_CCR_MSIZE_8BIT;
+      |                                                         ^
+/home/hamim/work/ESCape32/src/telem.c:120:52: error: 'USART_CR1_RE' undeclared (first use in this function); did you mean 'USART_CTLR1_RE'?
+  120 |         USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_RE | USART_CR1_RTOIE;
+      |                                                    ^~~~~~~~~~~~
+      |                                                    USART_CTLR1_RE
+/home/hamim/work/ESCape32/src/telem.c:120:67: error: 'USART_CR1_RTOIE' undeclared (first use in this function); did you mean 'USART_CTLR1_TCIE'?
+  120 |         USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_RE | USART_CR1_RTOIE;
+      |                                                                   ^~~~~~~~~~~~~~~
+      |                                                                   USART_CTLR1_TCIE
+/home/hamim/work/ESCape32/src/telem.c:122:51: error: lvalue required as left operand of assignment
+  122 |         DMA_CNDTR(USART1_DMA_BASE, USART1_RX_DMA) = sizeof iobuf;
+      |                                                   ^
+/home/hamim/work/ESCape32/src/telem.c:123:49: error: lvalue required as left operand of assignment
+  123 |         DMA_CCR(USART1_DMA_BASE, USART1_RX_DMA) = DMA_CCR_EN | DMA_CCR_MINC | DMA_CCR_PSIZE_8BIT | DMA_CCR_MSIZE_8BIT;
+      |                                                 ^
+/home/hamim/work/ESCape32/src/telem.c: In function 'usart1_tx_dma_isr':
+/home/hamim/work/ESCape32/src/telem.c:127:9: warning: implicit declaration of function 'DMA_IFCR'; did you mean 'DMA1_IFCR'? [-Wimplicit-function-declaration]
+  127 |         DMA_IFCR(USART1_DMA_BASE) = DMA_IFCR_CTCIF(USART1_TX_DMA);
+      |         ^~~~~~~~
+      |         DMA1_IFCR
+/home/hamim/work/ESCape32/src/telem.c:127:35: error: lvalue required as left operand of assignment
+  127 |         DMA_IFCR(USART1_DMA_BASE) = DMA_IFCR_CTCIF(USART1_TX_DMA);
+      |                                   ^
+/home/hamim/work/ESCape32/src/telem.c:128:49: error: lvalue required as left operand of assignment
+  128 |         DMA_CCR(USART1_DMA_BASE, USART1_TX_DMA) = 0;
+      |                                                 ^
+/home/hamim/work/ESCape32/src/telem.c:131:58: error: lvalue required as left operand of assignment
+  131 |                 DMA_CMAR(USART1_DMA_BASE, USART1_TX_DMA) = (uint32_t)ioend;
+      |                                                          ^
+/home/hamim/work/ESCape32/src/telem.c:132:59: error: lvalue required as left operand of assignment
+  132 |                 DMA_CNDTR(USART1_DMA_BASE, USART1_TX_DMA) = iopos - ioend;
+      |                                                           ^
+/home/hamim/work/ESCape32/src/telem.c:133:57: error: lvalue required as left operand of assignment
+  133 |                 DMA_CCR(USART1_DMA_BASE, USART1_TX_DMA) = DMA_CCR_EN | DMA_CCR_TCIE | DMA_CCR_DIR | DMA_CCR_MINC | DMA_CCR_PSIZE_8BIT | DMA_CCR_MSIZE_8BIT;
+      |                                                         ^
+/home/hamim/work/ESCape32/src/telem.c: In function 'hottfunc':
+/home/hamim/work/ESCape32/src/telem.c:282:9: error: 'USART1_CR1' undeclared (first use in this function); did you mean 'USART_Cmd'?
+  282 |         USART1_CR1 = USART_CR1_UE | USART_CR1_TE;
+      |         ^~~~~~~~~~
+      |         USART_Cmd
+/home/hamim/work/ESCape32/src/telem.c:282:22: error: 'USART_CR1_UE' undeclared (first use in this function); did you mean 'USART_CTLR1_UE'?
+  282 |         USART1_CR1 = USART_CR1_UE | USART_CR1_TE;
+      |                      ^~~~~~~~~~~~
+      |                      USART_CTLR1_UE
+/home/hamim/work/ESCape32/src/telem.c:282:37: error: 'USART_CR1_TE' undeclared (first use in this function); did you mean 'USART_CTLR1_TE'?
+  282 |         USART1_CR1 = USART_CR1_UE | USART_CR1_TE;
+      |                                     ^~~~~~~~~~~~
+      |                                     USART_CTLR1_TE
+/home/hamim/work/ESCape32/src/telem.c: In function 'sendkiss':
+/home/hamim/work/ESCape32/src/telem.c:299:51: error: lvalue required as left operand of assignment
+  299 |         DMA_CNDTR(USART1_DMA_BASE, USART1_TX_DMA) = 10;
+      |                                                   ^
+/home/hamim/work/ESCape32/src/telem.c:300:49: error: lvalue required as left operand of assignment
+  300 |         DMA_CCR(USART1_DMA_BASE, USART1_TX_DMA) = DMA_CCR_EN | DMA_CCR_TCIE | DMA_CCR_DIR | DMA_CCR_MINC | DMA_CCR_PSIZE_8BIT | DMA_CCR_MSIZE_8BIT;
+      |                                                 ^
+/home/hamim/work/ESCape32/src/telem.c: In function 'sendtelem':
+/home/hamim/work/ESCape32/src/telem.c:369:17: error: 'USART1_TDR' undeclared (first use in this function)
+  369 |                 USART1_TDR = *iopos++; // Clear TXE+TC
+      |                 ^~~~~~~~~~
+/home/hamim/work/ESCape32/src/telem.c:370:37: error: 'USART1_CR1' undeclared (first use in this function); did you mean 'USART_Cmd'?
+  370 |                 if (iopos == ioend) USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_TCIE;
+      |                                     ^~~~~~~~~~
+      |                                     USART_Cmd
+/home/hamim/work/ESCape32/src/telem.c:370:50: error: 'USART_CR1_UE' undeclared (first use in this function); did you mean 'USART_CTLR1_UE'?
+  370 |                 if (iopos == ioend) USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_TCIE;
+      |                                                  ^~~~~~~~~~~~
+      |                                                  USART_CTLR1_UE
+/home/hamim/work/ESCape32/src/telem.c:370:65: error: 'USART_CR1_TE' undeclared (first use in this function); did you mean 'USART_CTLR1_TE'?
+  370 |                 if (iopos == ioend) USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_TCIE;
+      |                                                                 ^~~~~~~~~~~~
+      |                                                                 USART_CTLR1_TE
+/home/hamim/work/ESCape32/src/telem.c:370:80: error: 'USART_CR1_TCIE' undeclared (first use in this function); did you mean 'USART_CTLR1_TCIE'?
+  370 |                 if (iopos == ioend) USART1_CR1 = USART_CR1_UE | USART_CR1_TE | USART_CR1_TCIE;
+      |                                                                                ^~~~~~~~~~~~~~
+      |                                                                                USART_CTLR1_TCIE
+/home/hamim/work/ESCape32/src/telem.c: In function 'sendtelemdata':
+/home/hamim/work/ESCape32/src/telem.c:414:50: error: lvalue required as left operand of assignment
+  414 |         DMA_CMAR(USART1_DMA_BASE, USART1_TX_DMA) = (uint32_t)iobuf;
+      |                                                  ^
+/home/hamim/work/ESCape32/src/telem.c:415:51: error: lvalue required as left operand of assignment
+  415 |         DMA_CNDTR(USART1_DMA_BASE, USART1_TX_DMA) = len;
+      |                                                   ^
+/home/hamim/work/ESCape32/src/telem.c:416:49: error: lvalue required as left operand of assignment
+  416 |         DMA_CCR(USART1_DMA_BASE, USART1_TX_DMA) = DMA_CCR_EN | DMA_CCR_TCIE | DMA_CCR_DIR | DMA_CCR_MINC | DMA_CCR_PSIZE_8BIT | DMA_CCR_MSIZE_8BIT;
+      |                                                 ^
+ninja: build stopped: cannot make progress due to previous errors.

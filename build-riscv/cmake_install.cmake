@@ -34,12 +34,7 @@ endif()
 
 # Set default install directory permissions.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-none-elf-objdump")
-endif()
-
-if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  # Include the install script for the subdirectory.
-  include("/home/hamim/work/ESCape32/build-riscv/boot/cmake_install.cmake")
+  set(CMAKE_OBJDUMP "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-objdump")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

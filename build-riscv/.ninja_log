@@ -1,10 +1,8 @@
 # ninja log v5
-16	214	1794893547053087460	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj	192b06802d6468bd
-15	2299	1794298681123988921	CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj	c122fbd1bd5d1f6
-9	132	1794298421351933645	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj	359afd7709924a10
-21	207	1794298679027931046	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj	5c255dcc5b9769c4
-8	36	1794298919377408650	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/preset.c.obj	ff4ffea6d4eb6f81
-29	254	1795499321543990142	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj	77d10963d207e5b2
-29	276	1795499321567990142	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj	b8a1d587c565ff59
-5	271	1795499398414888613	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj	192b06802d6468bd
-6	1471	1795499399613621592	CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj	c5aba1f644bb285b
+10	47	1795762990059715272	build.ninja	8c808a5d33fb6ea3
+4	78	1795762637983296162	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/preset.c.obj	dbf46dde64201a7d
+4	249	1795762638152422173	CMakeFiles/CH32-rev17.3.elf.dir/src/io.c.obj	315f1d32d9bdc230
+5	100	1795762638005729896	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/Core/core_riscv.c.obj	52568c527d2f89cc
+6	125	1795762638028155602	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj	d8e9b0e868e1cea8
+3	192	1795762638092293187	CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/config.c.obj	9f0263e79345e057
+4	570	1795762638472720211	CMakeFiles/CH32-rev17.3.elf.dir/src/prog.c.obj	9f4858efcfc966d2

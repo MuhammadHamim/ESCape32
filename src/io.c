@@ -89,7 +89,9 @@ void iotim2_isr(void)
 void initio(void)
 {
 	ioirq = entryirq;
-	TIM_BDTR(IOTIM) = TIM_BDTR_MOE;
+#ifndef CH32V203
+	TIM_BDTR(IOTIM) = TIM_BDTR_MOE; // TIM3 has no BDTR on CH32V203
+#endif
 	TIM_CCMR1(IOTIM) = TIM_CCMR1_CC1S_IN_TI1 | TIM_CCMR1_IC1F_CK_INT_N_8;
 	TIM_SMCR(IOTIM) = TIM_SMCR_SMS_RM | TIM_SMCR_TS_TI1FP1; // Reset on rising edge on TI1
 	TIM_CCER(IOTIM) = TIM_CCER_CC1E;						// IC1 on rising edge on TI1
@@ -370,6 +372,7 @@ static void dshotreset(void)
 	TIM_DIER(IOTIM) = 0;
 	TIM_CR2(IOTIM) = 0;
 #endif
+	iopin(0); // <-- ADD
 	DMA1_CCR(IOTIM_DMA) = 0;
 	DMA1_CMAR(IOTIM_DMA) = (uint32_t)iobuf;
 	DMA1_CNDTR(IOTIM_DMA) = 32;
@@ -456,7 +459,8 @@ void iotim_dma_isr(void)
 		TIM_EGR(IOTIM) = TIM_EGR_UG;								   // Update registers and trigger DMA to preload the first bit
 		TIM_EGR(IOTIM);												   // Ensure UEV has happened
 		TIM_ARR(IOTIM) = dshotarr2;									   // Preload bit time
-		TIM_CCER(IOTIM) = TIM_CCER_CC1E;							   // Enable output
+		TIM_CCER(IOTIM) = TIM_CCER_CC1E;
+		iopin(1);	 // Enable output
 		__enable_irq();
 	}
 	int x = 0;
@@ -1174,6 +1178,7 @@ static void cliirq(void)
 		}
 		TIM3_SMCR = TIM_SMCR_SMS_RM | TIM_SMCR_TS_TI1F_ED; // Reset on any edge on TI1
 		TIM3_CCER = TIM_CCER_CC2E | TIM_CCER_CC2P;		   // IC2 on falling edge on TI1
+		iopin(0);
 		TIM3_SR = ~TIM_SR_CC2IF;
 		TIM3_DIER = TIM_DIER_CC2IE;
 		TIM3_CCR1 = CLK_CNT(76800); // Half-bit time
@@ -1199,6 +1204,7 @@ static void cliirq(void)
 		if (!p || i == sizeof iobuf - 1)
 			WWDG_CR = WWDG_CR_WDGA; // Data error
 		TIM3_SR = ~TIM_SR_CC2IF;
+		iopin(1);
 		TIM3_DIER = TIM_DIER_CC2IE;
 		n = 0;
 		if (b == '\b' || b == 0x7f)

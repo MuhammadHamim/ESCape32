@@ -1,6 +1,6 @@
-set(CMAKE_HOST_SYSTEM "Linux-6.18.54.1-microsoft-standard-WSL2")
+set(CMAKE_HOST_SYSTEM "Linux-6.18.58.1-microsoft-standard-WSL2")
 set(CMAKE_HOST_SYSTEM_NAME "Linux")
-set(CMAKE_HOST_SYSTEM_VERSION "6.18.54.1-microsoft-standard-WSL2")
+set(CMAKE_HOST_SYSTEM_VERSION "6.18.58.1-microsoft-standard-WSL2")
 set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")
 
 include("/home/hamim/work/ESCape32/cmake/ch32v2.cmake")

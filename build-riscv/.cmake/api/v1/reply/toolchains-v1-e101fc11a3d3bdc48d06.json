@@ -1,0 +1,37 @@
+{
+	"kind" : "toolchains",
+	"toolchains" : 
+	[
+		{
+			"compiler" : 
+			{
+				"id" : "GNU",
+				"implicit" : 
+				{
+					"includeDirectories" : 
+					[
+						"/home/hamim/work/ESCape32/tools/riscv-gcc/lib/gcc/riscv-wch-elf/12.2.0/include",
+						"/home/hamim/work/ESCape32/tools/riscv-gcc/lib/gcc/riscv-wch-elf/12.2.0/include-fixed",
+						"/home/hamim/work/ESCape32/tools/riscv-gcc/riscv-wch-elf/include"
+					],
+					"linkDirectories" : [],
+					"linkFrameworkDirectories" : [],
+					"linkLibraries" : []
+				},
+				"path" : "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc",
+				"version" : "12.2.0"
+			},
+			"language" : "C",
+			"sourceFileExtensions" : 
+			[
+				"c",
+				"m"
+			]
+		}
+	],
+	"version" : 
+	{
+		"major" : 1,
+		"minor" : 0
+	}
+}

@@ -1,0 +1,28 @@
+CMakeFiles/CH32-rev17.3.elf.dir/mcu/CH32V203/WCH/User/system_ch32v20x.c.obj: \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User/system_ch32v20x.c \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x.h \
+ /home/hamim/work/ESCape32/tools/riscv-gcc/lib/gcc/riscv-wch-elf/12.2.0/include/stdint.h \
+ /home/hamim/work/ESCape32/tools/riscv-gcc/lib/gcc/riscv-wch-elf/12.2.0/include/stdint-gcc.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core/core_riscv.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User/system_ch32v20x.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User/ch32v20x_conf.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_adc.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_bkp.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_can.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_crc.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_dbgmcu.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_dma.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_exti.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_flash.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_gpio.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_i2c.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_iwdg.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_pwr.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_rcc.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_rtc.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_spi.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_tim.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_usart.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_wwdg.h \
+ /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc/ch32v20x_misc.h

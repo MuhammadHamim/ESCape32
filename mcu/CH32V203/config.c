@@ -48,22 +48,6 @@
 	IRQ void name(void); \
 	IRQ void name(void)
 
-// Handlers that live in the portable code:
-void iftim_isr(void);		  // main.c  BEMF zero-cross capture
-void tim1_com_isr(void);	  // main.c  commutation event
-void tim3_io_isr(void);		  // io.c    (config.h: iotim_isr -> tim3_io_isr)
-void iotim_dma_isr(void);	  // io.c    DSHOT DMA
-void usart1_isr(void);		  // telem.c
-void usart1_tx_dma_isr(void); // telem.c
-void sys_tick_handler(void);  // main.c
-void pend_sv_handler(void);	  // main.c
-void hard_fault_handler(void);
-#ifdef IO_PA2
-void usart2_isr(void); // io.c
-#endif
-#ifdef HALL_MAP
-void tim3_hall_isr(void); // main.c (config.h: tim3_isr -> tim3_hall_isr)
-#endif
 
 // Interrupt priorities, smaller = more urgent.  Commutation must never wait.
 #define PRIO_COMM 0x00 // TIM1 COM, TIM2 capture
@@ -403,7 +387,13 @@ void io_serial(void)
 void io_analog(void)
 {
 }
-
+void iopin(int out)
+{
+	if (out)
+		pin(GPIOB, 4, PIN_AF_OD); // timer drives the wire, open-drain; the FC/adapter pull-up makes "high"
+	else
+		pullup(GPIOB, 4); // listen, with pull-up
+}
 // -----------------------------------------------------------------------------
 // ADC
 // -----------------------------------------------------------------------------

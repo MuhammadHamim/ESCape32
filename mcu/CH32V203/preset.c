@@ -1,0 +1,1 @@
+typedef int ch32v203_preset_unused; // keeps the file non-empty for -Wpedantic

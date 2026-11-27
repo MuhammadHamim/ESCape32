@@ -1,0 +1,78 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "ESCape32",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "CH32::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CH32-e3dd3245a8510bb470cf.json",
+					"name" : "CH32",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "CH32-rev17.3.elf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-CH32-rev17.3.elf-86ba92cfbca49701bcd8.json",
+					"name" : "CH32-rev17.3.elf",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "flash-CH32::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-flash-CH32-e3edb7b1c528f79359a9.json",
+					"name" : "flash-CH32",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/hamim/work/ESCape32/build-riscv",
+		"source" : "/home/hamim/work/ESCape32"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

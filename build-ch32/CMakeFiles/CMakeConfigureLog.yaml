@@ -1,0 +1,188 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:228 (message)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      The target system is: Generic -  - riscv
+      The host system is: Linux - 6.18.58.1-microsoft-standard-WSL2 - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc 
+      Build flags: -Os;-g
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/hamim/work/ESCape32/build-ch32/CMakeFiles/3.28.3/CompilerIdC/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/hamim/work/ESCape32/build-ch32/CMakeFiles/CMakeScratch/TryCompile-H3rQKw"
+      binary: "/home/hamim/work/ESCape32/build-ch32/CMakeFiles/CMakeScratch/TryCompile-H3rQKw"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-Os -g"
+      CMAKE_C_FLAGS_DEBUG: "-Og"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/hamim/work/ESCape32/build-ch32/CMakeFiles/CMakeScratch/TryCompile-H3rQKw'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ec489/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ec489.dir/build.make CMakeFiles/cmTC_ec489.dir/build
+        gmake[1]: Entering directory '/home/hamim/work/ESCape32/build-ch32/CMakeFiles/CMakeScratch/TryCompile-H3rQKw'
+        Building C object CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj
+        /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc   -Os -g    -v -o CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc
+        Target: riscv-wch-elf
+        Configured with: /Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/sources/gcc-12.2.0/configure --prefix=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc --prefix=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc --infodir=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/share/doc/info --mandir=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/share/doc/man --htmldir=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/share/doc/html --pdfdir=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/share/doc/pdf --build=x86_64-pc-linux-gnu --host=x86_64-pc-linux-gnu --target=riscv-wch-elf --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libsanitizer --disable-libssp --disable-nls --disable-shared --disable-threads --disable-tls --enable-checking=release --enable-languages=c,c++,fortran --with-gmp=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/libs --with-newlib --with-pkgversion='xPack GNU RISC-V Embedded GCC x86_64' --with-gnu-as --with-gnu-ld --with-system-zlib --with-sysroot=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/riscv-wch-elf --with-native-system-header-dir=/include --with-abi=ilp32 --with-arch=rv32imac --with-isa-spec=2.2 --enable-multilib
+        Thread model: single
+        Supported LTO compression algorithms: zlib
+        gcc version 12.2.0 (xPack GNU RISC-V Embedded GCC x86_64) 
+        COLLECT_GCC_OPTIONS='-Os' '-g' '-v' '-o' 'CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj' '-c' '-march=rv32imac' '-mabi=ilp32' '-misa-spec=2.2' '-march=rv32imac' '-dumpdir' 'CMakeFiles/cmTC_ec489.dir/'
+         /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../libexec/gcc/riscv-wch-elf/12.2.0/cc1 -quiet -v -iprefix /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/ -isysroot /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../riscv-wch-elf /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_ec489.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imac -mabi=ilp32 -misa-spec=2.2 -march=rv32imac -g -Os -version -o /tmp/ccV0RRF0.s
+        GNU C17 (xPack GNU RISC-V Embedded GCC x86_64) version 12.2.0 (riscv-wch-elf)
+        	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring duplicate directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/../../lib/gcc/riscv-wch-elf/12.2.0/include"
+        ignoring nonexistent directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../riscv-wch-elf/usr/local/include"
+        ignoring duplicate directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/../../lib/gcc/riscv-wch-elf/12.2.0/include-fixed"
+        ignoring duplicate directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/../../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/include"
+        ignoring duplicate directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../riscv-wch-elf/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/include
+         /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/include-fixed
+         /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/include
+        End of search list.
+        GNU C17 (xPack GNU RISC-V Embedded GCC x86_64) version 12.2.0 (riscv-wch-elf)
+        	compiled by GNU C version 11.2.0, GMP version 6.2.1, MPFR version 4.1.0, MPC version 1.2.1, isl version isl-0.24-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 367ac941dd91d1a44ed30ff978a231d6
+        COLLECT_GCC_OPTIONS='-Os' '-g' '-v' '-o' 'CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj' '-c' '-march=rv32imac' '-mabi=ilp32' '-misa-spec=2.2' '-march=rv32imac' '-dumpdir' 'CMakeFiles/cmTC_ec489.dir/'
+         /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/bin/as -v --gdwarf-5 --traditional-format -march=rv32imac -march=rv32imac -mabi=ilp32 -misa-spec=2.2 -o CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj /tmp/ccV0RRF0.s
+        GNU assembler version 2.38 (riscv-wch-elf) using BFD version (xPack GNU RISC-V Embedded GCC x86_64) 2.38
+        COMPILER_PATH=/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../libexec/gcc/riscv-wch-elf/12.2.0/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../libexec/gcc/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/bin/
+        LIBRARY_PATH=/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/lib/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../riscv-wch-elf/lib/
+        COLLECT_GCC_OPTIONS='-Os' '-g' '-v' '-o' 'CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj' '-c' '-march=rv32imac' '-mabi=ilp32' '-misa-spec=2.2' '-march=rv32imac' '-dumpdir' 'CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.'
+        Linking C static library libcmTC_ec489.a
+        /usr/bin/cmake -P CMakeFiles/cmTC_ec489.dir/cmake_clean_target.cmake
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec489.dir/link.txt --verbose=1
+        /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-ar qc libcmTC_ec489.a CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj
+        /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-ranlib libcmTC_ec489.a
+        gmake[1]: Leaving directory '/home/hamim/work/ESCape32/build-ch32/CMakeFiles/CMakeScratch/TryCompile-H3rQKw'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/include]
+          add: [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/include-fixed]
+          add: [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/include]
+        end of search list found
+        collapse include dir [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/include] ==> [/home/hamim/work/ESCape32/tools/riscv-gcc/lib/gcc/riscv-wch-elf/12.2.0/include]
+        collapse include dir [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/include-fixed] ==> [/home/hamim/work/ESCape32/tools/riscv-gcc/lib/gcc/riscv-wch-elf/12.2.0/include-fixed]
+        collapse include dir [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/include] ==> [/home/hamim/work/ESCape32/tools/riscv-gcc/riscv-wch-elf/include]
+        implicit include dirs: [/home/hamim/work/ESCape32/tools/riscv-gcc/lib/gcc/riscv-wch-elf/12.2.0/include;/home/hamim/work/ESCape32/tools/riscv-gcc/lib/gcc/riscv-wch-elf/12.2.0/include-fixed;/home/hamim/work/ESCape32/tools/riscv-gcc/riscv-wch-elf/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/usr/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:7 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(riscv-wch-elf-ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/hamim/work/ESCape32/build-ch32/CMakeFiles/CMakeScratch/TryCompile-H3rQKw']
+        ignore line: []
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ec489/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_ec489.dir/build.make CMakeFiles/cmTC_ec489.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/hamim/work/ESCape32/build-ch32/CMakeFiles/CMakeScratch/TryCompile-H3rQKw']
+        ignore line: [Building C object CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc   -Os -g    -v -o CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc]
+        ignore line: [Target: riscv-wch-elf]
+        ignore line: [Configured with: /Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/sources/gcc-12.2.0/configure --prefix=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc --prefix=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc --infodir=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/share/doc/info --mandir=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/share/doc/man --htmldir=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/share/doc/html --pdfdir=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/share/doc/pdf --build=x86_64-pc-linux-gnu --host=x86_64-pc-linux-gnu --target=riscv-wch-elf --disable-libgomp --disable-libmudflap --disable-libquadmath --disable-libsanitizer --disable-libssp --disable-nls --disable-shared --disable-threads --disable-tls --enable-checking=release --enable-languages=c,c++,fortran --with-gmp=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/libs --with-newlib --with-pkgversion='xPack GNU RISC-V Embedded GCC x86_64' --with-gnu-as --with-gnu-ld --with-system-zlib --with-sysroot=/Host/home/wch/Work/riscv-wch-elf-gcc-12.2.0-1/linux-x64/install/riscv-wch-elf-gcc/riscv-wch-elf --with-native-system-header-dir=/include --with-abi=ilp32 --with-arch=rv32imac --with-isa-spec=2.2 --enable-multilib]
+        ignore line: [Thread model: single]
+        ignore line: [Supported LTO compression algorithms: zlib]
+        ignore line: [gcc version 12.2.0 (xPack GNU RISC-V Embedded GCC x86_64) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-Os' '-g' '-v' '-o' 'CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj' '-c' '-march=rv32imac' '-mabi=ilp32' '-misa-spec=2.2' '-march=rv32imac' '-dumpdir' 'CMakeFiles/cmTC_ec489.dir/']
+        ignore line: [ /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../libexec/gcc/riscv-wch-elf/12.2.0/cc1 -quiet -v -iprefix /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/ -isysroot /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../riscv-wch-elf /usr/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_ec489.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -march=rv32imac -mabi=ilp32 -misa-spec=2.2 -march=rv32imac -g -Os -version -o /tmp/ccV0RRF0.s]
+        ignore line: [GNU C17 (xPack GNU RISC-V Embedded GCC x86_64) version 12.2.0 (riscv-wch-elf)]
+        ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring duplicate directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/../../lib/gcc/riscv-wch-elf/12.2.0/include"]
+        ignore line: [ignoring nonexistent directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../riscv-wch-elf/usr/local/include"]
+        ignore line: [ignoring duplicate directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/../../lib/gcc/riscv-wch-elf/12.2.0/include-fixed"]
+        ignore line: [ignoring duplicate directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/../../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/include"]
+        ignore line: [ignoring duplicate directory "/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../riscv-wch-elf/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/include]
+        ignore line: [ /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/include-fixed]
+        ignore line: [ /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C17 (xPack GNU RISC-V Embedded GCC x86_64) version 12.2.0 (riscv-wch-elf)]
+        ignore line: [	compiled by GNU C version 11.2.0  GMP version 6.2.1  MPFR version 4.1.0  MPC version 1.2.1  isl version isl-0.24-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 367ac941dd91d1a44ed30ff978a231d6]
+        ignore line: [COLLECT_GCC_OPTIONS='-Os' '-g' '-v' '-o' 'CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj' '-c' '-march=rv32imac' '-mabi=ilp32' '-misa-spec=2.2' '-march=rv32imac' '-dumpdir' 'CMakeFiles/cmTC_ec489.dir/']
+        ignore line: [ /home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/bin/as -v --gdwarf-5 --traditional-format -march=rv32imac -march=rv32imac -mabi=ilp32 -misa-spec=2.2 -o CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj /tmp/ccV0RRF0.s]
+        ignore line: [GNU assembler version 2.38 (riscv-wch-elf) using BFD version (xPack GNU RISC-V Embedded GCC x86_64) 2.38]
+        ignore line: [COMPILER_PATH=/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../libexec/gcc/riscv-wch-elf/12.2.0/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../libexec/gcc/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/bin/]
+        ignore line: [LIBRARY_PATH=/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../lib/gcc/riscv-wch-elf/12.2.0/../../../../riscv-wch-elf/lib/:/home/hamim/work/ESCape32/tools/riscv-gcc/bin/../riscv-wch-elf/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-Os' '-g' '-v' '-o' 'CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj' '-c' '-march=rv32imac' '-mabi=ilp32' '-misa-spec=2.2' '-march=rv32imac' '-dumpdir' 'CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C static library libcmTC_ec489.a]
+        ignore line: [/usr/bin/cmake -P CMakeFiles/cmTC_ec489.dir/cmake_clean_target.cmake]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ec489.dir/link.txt --verbose=1]
+        ignore line: [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-ar qc libcmTC_ec489.a CMakeFiles/cmTC_ec489.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-ranlib libcmTC_ec489.a]
+        ignore line: [gmake[1]: Leaving directory '/home/hamim/work/ESCape32/build-ch32/CMakeFiles/CMakeScratch/TryCompile-H3rQKw']
+        ignore line: []
+        ignore line: []
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+...
