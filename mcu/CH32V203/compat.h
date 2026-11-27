@@ -12,7 +12,7 @@
 //
 // Included from common.h (CH32V203 branch), AFTER the WCH SDK headers.
 // This first version covers io.c.  main.c / telem.c / util.c will need more
-// lines (TIM1_*, USART1_*, FLASH_*, RCC_*); add them when you port those files.
+// lines (TIM1_*, USART1_*, FLASH_*, RCC_*);
 // =============================================================================
 #pragma once
 

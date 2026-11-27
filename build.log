@@ -1,66 +1,4 @@
-[1/5] Building C object CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj
-FAILED: CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj 
-/home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc -DCH32 -DCH32V203 -DTARGET_NAME=\"CH32\" -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr_zifencei -mabi=ilp32 -MD -MT CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj -MF CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj.d -o CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj -c /home/hamim/work/ESCape32/src/util.c
-/home/hamim/work/ESCape32/src/util.c: In function 'hsictl':
-/home/hamim/work/ESCape32/src/util.c:313:18: error: 'RCC_CR' undeclared (first use in this function); did you mean 'RCC_SW'?
-  313 |         int cr = RCC_CR;
-      |                  ^~~~~~
-      |                  RCC_SW
-/home/hamim/work/ESCape32/src/util.c:313:18: note: each undeclared identifier is reported only once for each function it appears in
-/home/hamim/work/ESCape32/src/util.c: In function 'savecfg':
-/home/hamim/work/ESCape32/src/util.c:535:9: error: 'FLASH_KEYR' undeclared (first use in this function)
-  535 |         FLASH_KEYR = FLASH_KEYR_KEY1;
-      |         ^~~~~~~~~~
-/home/hamim/work/ESCape32/src/util.c:535:22: error: 'FLASH_KEYR_KEY1' undeclared (first use in this function); did you mean 'FLASH_KEYR_FKEYR'?
-  535 |         FLASH_KEYR = FLASH_KEYR_KEY1;
-      |                      ^~~~~~~~~~~~~~~
-      |                      FLASH_KEYR_FKEYR
-/home/hamim/work/ESCape32/src/util.c:536:22: error: 'FLASH_KEYR_KEY2' undeclared (first use in this function); did you mean 'FLASH_KEYR_FKEYR'?
-  536 |         FLASH_KEYR = FLASH_KEYR_KEY2;
-      |                      ^~~~~~~~~~~~~~~
-      |                      FLASH_KEYR_FKEYR
-/home/hamim/work/ESCape32/src/util.c:537:9: error: 'FLASH_SR' undeclared (first use in this function); did you mean 'FLASH_BUSY'?
-  537 |         FLASH_SR = -1; // Clear errors
-      |         ^~~~~~~~
-      |         FLASH_BUSY
-/home/hamim/work/ESCape32/src/util.c:538:9: error: 'FLASH_CR' undeclared (first use in this function); did you mean 'FLASH_IRQn'?
-  538 |         FLASH_CR = FLASH_CR_PER;
-      |         ^~~~~~~~
-      |         FLASH_IRQn
-/home/hamim/work/ESCape32/src/util.c:538:20: error: 'FLASH_CR_PER' undeclared (first use in this function); did you mean 'FLASH_CTLR_PER'?
-  538 |         FLASH_CR = FLASH_CR_PER;
-      |                    ^~~~~~~~~~~~
-      |                    FLASH_CTLR_PER
-/home/hamim/work/ESCape32/src/util.c:121:23: error: 'FLASH_CR_START' undeclared (first use in this function); did you mean 'FLASH_CR_STRT'?
-  121 | #define FLASH_CR_STRT FLASH_CR_START
-      |                       ^~~~~~~~~~~~~~
-/home/hamim/work/ESCape32/src/util.c:543:35: note: in expansion of macro 'FLASH_CR_STRT'
-  543 |         FLASH_CR = FLASH_CR_PER | FLASH_CR_STRT | ((uint32_t)(_cfg - _boot) >> 11) << FLASH_CR_PNB_SHIFT; // Erase page
-      |                                   ^~~~~~~~~~~~~
-/home/hamim/work/ESCape32/src/util.c:543:87: error: 'FLASH_CR_PNB_SHIFT' undeclared (first use in this function)
-  543 |         FLASH_CR = FLASH_CR_PER | FLASH_CR_STRT | ((uint32_t)(_cfg - _boot) >> 11) << FLASH_CR_PNB_SHIFT; // Erase page
-      |                                                                                       ^~~~~~~~~~~~~~~~~~
-/home/hamim/work/ESCape32/src/util.c:545:27: error: 'FLASH_SR_BSY' undeclared (first use in this function); did you mean 'FLASH_R_BASE'?
-  545 |         while (FLASH_SR & FLASH_SR_BSY);
-      |                           ^~~~~~~~~~~~
-      |                           FLASH_R_BASE
-/home/hamim/work/ESCape32/src/util.c:546:20: error: 'FLASH_CR_PG' undeclared (first use in this function); did you mean 'FLASH_CTLR_PG'?
-  546 |         FLASH_CR = FLASH_CR_PG;
-      |                    ^~~~~~~~~~~
-      |                    FLASH_CTLR_PG
-/home/hamim/work/ESCape32/src/util.c:563:20: error: 'FLASH_CR_LOCK' undeclared (first use in this function); did you mean 'FLASH_CTLR_LOCK'?
-  563 |         FLASH_CR = FLASH_CR_LOCK;
-      |                    ^~~~~~~~~~~~~
-      |                    FLASH_CTLR_LOCK
-/home/hamim/work/ESCape32/src/util.c:568:25: error: 'FLASH_SR_PROGERR' undeclared (first use in this function); did you mean 'FLASH_STATR_PGERR'?
-  568 |         if (FLASH_SR & (FLASH_SR_PROGERR | FLASH_SR_WRPERR)) return 0;
-      |                         ^~~~~~~~~~~~~~~~
-      |                         FLASH_STATR_PGERR
-/home/hamim/work/ESCape32/src/util.c:568:44: error: 'FLASH_SR_WRPERR' undeclared (first use in this function); did you mean 'FLASH_STATR_PGERR'?
-  568 |         if (FLASH_SR & (FLASH_SR_PROGERR | FLASH_SR_WRPERR)) return 0;
-      |                                            ^~~~~~~~~~~~~~~
-      |                                            FLASH_STATR_PGERR
-[2/5] Building C object CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj
+[1/5] Building C object CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj
 FAILED: CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj 
 /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc -DCH32 -DCH32V203 -DTARGET_NAME=\"CH32\" -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr_zifencei -mabi=ilp32 -MD -MT CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj -MF CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj.d -o CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj -c /home/hamim/work/ESCape32/src/main.c
 /home/hamim/work/ESCape32/src/main.c: In function 'sys_tick_handler':
@@ -122,6 +60,7 @@ FAILED: CMakeFiles/CH32-rev17.3.elf.dir/src/main.c.obj
 /home/hamim/work/ESCape32/src/main.c:999:27: error: 'SCB_SCR_SLEEPONEXIT' undeclared (first use in this function)
   999 |                 SCB_SCR = SCB_SCR_SLEEPONEXIT; // Suspend main loop
       |                           ^~~~~~~~~~~~~~~~~~~
+[2/5] Building C object CMakeFiles/CH32-rev17.3.elf.dir/src/util.c.obj
 [3/5] Building C object CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj
 FAILED: CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj 
 /home/hamim/work/ESCape32/tools/riscv-gcc/bin/riscv-wch-elf-gcc -DCH32 -DCH32V203 -DTARGET_NAME=\"CH32\" -I/home/hamim/work/ESCape32/src -I/home/hamim/work/ESCape32/mcu/CH32V203 -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Core -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/Peripheral/inc -isystem /home/hamim/work/ESCape32/mcu/CH32V203/WCH/User -Os -g -ffreestanding -ffunction-sections -fdata-sections -fsingle-precision-constant -Wall -Wextra -Wpedantic -Wundef -Wshadow -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes -Wno-variadic-macros -Wno-unused-result -Wno-unused-parameter -march=rv32imac_zicsr_zifencei -mabi=ilp32 -MD -MT CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj -MF CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj.d -o CMakeFiles/CH32-rev17.3.elf.dir/src/telem.c.obj -c /home/hamim/work/ESCape32/src/telem.c
